@@ -1,22 +1,23 @@
 import streamlit as st
 import pandas as pd
 from openai import OpenAI
+import os
 
 # 1. Page Configuration
 st.set_page_config(page_title="SynBio Search Engine", page_icon="🧬", layout="wide")
 st.title("🧬 SynBio Function-to-Tool Search")
 st.write("Type what you want to achieve in plain English, and the AI will match you with the right software.")
 
-# 2. Load your database silently in the background
+# 2. Load your database dynamically from the same directory as app.py
 @st.cache_data
 def load_data():
-    return pd.read_csv("tools.csv")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, "tools.csv")
+    return pd.read_csv(file_path)
 
 df = load_data()
 
 # 3. Pull key securely from Streamlit Secrets (Invisible to public)
-# When running locally, it reads from .streamlit/secrets.toml
-# When deployed, it reads from the hosting dashboard environment
 openai_key = st.secrets["OPENAI_API_KEY"]
 
 if not openai_key:
