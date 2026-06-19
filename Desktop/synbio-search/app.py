@@ -6,7 +6,7 @@ import os
 # 1. Page Configuration
 st.set_page_config(page_title="SynBio Search Engine", page_icon="🧬", layout="wide")
 st.title("🧬 SynBio Function-to-Tool Search")
-st.write("Type what you want to achieve in plain English, and the AI will match you with the right software.")
+st.write("Type what you want to achieve, and the AI will match you with the right software.")
 
 # 2. Load your database dynamically from the same directory as app.py
 @st.cache_data
