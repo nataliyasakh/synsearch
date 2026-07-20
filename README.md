@@ -1,14 +1,12 @@
 # SynSearch
 
-**iGEM 2026 Software Track** — Open-source RAG system for searching the iGEM knowledge archive.
+**iGEM 2026 Software ** — Open-source RAG system for searching the iGEM knowledge archive.
 
-A wet-lab biologist types a plain-English question. SynSearch retrieves the most relevant past iGEM team wikis and returns a sourced answer with direct links to the original pages. No hallucinated citations. No terminal required.
-
-→ **[Live demo](https://your-app.streamlit.app)** (replace with your Streamlit Cloud URL)
+A wet-lab biologist types a plain-English question. SynSearch retrieves the most relevant past iGEM team wikis and other relevant sources and returns a sourced answer with direct links to the original pages.
 
 ---
 
-## What's in this repo
+## What's in this repository
 
 ```
 app.py                  # Main Streamlit app (all pages)
@@ -18,9 +16,6 @@ harvest_corpus.py       # Converts Munich's xlsx → corpus.json (run once)
 build_index.py          # Chunks + embeds corpus.json → Chroma index (run once, add later)
 retrieval.py            # Search + similar-projects functions (add later)
 ```
-
-**Current status:** The UI runs fully on demo data. Swap the `DEMO_*` constants
-in `app.py` for real calls to `retrieval.py` once the Chroma index is built.
 
 ---
 
