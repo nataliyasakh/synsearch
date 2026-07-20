@@ -1,6 +1,6 @@
 # SynSearch
 
-**iGEM 2025 Software Track** — Open-source RAG system for searching the iGEM knowledge archive.
+**iGEM 2026 Software Track** — Open-source RAG system for searching the iGEM knowledge archive.
 
 A wet-lab biologist types a plain-English question. SynSearch retrieves the most relevant past iGEM team wikis and returns a sourced answer with direct links to the original pages. No hallucinated citations. No terminal required.
 
