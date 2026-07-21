@@ -1,7 +1,8 @@
 """
 SynSearch — iGEM Knowledge Retrieval
-Design: Dunelock system (NYUAD iGEM 2026) — warm basalt dark palette,
-square corners, hairline borders, no shadows, no glassmorphism.
+Design: Dunelock light — cream paper background, maroon headings,
+orange accents, teal links. Square corners, hairline borders, no shadows.
+Lexend throughout. Super Dream display font via Google fallback.
 """
 import time
 import streamlit as st
@@ -15,28 +16,27 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap');
 
-/* ── Dunelock dark tokens ── */
+/* ── Dunelock LIGHT tokens (exact from globals.css) ── */
 :root {
-  --maroon:  #6E1E18;
-  --orange:  #D6884A;
-  --teal:    #8FB3AC;
-  --rose:    #C28A7C;
-  --sand:    #E7D8C4;
-  --paper:   #FBF7F0;
-  --basalt:  #1a1512;
-  --slate:   #241c19;
-  --card:    #2e2622;
-  --border:  #3d322c;
+  --maroon:  #6e1e18;
+  --orange:  #d6884a;
+  --teal:    #8fb3ac;
+  --rose:    #c28a7c;
+  --sand:    #e7d8c4;
+  --paper:   #fbf7f0;
+  --basalt:  #241c19;
+  --slate:   #2e2622;
   --ash:     #8a7e75;
-  --text:    #e8e0d8;
-  --muted:   #6b5f57;
+  --border:  #e0d3c1;
+  --muted:   #6f6157;
+  --text:    #2a1a16;
   --radius:  3px;
 }
 
 html, body, [data-testid="stAppViewContainer"] {
-  background: var(--basalt) !important;
+  background: var(--paper) !important;
   font-family: 'Lexend', sans-serif !important;
   color: var(--text) !important;
 }
@@ -44,64 +44,76 @@ html, body, [data-testid="stAppViewContainer"] {
 [data-testid="stDecoration"], footer,
 [data-testid="collapsedControl"] { display: none !important; }
 
-/* ── NAV ── */
+/* ── NAV ── exactly like Faheem: transparent, wordmark left, links right ── */
 .nav {
-  background: var(--slate);
+  background: transparent;
   border-bottom: 1px solid var(--border);
-  padding: 0 36px;
+  padding: 0 40px;
   display: flex; align-items: center; justify-content: space-between;
-  height: 54px;
+  height: 52px;
   margin: -1rem -1rem 0;
-  position: sticky; top: 0; z-index: 100;
 }
 .nav-logo {
-  font-size: 17px; font-weight: 700;
-  letter-spacing: .06em; text-transform: uppercase;
-  color: var(--orange);
+  font-size: 13px; font-weight: 800;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--maroon);
 }
-.nav-logo span { color: var(--teal); font-weight: 300; }
 .nav-links { display: flex; gap: 2px; }
 .nav-link {
-  font-size: 12px; font-weight: 500;
-  letter-spacing: .04em;
-  color: var(--ash); padding: 6px 13px;
-  border-radius: var(--radius);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ash); padding: 6px 12px;
+  border-radius: 999px;
   cursor: pointer; border: none;
   background: transparent; font-family: 'Lexend', sans-serif;
-  transition: color .12s, background .12s;
+  transition: color .12s;
 }
-.nav-link:hover { color: var(--text); background: var(--card); }
-.nav-link.active { color: var(--orange); background: #2e1e14; }
+.nav-link:hover { color: var(--orange); }
+.nav-link.active { color: var(--orange); }
+
+/* hide the real streamlit nav buttons visually but keep them functional */
+div[data-testid="column"] .stButton > button {
+  position: absolute !important;
+  opacity: 0 !important;
+  height: 52px !important;
+  width: 100% !important;
+  top: 0 !important; left: 0 !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+}
 
 /* ── HERO ── */
-.hero { padding: 64px 0 40px; text-align: center; }
-.eyebrow {
+.hero { padding: 80px 0 52px; text-align: center; }
+.hero-eyebrow {
   font-size: 10px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 18px;
+  color: var(--teal); margin-bottom: 20px;
 }
 .hero-title {
-  font-size: 54px; font-weight: 700;
-  line-height: 1.05; color: var(--text);
-  margin-bottom: 18px; letter-spacing: -.01em;
+  font-size: 60px; font-weight: 800;
+  line-height: 1.0; color: var(--maroon);
+  margin-bottom: 20px; letter-spacing: -.02em;
 }
-.hero-title em { font-style: normal; color: var(--orange); }
+.hero-title em {
+  font-style: normal; color: var(--orange);
+}
 .hero-sub {
-  font-size: 15px; font-weight: 300;
-  color: var(--ash); max-width: 500px;
-  margin: 0 auto 36px; line-height: 1.7;
+  font-size: 16px; font-weight: 300;
+  color: var(--muted); max-width: 480px;
+  margin: 0 auto 40px; line-height: 1.7;
 }
 
 /* ── INPUT overrides ── */
 [data-testid="stTextInput"] input {
-  background: var(--card) !important;
+  background: #fff !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
   color: var(--text) !important;
   font-family: 'Lexend', sans-serif !important;
   font-size: 14px !important;
-  padding: 13px 16px !important;
-  height: 48px !important;
+  padding: 12px 16px !important;
+  height: 46px !important;
+  box-shadow: none !important;
 }
 [data-testid="stTextInput"] input:focus {
   border-color: var(--orange) !important;
@@ -114,7 +126,7 @@ html, body, [data-testid="stAppViewContainer"] {
 /* ── SELECTBOX overrides ── */
 [data-testid="stSelectbox"] > div > div,
 [data-baseweb="select"] > div {
-  background: var(--card) !important;
+  background: #fff !important;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
   color: var(--text) !important;
@@ -122,36 +134,36 @@ html, body, [data-testid="stAppViewContainer"] {
   font-size: 13px !important;
 }
 [data-testid="stSelectbox"] label {
-  font-size: 11px !important; font-weight: 600 !important;
-  letter-spacing: .1em !important; text-transform: uppercase !important;
-  color: var(--muted) !important;
+  font-size: 10px !important; font-weight: 700 !important;
+  letter-spacing: .12em !important; text-transform: uppercase !important;
+  color: var(--ash) !important;
 }
 
-/* ── BUTTON override ── */
+/* ── BUTTON ── maroon fill, square corners, uppercase ── */
 .stButton > button {
-  background: var(--orange) !important;
-  color: var(--basalt) !important;
+  background: var(--maroon) !important;
+  color: var(--paper) !important;
   border: none !important;
   border-radius: var(--radius) !important;
   font-family: 'Lexend', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 13px !important;
-  letter-spacing: .04em !important;
+  font-size: 12px !important;
+  letter-spacing: .12em !important;
   text-transform: uppercase !important;
-  height: 46px !important;
+  height: 44px !important;
   transition: opacity .12s !important;
 }
 .stButton > button:hover { opacity: .85 !important; }
 
 /* ── DIVIDER ── */
-.sep { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+.sep { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
 
 /* ── ANSWER CARD ── */
 .answer-card {
-  background: var(--slate);
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 24px 26px;
+  padding: 24px 28px;
   margin-bottom: 20px;
 }
 .card-eyebrow {
@@ -160,13 +172,13 @@ html, body, [data-testid="stAppViewContainer"] {
   color: var(--teal); margin-bottom: 14px;
 }
 .answer-body {
-  font-size: 14px; font-weight: 300;
-  line-height: 1.85; color: #c8bfb4;
+  font-size: 15px; font-weight: 300;
+  line-height: 1.85; color: #4a3a32;
 }
 .cite-tag {
   display: inline-block;
   border: 1px solid var(--border);
-  padding: 0px 6px;
+  padding: 0 6px;
   font-size: 10px; font-weight: 700;
   color: var(--teal);
   border-radius: var(--radius);
@@ -175,12 +187,12 @@ html, body, [data-testid="stAppViewContainer"] {
 .sources-head {
   font-size: 10px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--muted); margin: 20px 0 10px;
+  color: var(--ash); margin: 20px 0 10px;
 }
 .source-row {
   display: flex; align-items: center; gap: 12px;
   padding: 10px 14px;
-  background: var(--card);
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   margin-bottom: 6px;
@@ -190,18 +202,16 @@ html, body, [data-testid="stAppViewContainer"] {
 .source-row:hover { border-color: var(--orange); }
 .src-num { font-size: 11px; font-weight: 700; color: var(--teal); min-width: 22px; }
 .src-info { flex: 1; }
-.src-team { font-size: 13px; font-weight: 500; color: var(--text); }
-.src-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.src-team { font-size: 13px; font-weight: 600; color: var(--maroon); }
+.src-meta { font-size: 11px; color: var(--ash); margin-top: 2px; }
 .badge {
   font-size: 10px; font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius);
-  white-space: nowrap;
-  border: 1px solid;
+  padding: 2px 9px; border-radius: var(--radius);
+  white-space: nowrap; border: 1px solid;
 }
-.badge-grand { color: var(--teal);   background: #16241f; border-color: #2a4038; }
-.badge-gold  { color: var(--orange); background: #2a1a0c; border-color: #4a2e12; }
-.badge-silver{ color: var(--ash);    background: var(--card); border-color: var(--border); }
+.badge-grand { color: var(--teal);   background: #eaf2f0; border-color: #c5ddd9; }
+.badge-gold  { color: var(--orange); background: #fdf0e6; border-color: #f0cfa8; }
+.badge-silver{ color: var(--ash);    background: var(--sand); border-color: var(--border); }
 
 /* ── SIMILAR GRID ── */
 .section-head {
@@ -210,31 +220,31 @@ html, body, [data-testid="stAppViewContainer"] {
 .section-title {
   font-size: 10px; font-weight: 700;
   letter-spacing: .15em; text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ash);
 }
 .section-pill {
-  font-size: 10px; font-weight: 600;
+  font-size: 10px; font-weight: 700;
   padding: 2px 9px;
-  border: 1px solid #2a4038;
-  color: var(--teal); background: #16241f;
+  border: 1px solid #c5ddd9;
+  color: var(--teal); background: #eaf2f0;
   border-radius: var(--radius);
 }
 .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .sim-card {
-  background: var(--slate); border: 1px solid var(--border);
+  background: #fff; border: 1px solid var(--border);
   border-radius: var(--radius); padding: 14px 16px;
   text-decoration: none; display: block;
   transition: border-color .12s;
 }
 .sim-card:hover { border-color: var(--orange); }
 .sim-pct { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 5px; }
-.sim-team { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-.sim-title-text { font-size: 12px; color: var(--ash); line-height: 1.4; margin-bottom: 8px; }
+.sim-team { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
+.sim-title-text { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
 .tags { display: flex; gap: 5px; flex-wrap: wrap; }
 .tag {
-  font-size: 10px; font-weight: 500; padding: 2px 7px;
+  font-size: 10px; font-weight: 600; padding: 2px 8px;
   border-radius: var(--radius);
-  background: var(--card); color: var(--muted);
+  background: var(--sand); color: var(--muted);
   border: 1px solid var(--border);
 }
 .score-bar { height: 2px; background: var(--border); border-radius: 1px; margin-top: 10px; overflow: hidden; }
@@ -242,41 +252,42 @@ html, body, [data-testid="stAppViewContainer"] {
 
 /* ── BENCHMARK ── */
 .bench-card {
-  background: var(--slate); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 24px; margin-bottom: 10px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 26px; margin-bottom: 10px;
 }
-.bench-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-.bench-desc { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.bench-name { font-size: 14px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
+.bench-desc { font-size: 12px; color: var(--ash); margin-bottom: 16px; }
 .metric-row { display: flex; gap: 10px; }
 .metric {
-  flex: 1; background: var(--card);
+  flex: 1; background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius); padding: 14px;
 }
 .metric-label {
   font-size: 10px; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 6px;
+  color: var(--ash); margin-bottom: 6px;
 }
-.metric-val { font-size: 28px; font-weight: 700; color: var(--text); }
+.metric-val { font-size: 28px; font-weight: 700; color: var(--maroon); }
 .mbar-bg { height: 2px; background: var(--border); border-radius: 1px; margin-top: 8px; overflow: hidden; }
 .mbar { height: 100%; border-radius: 1px; }
 
 /* ── ABOUT ── */
 .about-card {
-  background: var(--slate); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 24px; margin-bottom: 10px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px 26px; margin-bottom: 10px;
 }
-.about-h { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 9px; }
-.about-p { font-size: 13px; font-weight: 300; color: var(--ash); line-height: 1.75; }
+.about-h { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 9px; }
+.about-p { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 1.75; }
 .about-p a { color: var(--teal); text-decoration: none; }
 .about-p a:hover { text-decoration: underline; }
-.about-ul { font-size: 13px; font-weight: 300; color: var(--ash); line-height: 2; padding-left: 18px; }
+.about-ul { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 2; padding-left: 18px; }
 
 .empty-state {
-  text-align: center; padding: 60px 0;
-  color: var(--muted); font-size: 14px; font-weight: 300;
+  text-align: center; padding: 72px 0;
+  color: var(--ash); font-size: 14px; font-weight: 300;
 }
+.empty-state em { color: var(--orange); font-style: normal; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -314,11 +325,11 @@ DEMO_SIMILAR = [
 ]
 DEMO_BENCH = [
     {"name":"Bare GPT-4o","desc":"No retrieval — model answers from training data only",
-     "f":0.41,"r":0.58,"c":0.29,"color":"#6E1E18"},
+     "f":0.41,"r":0.58,"c":0.29,"color":"#6e1e18"},
     {"name":"GPT-4o + SynSearch RAG","desc":"GPT-4o generation grounded in our iGEM corpus",
-     "f":0.79,"r":0.83,"c":0.71,"color":"#D6884A"},
-    {"name":"Open model + SynSearch RAG","desc":"DeepSeek-R1 distilled · fully open-source pipeline",
-     "f":0.74,"r":0.77,"c":0.68,"color":"#8FB3AC"},
+     "f":0.79,"r":0.83,"c":0.71,"color":"#d6884a"},
+    {"name":"Open model + SynSearch RAG","desc":"DeepSeek-R1 distilled · fully open-source",
+     "f":0.74,"r":0.77,"c":0.68,"color":"#8fb3ac"},
 ]
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
@@ -334,7 +345,7 @@ def sbar(pct):
 def mbar(val, color):
     return f"<div class='mbar-bg'><div class='mbar' style='width:{int(val*100)}%;background:{color}'></div></div>"
 
-# ── SESSION ────────────────────────────────────────────────────────────────────
+# ── SESSION STATE ──────────────────────────────────────────────────────────────
 if "page" not in st.session_state:
     st.session_state.page = "search"
 
@@ -348,11 +359,13 @@ nav_links = "".join(
 )
 st.markdown(
     f"<div class='nav'>"
-    f"<div class='nav-logo'>Syn<span>Search</span></div>"
+    f"<div class='nav-logo'>SynSearch</div>"
     f"<div class='nav-links'>{nav_links}</div>"
     f"</div>",
     unsafe_allow_html=True
 )
+
+# Invisible click layer on top of the visual nav
 nav_cols = st.columns(len(PAGES))
 for i,(label,key) in enumerate(PAGES):
     with nav_cols[i]:
@@ -367,7 +380,7 @@ if st.session_state.page == "search":
 
     st.markdown("""
     <div class='hero'>
-      <div class='eyebrow'>iGEM knowledge retrieval &middot; 343 wikis &middot; 2019 corpus</div>
+      <div class='hero-eyebrow'>iGEM knowledge retrieval &middot; 343 wikis &middot; 2019 corpus</div>
       <div class='hero-title'>Ask the iGEM<br><em>archive</em></div>
       <div class='hero-sub'>
         Search past iGEM team wikis in plain English.
@@ -388,16 +401,11 @@ if st.session_state.page == "search":
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
     if query or go:
-        # ── swap with real_search(query, year, track, medal) when backend is ready ──
         with st.spinner("Searching corpus..."):
             time.sleep(0.4)
-        answer  = DEMO_ANSWER
-        sources = DEMO_SOURCES
-        similar = DEMO_SIMILAR
 
-        # sources HTML — built separately, no nested quote issues
         src_rows = ""
-        for s in sources:
+        for s in DEMO_SOURCES:
             short = s["url"].replace("https://","")
             src_rows += (
                 f"<a href='{s['url']}' target='_blank' class='source-row'>"
@@ -410,14 +418,13 @@ if st.session_state.page == "search":
 
         st.markdown(
             f"<div class='answer-card'>"
-            f"<div class='card-eyebrow'>Synthesised answer &middot; {len(sources)} sources</div>"
-            f"<div class='answer-body'>{answer}</div>"
+            f"<div class='card-eyebrow'>Synthesised answer &middot; {len(DEMO_SOURCES)} sources</div>"
+            f"<div class='answer-body'>{DEMO_ANSWER}</div>"
             f"<div class='sources-head'>Sources — click to open original wiki</div>"
             f"{src_rows}</div>",
             unsafe_allow_html=True
         )
 
-        # similar projects
         st.markdown(
             "<div class='section-head'>"
             "<span class='section-title'>Similar projects</span>"
@@ -426,7 +433,7 @@ if st.session_state.page == "search":
             unsafe_allow_html=True
         )
         sim = "<div class='sim-grid'>"
-        for s in similar:
+        for s in DEMO_SIMILAR:
             sim += (
                 f"<a href='{s['url']}' target='_blank' class='sim-card'>"
                 f"<div class='sim-pct'>{s['score']}% match</div>"
@@ -445,8 +452,9 @@ if st.session_state.page == "search":
         st.markdown(
             "<div class='empty-state'>"
             "Type a question above and press Search corpus.<br>"
-            "Try: <em>\"biosensor for heavy metal detection\"</em> &nbsp;or&nbsp; "
-            "<em>\"genetic toggle switch in E. coli\"</em>"
+            "Try: <em>biosensor for heavy metal detection</em>"
+            " &nbsp;&middot;&nbsp; "
+            "<em>genetic toggle switch in E. coli</em>"
             "</div>",
             unsafe_allow_html=True
         )
@@ -456,13 +464,13 @@ if st.session_state.page == "search":
 # ══════════════════════════════════════════════════════════════════════════════
 elif st.session_state.page == "similar":
     st.markdown("""
-    <div style='padding:52px 0 28px'>
-      <div class='eyebrow'>Semantic similarity explorer</div>
-      <div class='hero-title' style='font-size:40px;text-align:left'>
+    <div style='padding:64px 0 32px'>
+      <div class='hero-eyebrow'>Semantic similarity explorer</div>
+      <div class='hero-title' style='font-size:44px;text-align:left'>
         Find projects<br><em>like yours</em>
       </div>
       <div class='hero-sub' style='text-align:left;margin:12px 0 0'>
-        Describe your project. SynSearch ranks the 343 closest past teams
+        Describe your project. SynSearch ranks the closest past iGEM teams
         by vector similarity. Google cannot do this.
       </div>
     </div>
@@ -486,7 +494,7 @@ elif st.session_state.page == "similar":
                 f"<div class='src-meta' style='margin-top:3px'>{s['title']}</div>"
                 f"</div>"
                 f"{badge(s['medal'])}"
-                f"<div class='sim-pct' style='white-space:nowrap;margin-left:10px'>{s['score']}%</div>"
+                f"<div class='sim-pct' style='white-space:nowrap;margin-left:12px'>{s['score']}%</div>"
                 f"</a>",
                 unsafe_allow_html=True
             )
@@ -496,9 +504,9 @@ elif st.session_state.page == "similar":
 # ══════════════════════════════════════════════════════════════════════════════
 elif st.session_state.page == "benchmark":
     st.markdown("""
-    <div style='padding:52px 0 28px'>
-      <div class='eyebrow'>RAGAS evaluation &middot; 50 ground-truth questions</div>
-      <div class='hero-title' style='font-size:40px;text-align:left'>
+    <div style='padding:64px 0 32px'>
+      <div class='hero-eyebrow'>RAGAS evaluation &middot; 50 ground-truth questions</div>
+      <div class='hero-title' style='font-size:44px;text-align:left'>
         Does RAG<br><em>actually help?</em>
       </div>
       <div class='hero-sub' style='text-align:left;margin:12px 0 0'>
@@ -531,7 +539,7 @@ elif st.session_state.page == "benchmark":
         50 questions based on real queries a new iGEM team member would ask,
         spanning Diagnostics, Foundational Advance, Environment, and Manufacturing tracks.
         Correct answers and source wikis were verified manually.
-        <br><br><em style='color:#4a3f38'>Numbers above are placeholders — replace with real RAGAS output.</em>
+        <br><br><em style='color:var(--ash)'>Numbers above are placeholders — replace with real RAGAS output.</em>
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -541,9 +549,9 @@ elif st.session_state.page == "benchmark":
 # ══════════════════════════════════════════════════════════════════════════════
 elif st.session_state.page == "about":
     st.markdown("""
-    <div style='padding:52px 0 28px'>
-      <div class='eyebrow'>iGEM 2025 Software Track</div>
-      <div class='hero-title' style='font-size:40px;text-align:left'>
+    <div style='padding:64px 0 32px'>
+      <div class='hero-eyebrow'>iGEM 2025 Software Track</div>
+      <div class='hero-title' style='font-size:44px;text-align:left'>
         About<br><em>SynSearch</em>
       </div>
     </div>
