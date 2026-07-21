@@ -71,15 +71,24 @@ html, body, [data-testid="stAppViewContainer"] {
 .nav-link:hover { color: var(--orange); }
 .nav-link.active { color: var(--orange); }
 
-/* hide the real streamlit nav buttons visually but keep them functional */
-div[data-testid="column"] .stButton > button {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 52px !important;
-  width: 100% !important;
-  top: 0 !important; left: 0 !important;
-  cursor: pointer !important;
-  z-index: 10 !important;
+/* nav button row: visually gone but still triggerable */
+div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-height: 0 !important;
+}
+div[data-testid="stHorizontalBlock"] .stButton > button {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  color: transparent !important;
 }
 
 /* ── HERO ── */
@@ -103,23 +112,40 @@ div[data-testid="column"] .stButton > button {
   margin: 0 auto 40px; line-height: 1.7;
 }
 
-/* ── INPUT overrides ── */
-[data-testid="stTextInput"] input {
+/* ── INPUT overrides — force square corners at every level ── */
+[data-testid="stTextInput"] input,
+[data-baseweb="base-input"] input,
+[data-baseweb="input"] input {
   background: #fff !important;
   border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  color: var(--text) !important;
+  border-radius: 3px !important;
+  color: #2a1a16 !important;
   font-family: 'Lexend', sans-serif !important;
   font-size: 14px !important;
+  font-weight: 400 !important;
   padding: 12px 16px !important;
   height: 46px !important;
   box-shadow: none !important;
+  -webkit-text-fill-color: #2a1a16 !important;
 }
-[data-testid="stTextInput"] input:focus {
+[data-testid="stTextInput"] input::placeholder,
+[data-baseweb="base-input"] input::placeholder {
+  color: var(--ash) !important;
+  -webkit-text-fill-color: var(--ash) !important;
+  opacity: 1 !important;
+}
+[data-testid="stTextInput"] input:focus,
+[data-baseweb="base-input"] input:focus {
   border-color: var(--orange) !important;
   box-shadow: none !important;
-  outline: 2px solid var(--orange) !important;
-  outline-offset: 0 !important;
+  outline: none !important;
+}
+[data-baseweb="base-input"],
+[data-baseweb="input"] {
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
 }
 [data-testid="stTextInput"] label { display: none !important; }
 
@@ -365,12 +391,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Invisible click layer on top of the visual nav
-nav_cols = st.columns(len(PAGES))
-for i,(label,key) in enumerate(PAGES):
-    with nav_cols[i]:
-        if st.button(label, key=f"nb_{key}"):
-            st.session_state.page = key
+# Real clickable buttons — zero size, sit behind the visual nav spans
+_bcols = st.columns(len(PAGES))
+for _i, (_label, _key) in enumerate(PAGES):
+    with _bcols[_i]:
+        if st.button(_label, key=f"nb_{_key}"):
+            st.session_state.page = _key
             st.rerun()
 
 # ══════════════════════════════════════════════════════════════════════════════
