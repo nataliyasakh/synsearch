@@ -378,7 +378,10 @@ if "page" not in st.session_state:
 # ── NAV ───────────────────────────────────────────────────────────────────────
 PAGES = [("Search","search"),("Similar Projects","similar"),
          ("Benchmark","benchmark"),("About","about")]
+PAGE_LABELS = [p[0] for p in PAGES]
+PAGE_KEYS   = [p[1] for p in PAGES]
 
+# Visual nav bar (display only)
 nav_links = "".join(
     f"<span class='nav-link {'active' if st.session_state.page==k else ''}'>{l}</span>"
     for l,k in PAGES
@@ -391,13 +394,41 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Real clickable buttons — zero size, sit behind the visual nav spans
-_bcols = st.columns(len(PAGES))
-for _i, (_label, _key) in enumerate(PAGES):
-    with _bcols[_i]:
-        if st.button(_label, key=f"nb_{_key}"):
-            st.session_state.page = _key
-            st.rerun()
+# Functional nav — st.radio hidden with CSS, drives page state
+st.markdown("""
+<style>
+div[data-testid="stRadio"] {
+  position: fixed; top: 8px; right: 32px; z-index: 200;
+}
+div[data-testid="stRadio"] > label { display: none; }
+div[data-testid="stRadio"] [data-testid="stMarkdownContainer"] { display: none; }
+div[data-testid="stRadio"] > div {
+  display: flex; gap: 2px; background: transparent;
+}
+div[data-testid="stRadio"] > div > label {
+  display: block !important;
+  font-family: 'Lexend', sans-serif !important;
+  font-size: 11px !important; font-weight: 700 !important;
+  letter-spacing: .16em !important; text-transform: uppercase !important;
+  color: transparent !important;
+  padding: 6px 18px !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  min-width: 80px !important;
+}
+div[data-testid="stRadio"] > div > label > div { display: none !important; }
+div[data-testid="stRadio"] [data-baseweb="radio"] { display: none !important; }
+</style>
+""", unsafe_allow_html=True)
+
+current_label = PAGE_LABELS[PAGE_KEYS.index(st.session_state.page)]
+chosen = st.radio("nav", PAGE_LABELS, index=PAGE_LABELS.index(current_label),
+                  horizontal=True, label_visibility="collapsed")
+if chosen and PAGE_KEYS[PAGE_LABELS.index(chosen)] != st.session_state.page:
+    st.session_state.page = PAGE_KEYS[PAGE_LABELS.index(chosen)]
+    st.rerun()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SEARCH
@@ -419,8 +450,9 @@ if st.session_state.page == "search":
     with mid:
         query = st.text_input("q", placeholder="e.g.  How did teams build biosensors for heavy metal detection?", label_visibility="collapsed", key="q")
         fc1, fc2, fc3 = st.columns(3)
-        with fc1: year  = st.selectbox("Year",  ["All years","2019","2020","2021","2022"], key="fy")
-        with fc2: track = st.selectbox("Track", ["All tracks","Diagnostics","Environment","Foundational Advance","Manufacturing"], key="ft")
+        with fc1: year  = st.selectbox("Year",  ["All years (2019 corpus)"], key="fy")
+        year = "All years"  # corpus is 2019 only for now
+        with fc2: track = st.selectbox("Track", ["All tracks","Diagnostics","Foundational Advance","Health & Medicine","Manufacturing","Food & Nutrition","Energy","Environment","New Application","Entrepreneurship","High School"], key="ft")
         with fc3: medal = st.selectbox("Medal", ["Any medal","Grand Prize","Gold","Silver"], key="fm")
         go = st.button("Search corpus", key="go", use_container_width=True)
 
@@ -428,10 +460,14 @@ if st.session_state.page == "search":
 
     if query or go:
         with st.spinner("Searching corpus..."):
-            time.sleep(0.4)
+            from retrieval import search as real_search
+            answer_text, real_sources, real_similar = real_search(
+                query,
+                year=year, track=track, medal=medal
+            )
 
         src_rows = ""
-        for s in DEMO_SOURCES:
+        for s in real_sources:
             short = s["url"].replace("https://","")
             src_rows += (
                 f"<a href='{s['url']}' target='_blank' class='source-row'>"
@@ -445,7 +481,7 @@ if st.session_state.page == "search":
         st.markdown(
             f"<div class='answer-card'>"
             f"<div class='card-eyebrow'>Synthesised answer &middot; {len(DEMO_SOURCES)} sources</div>"
-            f"<div class='answer-body'>{DEMO_ANSWER}</div>"
+            f"<div class='answer-body'>{answer_text}</div>"
             f"<div class='sources-head'>Sources — click to open original wiki</div>"
             f"{src_rows}</div>",
             unsafe_allow_html=True
@@ -459,7 +495,7 @@ if st.session_state.page == "search":
             unsafe_allow_html=True
         )
         sim = "<div class='sim-grid'>"
-        for s in DEMO_SIMILAR:
+        for s in real_similar:
             sim += (
                 f"<a href='{s['url']}' target='_blank' class='sim-card'>"
                 f"<div class='sim-pct'>{s['score']}% match</div>"
@@ -505,14 +541,15 @@ elif st.session_state.page == "similar":
     sq = st.text_input("sq", placeholder="e.g.  We are engineering E. coli to detect arsenic in drinking water", label_visibility="collapsed", key="sq")
     if st.button("Find similar projects", key="sgo") or sq:
         with st.spinner("Computing similarity..."):
-            time.sleep(0.4)
+            from retrieval import find_similar
+            real_sim = find_similar(sq)
         st.markdown(
             "<div class='section-head' style='margin-top:24px'>"
             "<span class='section-title'>Top matches across 343 teams</span>"
             "</div>",
             unsafe_allow_html=True
         )
-        for s in DEMO_SIMILAR:
+        for s in real_sim:
             st.markdown(
                 f"<a href='{s['url']}' target='_blank' class='source-row' style='margin-bottom:8px'>"
                 f"<div class='src-info'>"
