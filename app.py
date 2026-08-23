@@ -350,12 +350,12 @@ DEMO_SIMILAR = [
      "track":"Diagnostics","medal":"Silver","url":"https://2016.igem.org/Team:Imperial_College"},
 ]
 DEMO_BENCH = [
-    {"name":"Bare GPT-4o","desc":"No retrieval — model answers from training data only",
-     "f":0.41,"r":0.58,"c":0.29,"color":"#6e1e18"},
-    {"name":"GPT-4o + SynSearch RAG","desc":"GPT-4o generation grounded in our iGEM corpus",
-     "f":0.79,"r":0.83,"c":0.71,"color":"#d6884a"},
-    {"name":"Open model + SynSearch RAG","desc":"DeepSeek-R1 distilled · fully open-source",
-     "f":0.74,"r":0.77,"c":0.68,"color":"#8fb3ac"},
+    {"name":"Bare Groq (no retrieval)","desc":"No retrieval — model answers from training data only. Fluent but frequently hallucinated.",
+     "f":0.11,"r":0.75,"c":0.12,"color":"#6e1e18"},
+    {"name":"Groq fast + SynSearch RAG","desc":"Fast model grounded in 343 iGEM 2019 wikis via Pinecone vector retrieval.",
+     "f":0.42,"r":0.19,"c":0.30,"color":"#d6884a"},
+    {"name":"Groq large + SynSearch RAG","desc":"Large model + SynSearch RAG — 7x improvement in faithfulness over bare LLM.",
+     "f":0.79,"r":0.27,"c":0.21,"color":"#8fb3ac"},
 ]
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
