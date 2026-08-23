@@ -83,9 +83,9 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 }
 .hero-title em { font-style: normal; color: var(--orange); }
 .hero-sub {
-  font-size: 16px; font-weight: 300;
-  color: var(--muted); max-width: 480px;
-  margin: 0 auto 36px; line-height: 1.7;
+  font-size: 17px; font-weight: 300;
+  color: var(--muted); max-width: 520px;
+  margin: 0 auto 36px; line-height: 1.75;
 }
 
 /* ── INPUTS ── */
@@ -132,15 +132,15 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 /* ── CARDS ── */
 .answer-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 24px 28px; margin-bottom: 20px; }
 .card-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
-.answer-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: #4a3a32; }
+.answer-body { font-size: 16px; font-weight: 400; line-height: 1.9; color: #3a2a22; }
 .cite-tag { display: inline-block; border: 1px solid var(--border); padding: 0 6px; font-size: 10px; font-weight: 700; color: var(--teal); border-radius: 3px; vertical-align: middle; margin-left: 2px; }
 .sources-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); margin: 20px 0 10px; }
 .source-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--border); border-radius: 3px; margin-bottom: 6px; text-decoration: none; transition: border-color .12s; }
 .source-row:hover { border-color: var(--orange); }
 .src-num { font-size: 11px; font-weight: 700; color: var(--teal); min-width: 22px; }
 .src-info { flex: 1; }
-.src-team { font-size: 13px; font-weight: 600; color: var(--maroon); }
-.src-meta { font-size: 11px; color: var(--ash); margin-top: 2px; }
+.src-team { font-size: 14px; font-weight: 600; color: var(--maroon); }
+.src-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .badge { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 3px; white-space: nowrap; border: 1px solid; }
 .badge-grand { color: var(--teal); background: #eaf2f0; border-color: #c5ddd9; }
 .badge-gold { color: var(--orange); background: #fdf0e6; border-color: #f0cfa8; }
@@ -153,8 +153,8 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 .sim-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; text-decoration: none; display: block; transition: border-color .12s; }
 .sim-card:hover { border-color: var(--orange); }
 .sim-pct { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 5px; }
-.sim-team { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
-.sim-title-text { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
+.sim-team { font-size: 14px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
+.sim-title-text { font-size: 13px; color: var(--muted); line-height: 1.45; margin-bottom: 8px; }
 .tags { display: flex; gap: 5px; flex-wrap: wrap; }
 .tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px; background: var(--sand); color: var(--muted); border: 1px solid var(--border); }
 .score-bar { height: 2px; background: var(--border); border-radius: 1px; margin-top: 10px; overflow: hidden; }
@@ -162,7 +162,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 
 .bench-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 22px 26px; margin-bottom: 10px; }
 .bench-name { font-size: 14px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
-.bench-desc { font-size: 12px; color: var(--ash); margin-bottom: 16px; }
+.bench-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
 .metric-row { display: flex; gap: 10px; }
 .metric { flex: 1; background: var(--paper); border: 1px solid var(--border); border-radius: 3px; padding: 14px; }
 .metric-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ash); margin-bottom: 6px; }
@@ -172,7 +172,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 
 .about-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 22px 26px; margin-bottom: 10px; }
 .about-h { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 9px; }
-.about-p { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 1.75; }
+.about-p { font-size: 14px; font-weight: 300; color: #3a2a22; line-height: 1.8; }
 .about-p a { color: var(--teal); text-decoration: none; }
 .about-p a:hover { text-decoration: underline; }
 .about-ul { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 2; padding-left: 18px; }
