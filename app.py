@@ -108,7 +108,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 [data-testid="stTextInput"] label { display: none !important; }
 
 /* ── SELECTBOX ── */
-[data-testid="stSelectbox"] > div > div { background: #fff !important; border: 1px solid var(--border) !important; border-radius: 3px !important; color: var(--text) !important; font-family: 'Lexend', sans-serif !important; font-size: 13px !important; }
+[data-testid="stSelectbox"] > div > div { -webkit-text-fill-color: #2a1a16; background: #fff !important; border: 1px solid var(--border) !important; border-radius: 3px !important; color: var(--text) !important; font-family: 'Lexend', sans-serif !important; font-size: 13px !important; }
 [data-testid="stSelectbox"] label { font-size: 10px !important; font-weight: 700 !important; letter-spacing: .12em !important; text-transform: uppercase !important; color: var(--ash) !important; }
 
 /* ── SEARCH BUTTON ── maroon, full width */
@@ -262,7 +262,7 @@ if st.session_state.page == "search":
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
-    if query or go:
+    if go or (query and query.strip()):
         with st.spinner("Searching corpus..."):
             from retrieval import search as real_search
             answer_text, real_sources, real_similar = real_search(
