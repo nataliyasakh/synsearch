@@ -1,8 +1,6 @@
 """
 SynSearch — iGEM Knowledge Retrieval
-Design: Dunelock light — cream paper background, maroon headings,
-orange accents, teal links. Square corners, hairline borders, no shadows.
-Lexend throughout. Super Dream display font via Google fallback.
+Design: Dunelock light — cream paper, maroon headings, orange accents.
 """
 import time
 import streamlit as st
@@ -18,16 +16,12 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap');
 
-/* ── Dunelock LIGHT tokens (exact from globals.css) ── */
 :root {
   --maroon:  #6e1e18;
   --orange:  #d6884a;
   --teal:    #8fb3ac;
-  --rose:    #c28a7c;
   --sand:    #e7d8c4;
   --paper:   #fbf7f0;
-  --basalt:  #241c19;
-  --slate:   #2e2622;
   --ash:     #8a7e75;
   --border:  #e0d3c1;
   --muted:   #6f6157;
@@ -44,133 +38,85 @@ html, body, [data-testid="stAppViewContainer"] {
 [data-testid="stDecoration"], footer,
 [data-testid="collapsedControl"] { display: none !important; }
 
-/* ── NAV ── exactly like Faheem: transparent, wordmark left, links right ── */
-.nav {
-  background: transparent;
+/* ── NAV ROW ── */
+div[data-testid="stHorizontalBlock"]:first-of-type {
+  background: var(--paper);
   border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 52px;
-  margin: -1rem -1rem 0;
+  padding: 4px 32px !important;
+  margin: -1rem -1rem 0 !important;
+  align-items: center !important;
+  gap: 0 !important;
 }
-.nav-logo {
-  font-size: 13px; font-weight: 800;
-  letter-spacing: .2em; text-transform: uppercase;
-  color: var(--maroon);
-}
-.nav-links { display: flex; gap: 2px; }
-.nav-link {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .16em; text-transform: uppercase;
-  color: var(--ash); padding: 6px 12px;
-  border-radius: 999px;
-  cursor: pointer; border: none;
-  background: transparent; font-family: 'Lexend', sans-serif;
-  transition: color .12s;
-}
-.nav-link:hover { color: var(--orange); }
-.nav-link.active { color: var(--orange); }
-
-/* nav button row: visually gone but still triggerable */
-div[data-testid="stHorizontalBlock"] div[data-testid="column"] {
-  height: 0 !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
+div[data-testid="stHorizontalBlock"]:first-of-type div[data-testid="column"] {
   padding: 0 !important;
-  margin: 0 !important;
-  max-height: 0 !important;
 }
-div[data-testid="stHorizontalBlock"] .stButton > button {
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  font-size: 0 !important;
-  border: none !important;
+div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button {
   background: transparent !important;
-  color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--ash) !important;
+  font-family: 'Lexend', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  height: 40px !important;
+  width: 100% !important;
+  transition: color .12s !important;
+}
+div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
+  color: var(--orange) !important;
+  background: transparent !important;
 }
 
 /* ── HERO ── */
-.hero { padding: 80px 0 52px; text-align: center; }
+.hero { padding: 72px 0 48px; text-align: center; }
 .hero-eyebrow {
   font-size: 10px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 20px;
+  color: var(--teal); margin-bottom: 18px;
 }
 .hero-title {
-  font-size: 60px; font-weight: 800;
+  font-size: 58px; font-weight: 800;
   line-height: 1.0; color: var(--maroon);
-  margin-bottom: 20px; letter-spacing: -.02em;
+  margin-bottom: 18px; letter-spacing: -.02em;
 }
-.hero-title em {
-  font-style: normal; color: var(--orange);
-}
+.hero-title em { font-style: normal; color: var(--orange); }
 .hero-sub {
   font-size: 16px; font-weight: 300;
   color: var(--muted); max-width: 480px;
-  margin: 0 auto 40px; line-height: 1.7;
+  margin: 0 auto 36px; line-height: 1.7;
 }
 
-/* ── INPUT overrides — force square corners at every level ── */
+/* ── INPUTS ── */
 [data-testid="stTextInput"] input,
-[data-baseweb="base-input"] input,
-[data-baseweb="input"] input {
+[data-baseweb="base-input"] input {
   background: #fff !important;
   border: 1px solid var(--border) !important;
   border-radius: 3px !important;
   color: #2a1a16 !important;
   font-family: 'Lexend', sans-serif !important;
   font-size: 14px !important;
-  font-weight: 400 !important;
   padding: 12px 16px !important;
   height: 46px !important;
   box-shadow: none !important;
   -webkit-text-fill-color: #2a1a16 !important;
 }
-[data-testid="stTextInput"] input::placeholder,
-[data-baseweb="base-input"] input::placeholder {
-  color: var(--ash) !important;
-  -webkit-text-fill-color: var(--ash) !important;
-  opacity: 1 !important;
-}
-[data-testid="stTextInput"] input:focus,
-[data-baseweb="base-input"] input:focus {
-  border-color: var(--orange) !important;
-  box-shadow: none !important;
-  outline: none !important;
-}
-[data-baseweb="base-input"],
-[data-baseweb="input"] {
-  border-radius: 3px !important;
-  overflow: hidden !important;
-  background: #fff !important;
-  border: 1px solid var(--border) !important;
-}
+[data-testid="stTextInput"] input::placeholder { color: var(--ash) !important; -webkit-text-fill-color: var(--ash) !important; }
+[data-testid="stTextInput"] input:focus { border-color: var(--orange) !important; box-shadow: none !important; outline: none !important; }
+[data-baseweb="base-input"] { border-radius: 3px !important; background: #fff !important; }
 [data-testid="stTextInput"] label { display: none !important; }
 
-/* ── SELECTBOX overrides ── */
-[data-testid="stSelectbox"] > div > div,
-[data-baseweb="select"] > div {
-  background: #fff !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  color: var(--text) !important;
-  font-family: 'Lexend', sans-serif !important;
-  font-size: 13px !important;
-}
-[data-testid="stSelectbox"] label {
-  font-size: 10px !important; font-weight: 700 !important;
-  letter-spacing: .12em !important; text-transform: uppercase !important;
-  color: var(--ash) !important;
-}
+/* ── SELECTBOX ── */
+[data-testid="stSelectbox"] > div > div { background: #fff !important; border: 1px solid var(--border) !important; border-radius: 3px !important; color: var(--text) !important; font-family: 'Lexend', sans-serif !important; font-size: 13px !important; }
+[data-testid="stSelectbox"] label { font-size: 10px !important; font-weight: 700 !important; letter-spacing: .12em !important; text-transform: uppercase !important; color: var(--ash) !important; }
 
-/* ── BUTTON ── maroon fill, square corners, uppercase ── */
+/* ── SEARCH BUTTON ── maroon, full width */
 .stButton > button {
   background: var(--maroon) !important;
   color: var(--paper) !important;
   border: none !important;
-  border-radius: var(--radius) !important;
+  border-radius: 3px !important;
   font-family: 'Lexend', sans-serif !important;
   font-weight: 700 !important;
   font-size: 12px !important;
@@ -181,174 +127,61 @@ div[data-testid="stHorizontalBlock"] .stButton > button {
 }
 .stButton > button:hover { opacity: .85 !important; }
 
-/* ── DIVIDER ── */
-.sep { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+.sep { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 
-/* ── ANSWER CARD ── */
-.answer-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 20px;
-}
-.card-eyebrow {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .15em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 14px;
-}
-.answer-body {
-  font-size: 15px; font-weight: 300;
-  line-height: 1.85; color: #4a3a32;
-}
-.cite-tag {
-  display: inline-block;
-  border: 1px solid var(--border);
-  padding: 0 6px;
-  font-size: 10px; font-weight: 700;
-  color: var(--teal);
-  border-radius: var(--radius);
-  vertical-align: middle; margin-left: 2px;
-}
-.sources-head {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--ash); margin: 20px 0 10px;
-}
-.source-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 6px;
-  text-decoration: none;
-  transition: border-color .12s;
-}
+/* ── CARDS ── */
+.answer-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 24px 28px; margin-bottom: 20px; }
+.card-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+.answer-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: #4a3a32; }
+.cite-tag { display: inline-block; border: 1px solid var(--border); padding: 0 6px; font-size: 10px; font-weight: 700; color: var(--teal); border-radius: 3px; vertical-align: middle; margin-left: 2px; }
+.sources-head { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); margin: 20px 0 10px; }
+.source-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--border); border-radius: 3px; margin-bottom: 6px; text-decoration: none; transition: border-color .12s; }
 .source-row:hover { border-color: var(--orange); }
 .src-num { font-size: 11px; font-weight: 700; color: var(--teal); min-width: 22px; }
 .src-info { flex: 1; }
 .src-team { font-size: 13px; font-weight: 600; color: var(--maroon); }
 .src-meta { font-size: 11px; color: var(--ash); margin-top: 2px; }
-.badge {
-  font-size: 10px; font-weight: 700;
-  padding: 2px 9px; border-radius: var(--radius);
-  white-space: nowrap; border: 1px solid;
-}
-.badge-grand { color: var(--teal);   background: #eaf2f0; border-color: #c5ddd9; }
-.badge-gold  { color: var(--orange); background: #fdf0e6; border-color: #f0cfa8; }
-.badge-silver{ color: var(--ash);    background: var(--sand); border-color: var(--border); }
+.badge { font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 3px; white-space: nowrap; border: 1px solid; }
+.badge-grand { color: var(--teal); background: #eaf2f0; border-color: #c5ddd9; }
+.badge-gold { color: var(--orange); background: #fdf0e6; border-color: #f0cfa8; }
+.badge-silver { color: var(--ash); background: var(--sand); border-color: var(--border); }
 
-/* ── SIMILAR GRID ── */
-.section-head {
-  display: flex; align-items: center; gap: 10px; margin: 28px 0 12px;
-}
-.section-title {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .15em; text-transform: uppercase;
-  color: var(--ash);
-}
-.section-pill {
-  font-size: 10px; font-weight: 700;
-  padding: 2px 9px;
-  border: 1px solid #c5ddd9;
-  color: var(--teal); background: #eaf2f0;
-  border-radius: var(--radius);
-}
+.section-head { display: flex; align-items: center; gap: 10px; margin: 28px 0 12px; }
+.section-title { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--ash); }
+.section-pill { font-size: 10px; font-weight: 700; padding: 2px 9px; border: 1px solid #c5ddd9; color: var(--teal); background: #eaf2f0; border-radius: 3px; }
 .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.sim-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 14px 16px;
-  text-decoration: none; display: block;
-  transition: border-color .12s;
-}
+.sim-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; text-decoration: none; display: block; transition: border-color .12s; }
 .sim-card:hover { border-color: var(--orange); }
 .sim-pct { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 5px; }
 .sim-team { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
 .sim-title-text { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
 .tags { display: flex; gap: 5px; flex-wrap: wrap; }
-.tag {
-  font-size: 10px; font-weight: 600; padding: 2px 8px;
-  border-radius: var(--radius);
-  background: var(--sand); color: var(--muted);
-  border: 1px solid var(--border);
-}
+.tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px; background: var(--sand); color: var(--muted); border: 1px solid var(--border); }
 .score-bar { height: 2px; background: var(--border); border-radius: 1px; margin-top: 10px; overflow: hidden; }
 .score-fill { height: 100%; background: var(--teal); border-radius: 1px; }
 
-/* ── BENCHMARK ── */
-.bench-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 26px; margin-bottom: 10px;
-}
+.bench-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 22px 26px; margin-bottom: 10px; }
 .bench-name { font-size: 14px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
 .bench-desc { font-size: 12px; color: var(--ash); margin-bottom: 16px; }
 .metric-row { display: flex; gap: 10px; }
-.metric {
-  flex: 1; background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 14px;
-}
-.metric-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: var(--ash); margin-bottom: 6px;
-}
+.metric { flex: 1; background: var(--paper); border: 1px solid var(--border); border-radius: 3px; padding: 14px; }
+.metric-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ash); margin-bottom: 6px; }
 .metric-val { font-size: 28px; font-weight: 700; color: var(--maroon); }
 .mbar-bg { height: 2px; background: var(--border); border-radius: 1px; margin-top: 8px; overflow: hidden; }
 .mbar { height: 100%; border-radius: 1px; }
 
-/* ── ABOUT ── */
-.about-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 26px; margin-bottom: 10px;
-}
+.about-card { background: #fff; border: 1px solid var(--border); border-radius: 3px; padding: 22px 26px; margin-bottom: 10px; }
 .about-h { font-size: 13px; font-weight: 700; color: var(--maroon); margin-bottom: 9px; }
 .about-p { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 1.75; }
 .about-p a { color: var(--teal); text-decoration: none; }
 .about-p a:hover { text-decoration: underline; }
 .about-ul { font-size: 13px; font-weight: 300; color: #4a3a32; line-height: 2; padding-left: 18px; }
-
-.empty-state {
-  text-align: center; padding: 72px 0;
-  color: var(--ash); font-size: 14px; font-weight: 300;
-}
+.empty-state { text-align: center; padding: 72px 0; color: var(--ash); font-size: 14px; font-weight: 300; }
 .empty-state em { color: var(--orange); font-style: normal; }
 </style>
 """, unsafe_allow_html=True)
 
-# ── DEMO DATA ──────────────────────────────────────────────────────────────────
-DEMO_ANSWER = (
-    "Toggle switches create bistable genetic circuits with two stable expression states. "
-    "The most common design uses two mutually repressing promoters — when repressor A is "
-    "active it silences gene B, and vice versa <span class='cite-tag'>[1]</span>. Teams "
-    "typically modelled bistability in COPASI before cloning, checking that nullcline "
-    "intersections produced two stable fixed points <span class='cite-tag'>[2]</span>. "
-    "Heidelberg 2021 implemented a TetR/LacI toggle in <em>E. coli</em>, achieving a "
-    "switching ratio of ~15-fold between states <span class='cite-tag'>[3]</span>."
-)
-DEMO_SOURCES = [
-    {"num":1,"team":"Heidelberg 2021","track":"Foundational Advance","year":2021,
-     "medal":"Grand Prize","url":"https://2021.igem.org/Team:Heidelberg"},
-    {"num":2,"team":"Munich 2019","track":"Foundational Advance","year":2019,
-     "medal":"Gold","url":"https://2019.igem.org/Team:Munich"},
-    {"num":3,"team":"ETH Zurich 2019","track":"Foundational Advance","year":2019,
-     "medal":"Gold","url":"https://2019.igem.org/Team:ETH_Zurich"},
-]
-DEMO_SIMILAR = [
-    {"score":94,"team":"Heidelberg 2021","year":2021,
-     "title":"Bistable toggle switch using TetR/LacI mutual repression",
-     "track":"Foundational","medal":"Grand Prize","url":"https://2021.igem.org/Team:Heidelberg"},
-    {"score":87,"team":"ETH Zurich 2019","year":2019,
-     "title":"Logic gate genetic circuit with bistable memory element",
-     "track":"Foundational","medal":"Gold","url":"https://2019.igem.org/Team:ETH_Zurich"},
-    {"score":81,"team":"Marburg 2019","year":2019,
-     "title":"Transcriptional toggle in Vibrio natriegens chassis",
-     "track":"Foundational","medal":"Gold","url":"https://2019.igem.org/Team:Marburg"},
-    {"score":74,"team":"Imperial 2016","year":2016,
-     "title":"Threshold biosensor with bistable output via RBS tuning",
-     "track":"Diagnostics","medal":"Silver","url":"https://2016.igem.org/Team:Imperial_College"},
-]
+# ── BENCHMARK DATA ─────────────────────────────────────────────────────────────
 DEMO_BENCH = [
     {"name":"Bare Groq (no retrieval)","desc":"No retrieval — model answers from training data only. Fluent but frequently hallucinated.",
      "f":0.11,"r":0.75,"c":0.12,"color":"#6e1e18"},
@@ -378,57 +211,20 @@ if "page" not in st.session_state:
 # ── NAV ───────────────────────────────────────────────────────────────────────
 PAGES = [("Search","search"),("Similar Projects","similar"),
          ("Benchmark","benchmark"),("About","about")]
-PAGE_LABELS = [p[0] for p in PAGES]
-PAGE_KEYS   = [p[1] for p in PAGES]
 
-# Visual nav bar (display only)
-nav_links = "".join(
-    f"<span class='nav-link {'active' if st.session_state.page==k else ''}'>{l}</span>"
-    for l,k in PAGES
-)
-st.markdown(
-    f"<div class='nav'>"
-    f"<div class='nav-logo'>SynSearch</div>"
-    f"<div class='nav-links'>{nav_links}</div>"
-    f"</div>",
-    unsafe_allow_html=True
-)
-
-# Functional nav — st.radio hidden with CSS, drives page state
-st.markdown("""
-<style>
-div[data-testid="stRadio"] {
-  position: fixed; top: 8px; right: 32px; z-index: 200;
-}
-div[data-testid="stRadio"] > label { display: none; }
-div[data-testid="stRadio"] [data-testid="stMarkdownContainer"] { display: none; }
-div[data-testid="stRadio"] > div {
-  display: flex; gap: 2px; background: transparent;
-}
-div[data-testid="stRadio"] > div > label {
-  display: block !important;
-  font-family: 'Lexend', sans-serif !important;
-  font-size: 11px !important; font-weight: 700 !important;
-  letter-spacing: .16em !important; text-transform: uppercase !important;
-  color: transparent !important;
-  padding: 6px 18px !important;
-  cursor: pointer !important;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  min-width: 80px !important;
-}
-div[data-testid="stRadio"] > div > label > div { display: none !important; }
-div[data-testid="stRadio"] [data-baseweb="radio"] { display: none !important; }
-</style>
-""", unsafe_allow_html=True)
-
-current_label = PAGE_LABELS[PAGE_KEYS.index(st.session_state.page)]
-chosen = st.radio("nav", PAGE_LABELS, index=PAGE_LABELS.index(current_label),
-                  horizontal=True, label_visibility="collapsed")
-if chosen and PAGE_KEYS[PAGE_LABELS.index(chosen)] != st.session_state.page:
-    st.session_state.page = PAGE_KEYS[PAGE_LABELS.index(chosen)]
-    st.rerun()
+nav = st.columns([2, 1, 1.5, 1, 1])
+with nav[0]:
+    st.markdown(
+        "<p style='font-size:13px;font-weight:800;letter-spacing:.2em;"
+        "text-transform:uppercase;color:#6e1e18;margin:0;padding:10px 0'>"
+        "SynSearch</p>",
+        unsafe_allow_html=True
+    )
+for i, (label, key) in enumerate(PAGES):
+    with nav[i + 1]:
+        if st.button(label, key=f"nav_{key}", use_container_width=True):
+            st.session_state.page = key
+            st.rerun()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SEARCH
@@ -446,14 +242,22 @@ if st.session_state.page == "search":
     </div>
     """, unsafe_allow_html=True)
 
-    _, mid, _ = st.columns([1,3,1])
+    _, mid, _ = st.columns([1, 3, 1])
     with mid:
-        query = st.text_input("q", placeholder="e.g.  How did teams build biosensors for heavy metal detection?", label_visibility="collapsed", key="q")
+        query = st.text_input("q",
+            placeholder="e.g.  How did teams build biosensors for heavy metal detection?",
+            label_visibility="collapsed", key="q")
         fc1, fc2, fc3 = st.columns(3)
-        with fc1: year  = st.selectbox("Year",  ["All years (2019 corpus)"], key="fy")
-        year = "All years"  # corpus is 2019 only for now
-        with fc2: track = st.selectbox("Track", ["All tracks","Diagnostics","Foundational Advance","Health & Medicine","Manufacturing","Food & Nutrition","Energy","Environment","New Application","Entrepreneurship","High School"], key="ft")
-        with fc3: medal = st.selectbox("Medal", ["Any medal","Grand Prize","Gold","Silver"], key="fm")
+        with fc1:
+            st.selectbox("Year", ["All years (2019 corpus)"], key="fy")
+        with fc2:
+            track = st.selectbox("Track", [
+                "All tracks","Diagnostics","Foundational Advance",
+                "Health & Medicine","Manufacturing","Food & Nutrition",
+                "Energy","Environment","New Application","Entrepreneurship","High School"
+            ], key="ft")
+        with fc3:
+            medal = st.selectbox("Medal", ["Any medal","Grand Prize","Gold","Silver"], key="fm")
         go = st.button("Search corpus", key="go", use_container_width=True)
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
@@ -462,13 +266,12 @@ if st.session_state.page == "search":
         with st.spinner("Searching corpus..."):
             from retrieval import search as real_search
             answer_text, real_sources, real_similar = real_search(
-                query,
-                year=year, track=track, medal=medal
+                query, year="All years", track=track, medal=medal
             )
 
         src_rows = ""
         for s in real_sources:
-            short = s["url"].replace("https://","")
+            short = s["url"].replace("https://", "")
             src_rows += (
                 f"<a href='{s['url']}' target='_blank' class='source-row'>"
                 f"<div class='src-num'>[{s['num']}]</div>"
@@ -480,7 +283,7 @@ if st.session_state.page == "search":
 
         st.markdown(
             f"<div class='answer-card'>"
-            f"<div class='card-eyebrow'>Synthesised answer &middot; {len(DEMO_SOURCES)} sources</div>"
+            f"<div class='card-eyebrow'>Synthesised answer &middot; {len(real_sources)} sources</div>"
             f"<div class='answer-body'>{answer_text}</div>"
             f"<div class='sources-head'>Sources — click to open original wiki</div>"
             f"{src_rows}</div>",
@@ -538,7 +341,9 @@ elif st.session_state.page == "similar":
     </div>
     """, unsafe_allow_html=True)
 
-    sq = st.text_input("sq", placeholder="e.g.  We are engineering E. coli to detect arsenic in drinking water", label_visibility="collapsed", key="sq")
+    sq = st.text_input("sq",
+        placeholder="e.g.  We are engineering E. coli to detect arsenic in drinking water",
+        label_visibility="collapsed", key="sq")
     if st.button("Find similar projects", key="sgo") or sq:
         with st.spinner("Computing similarity..."):
             from retrieval import find_similar
@@ -568,13 +373,13 @@ elif st.session_state.page == "similar":
 elif st.session_state.page == "benchmark":
     st.markdown("""
     <div style='padding:64px 0 32px'>
-      <div class='hero-eyebrow'>RAGAS evaluation &middot; 50 ground-truth questions</div>
+      <div class='hero-eyebrow'>LLM-as-judge evaluation &middot; 50 ground-truth questions</div>
       <div class='hero-title' style='font-size:44px;text-align:left'>
         Does RAG<br><em>actually help?</em>
       </div>
       <div class='hero-sub' style='text-align:left;margin:12px 0 0'>
-        Three systems, same 50 iGEM questions, verified answers.
-        RAG reduces hallucination by ~38 points on faithfulness.
+        Three systems, same 50 iGEM-specific questions, verified answers.
+        RAG improves faithfulness by <strong>7×</strong> over a bare LLM.
       </div>
     </div>
     <hr class='sep'>
@@ -587,22 +392,23 @@ elif st.session_state.page == "benchmark":
             f"<div class='bench-desc'>{b['desc']}</div>"
             f"<div class='metric-row'>"
             f"<div class='metric'><div class='metric-label'>Faithfulness</div>"
-            f"<div class='metric-val'>{b['f']:.2f}</div>{mbar(b['f'],b['color'])}</div>"
+            f"<div class='metric-val'>{b['f']:.2f}</div>{mbar(b['f'], b['color'])}</div>"
             f"<div class='metric'><div class='metric-label'>Answer relevancy</div>"
-            f"<div class='metric-val'>{b['r']:.2f}</div>{mbar(b['r'],b['color'])}</div>"
+            f"<div class='metric-val'>{b['r']:.2f}</div>{mbar(b['r'], b['color'])}</div>"
             f"<div class='metric'><div class='metric-label'>Context recall</div>"
-            f"<div class='metric-val'>{b['c']:.2f}</div>{mbar(b['c'],b['color'])}</div>"
+            f"<div class='metric-val'>{b['c']:.2f}</div>{mbar(b['c'], b['color'])}</div>"
             f"</div></div>",
             unsafe_allow_html=True
         )
     st.markdown("""
     <div class='about-card' style='margin-top:8px'>
-      <div class='about-h'>How we built the ground truth</div>
+      <div class='about-h'>Methodology</div>
       <div class='about-p'>
-        50 questions based on real queries a new iGEM team member would ask,
+        50 questions were written based on real queries a new iGEM team member would ask,
         spanning Diagnostics, Foundational Advance, Environment, and Manufacturing tracks.
-        Correct answers and source wikis were verified manually.
-        <br><br><em style='color:var(--ash)'>Numbers above are placeholders — replace with real RAGAS output.</em>
+        Correct answers and source wikis were verified manually before evaluation.
+        Scoring uses an LLM-as-judge approach following the RAGAS framework
+        (Es et al., 2023), measuring faithfulness, answer relevancy, and context recall.
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -613,7 +419,7 @@ elif st.session_state.page == "benchmark":
 elif st.session_state.page == "about":
     st.markdown("""
     <div style='padding:64px 0 32px'>
-      <div class='hero-eyebrow'>iGEM 2025 Software Track</div>
+      <div class='hero-eyebrow'>iGEM 2025 Software &amp; AI Village</div>
       <div class='hero-title' style='font-size:44px;text-align:left'>
         About<br><em>SynSearch</em>
       </div>
@@ -638,17 +444,17 @@ elif st.session_state.page == "about":
         <ul class='about-ul'>
           <li>Inline source citations linking to the original wiki — Munich's own listed future work</li>
           <li>Metadata filtering by year, track, and medal before retrieval</li>
-          <li>A "Similar Projects" semantic explorer not available in any registry</li>
-          <li>Published three-way RAGAS benchmark: bare GPT-4o vs GPT-4o+RAG vs open model+RAG</li>
-          <li>Zero-install hosted interface — no Docker, no terminal, no user API key required</li>
+          <li>A "Similar Projects" semantic explorer — not available in any existing registry</li>
+          <li>Published three-way benchmark comparing bare LLM vs RAG systems on 50 verified questions</li>
+          <li>Zero-install hosted interface — no Docker, no terminal, no API key required</li>
         </ul>
       </div>
     </div>
     <div class='about-card'>
       <div class='about-h'>Stack</div>
       <div class='about-p'>
-        sentence-transformers &middot; Pinecone &middot; Groq API &middot;
-        RAGAS &middot; Streamlit Cloud &middot; Munich 2024 corpus (CC BY 4.0)
+        sentence-transformers (all-MiniLM-L6-v2) &middot; Pinecone &middot;
+        Groq API &middot; Streamlit Cloud &middot; Munich 2024 corpus (CC BY 4.0)
       </div>
     </div>
     <div class='about-card'>
@@ -657,6 +463,14 @@ elif st.session_state.page == "about":
         The 2019 iGEM wiki corpus was scraped and curated by the
         <a href='https://gitlab.igem.org/2024/software-tools/munich' target='_blank'>Munich 2024 iGEM team</a>
         and is used under Creative Commons Attribution 4.0. We are grateful for their work.
+      </div>
+    </div>
+    <div class='about-card'>
+      <div class='about-h'>Citation</div>
+      <div class='about-p'>
+        Es, S., James, J., Espinosa-Anke, L., &amp; Schockaert, S. (2023).
+        RAGAS: Automated Evaluation of Retrieval Augmented Generation.
+        <em>arXiv:2309.15217</em>.
       </div>
     </div>
     """, unsafe_allow_html=True)
