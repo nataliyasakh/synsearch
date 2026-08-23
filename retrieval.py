@@ -114,13 +114,13 @@ def search(query: str, year="All years", track="All tracks",
     )
 
     response = groq.chat.completions.create(
-        model="openai/gpt-oss-20b",
+        model="groq/compound",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user",   "content": user_prompt},
         ],
         temperature=0.1,   # low temp = stick to sources
-        max_tokens=400,
+        max_tokens=800,
     )
 
     answer_html = response.choices[0].message.content.strip()
