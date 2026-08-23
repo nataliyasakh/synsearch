@@ -155,12 +155,12 @@ def find_similar(query: str, k: int = 4):
         seen.add(m["team"])
         similar.append({
             "score": int(match.score * 100),
-            "team":  m["team"],
-            "year":  m["year"],
-            "title": m["title"],
-            "track": m["track"],
-            "medal": m["prize"],
-            "url":   m["url"],
+            "team":  m.get("team", ""),
+            "year":  m.get("year", ""),
+            "title": m.get("title", m.get("page", "")),
+            "track": m.get("track", ""),
+            "medal": m.get("prize", m.get("medal", "Unknown")),
+            "url":   m.get("url", ""),
         })
         if len(similar) == k:
             break
