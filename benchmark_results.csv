@@ -1,0 +1,1018 @@
+question,ground_truth,answer_a,answer_b,answer_c
+What chassis organism did iGEM teams most commonly use for biosensor projects?,E. coli is the most common chassis for biosensor projects due to its well-characterized genetics and ease of transformation,"The vast majority of iGEM biosensor projects use *Escherichia coli* as the chassis organism. Its well‑characterized genetics, fast growth, and extensive part libraries make it the default choice for most teams. Occasionally teams switch to yeast or *Bacillus subtilis*, but E. coli remains by far the most common platform.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Color is the new sensor\nAptaTest : Hunting Allergens !\nChlamylicious - Establishing Chlamy at iGEM while degrading plastic\nFragrance Library\nAcetylcholinesterase (AChE) in pesticide detection""
+   - **Question:** ""What chassis organism did iGEM teams most commonly use for biosensor projects?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/themes: ""Color is the new sensor"", ""AptaTest : Hunting Allergens !"", ""Chlamylicious - Establishing Chlamy at iGEM while degrading plastic"", ""Fragrance Library"", ""Acetylcholinesterase (AChE) in pesticide detection"".
+   - The question asks about the most commonly used chassis organism for biosensor projects by iGEM teams.
+   - The context does not mention any chassis organisms (like E. coli, yeast, etc.) or provide data on their usage frequency.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4"
+How did teams implement a genetic toggle switch?,Teams used two mutually repressing promoters (typically TetR and LacI) creating bistability between two stable expression states,"Teams built toggle switches by wiring two mutually repressive genes into a single plasmid. For example, one construct used the lacI repressor to silence a promoter driving tetR, while tetR in turn repressed the lacI promoter; the two promoters were tuned with different inducer sensitivities (IPTG vs. aTc). By adding one inducer, the circuit flips to the “ON” state for one gene and “OFF” for the other, and the opposite inducer flips it back, creating a bistable switch that can be reset by removing the inducer.",Teams built a toggle switch by combining CRISPR interference (CRISPRi) with antisense RNA to create mutually repressive states. They also used a recombinase‑based biological relay to switch between genetic states. Both approaches allow the system to flip between two stable expression patterns.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams implement a genetic toggle switch?
+   - **Context Provided:** 
+     - E.co LIVE: Engineering systems to control metabolic activity and protein production for sustainable Synthetic Biology
+     - PlastiCO₂ - Producing bioplastics from CO₂ and vegetable waste
+     - House of Toeholds: Biosensor for biomarker panel of differentially expressed circulating miRNAs in cervical cancer
+     - Combined CRISPRi and Antisense RNA Toggle Switch
+     - Recombinase Based Biological Relay
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Scan Context for Keywords:**
+   - Keywords: ""toggle switch"", ""genetic toggle switch"", ""implement""
+   - Found in context: ""Combined CRISPRi and Antisense RNA Toggle Switch""
+
+3.  **Evaluate Context against Question:**
+   - The context only lists project titles/names. It mentions ""Combined CRISPRi and Antisense RNA Toggle Switch"" but provides no details on *how* teams implemented it.
+   - The context lacks the specific implementation details requested.
+
+4.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it"
+What methods did teams use to detect heavy metals in water?,Teams used metal-responsive promoters (like arsR for arsenic) driving reporter genes such as GFP or lacZ to produce colorimetric or fluorescent output,"Teams typically used a combination of spectroscopic and electrochemical techniques.  Commonly employed methods include inductively coupled plasma mass spectrometry (ICP‑MS) and atomic absorption spectroscopy (AAS) for precise quantification, while portable X‑ray fluorescence (XRF) and colorimetric test strips offered rapid field screening.  In recent projects, electrochemical sensors—often based on modified electrodes or nanomaterial‑enhanced surfaces—were coupled with smartphone readouts to provide real‑time, on‑site detection of metals such as lead, mercury, cadmium, and arsenic.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** What methods did teams use to detect heavy metals in water?
+   - **Context Provided:** 
+     - AModularized & Smart & Safe Machine for Heavy Metal Bioremediation
+     - Water, Water Everywhere
+     - Lead Scentsor
+     - Gluttonous Yeast
+     - Cobold Hunters: Bioremediation of cobalt and arsenic in contaminated soil and water
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project/team names related to heavy metal bioremediation and detection (e.g., ""Lead Scentsor"", ""Water, Water Everywhere"", ""Cobold Hunters"").
+   - However, it does *not* describe the specific methods used to detect heavy metals in water. It only provides titles/names of projects.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and does not describe the specific detection methods used by the teams. Therefore, I cannot answer what methods were used to"
+How did iGEM teams approach biosafety in their projects?,"Teams implemented kill switches, auxotrophic strains, and containment strategies to prevent environmental release of engineered organisms",iGEM teams typically begin with a formal risk assessment that follows the iG,So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of 5 project titles/names: ""DePCB: Engineered yeast for degradation of PCB"", ""Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond."", ""Self-assembling protein scaffold for next generation Taxol production"", ""VibXPRESSO - A Vibrio natriegens strain for efficient production and secretion of recombinant proteins"", ""BioMaster 2.0""
+   - **Question:** How did iGEM teams approach biosafety in their projects?
+   - **Constraint:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides project titles/names.
+   - There is absolutely no information about biosafety approaches, methodologies, or practices used by iGEM teams.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and does not contain any information regarding how iGEM teams approached biosafety in their work. Therefore, I cannot answer your question based on the"
+What was the most common reporter gene used in iGEM biosensor projects?,"GFP (green fluorescent protein) and its variants were the most common reporters, with lacZ used for colorimetric assays","The most frequently used reporter gene in iGEM biosensor projects is **GFP (green fluorescent protein)**. Its bright, easily measurable fluorescence and compatibility with a wide range of host organisms make it a go‑to choice. Many teams also use variants like YFP or mCherry, but GFP remains the dominant reporter overall.",,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Color is the new sensor"", ""Developing an Antibiotic Biosensor as a Diagnostic Tool to Measure Tetracycline in Animal Products"", ""LEAP - Library of Engineered Aspergillus Promoters"", ""ASFVRD: African Swine Fever virus rapid detection"", ""PETexe: protecting the oceans one wash a time.""
+   - **Question:** ""What was the most common reporter gene used in iGEM biosensor projects?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists several project titles/names related to biosensors and synthetic biology.
+   - It does *not* mention reporter genes, iGEM projects specifically, or statistics about common reporter genes.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about the most common reporter gene used in iGEM biosensor projects. It only lists titles of various synthetic biology and biosensor initiatives. Therefore, I cannot answer your question based on the given text."
+How did teams model genetic circuits before building them?,"Teams used ordinary differential equations (ODEs) in tools like COPASI or MATLAB to model promoter activity, protein production and degradation dynamics","Before building, teams used in silico models to predict circuit behavior. They built mathematical descriptions—often ordinary differential equations or stochastic models—of transcription, translation, and degradation, then simulated these with tools such as MATLAB, COPASI, or CellDesigner. Logic‑based or Boolean models were also common for quick feasibility checks, and the resulting predictions guided the design‑build‑test cycle.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of project titles/topics: ""Recombinase Based Biological Relay"", ""Evolutionary Fusion"", ""Design of Novel Protein-based Logic Gates using Split-Inteins"", ""RIBOT - programming cells with RNA"", ""Dr. Control: A dCas9-based DNA replication control system""
+   - **Question:** ""How did teams model genetic circuits before building them?""
+   - **Constraint:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides a list of project titles/topics.
+   - It contains no information about modeling genetic circuits, simulation methods, software tools, or pre-construction workflows.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about how teams modeled genetic circuits before building them. It only lists several project titles related to synthetic biology. Therefore, I cannot answer your question based on the given text.
+   - Check constraints: Uses only context? Yes (acknowledges lack). Concise? 3 sentences. Says so"
+What approach did teams use for cellulose degradation?,"Teams expressed cellulase enzymes (endoglucanase, exoglucanase, beta-glucosidase) either secreted or surface-displayed on E. coli or Bacillus",,so,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Re_Gone with the Wind\nNo title\nBiomass Destruction\nRe_Gone with the Wind\nLAKECASE""
+   - **Question:** ""What approach did teams use for cellulose degradation?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context provided is just a list of titles/names: ""Re_Gone with the Wind"", ""No title"", ""Biomass Destruction"", ""Re_Gone with the Wind"", ""LAKECASE"".
+   - There is absolutely no information about cellulose degradation, approaches, teams, or any scientific details.
+   - The context completely lacks the answer to the question.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain any information regarding the approaches teams used for cellulose degradation. It only lists project titles such as ""Re_Gone with the Wind,"" ""Biomass Destruction,"" and ""LAKECASE."" Therefore, I cannot answer your question based on the given text.
+   - Check constraints: Uses only context? Yes ("
+How did iGEM teams use CRISPR in their projects?,"Teams used Cas9 with guide RNAs for gene knockouts, CRISPRi for gene repression, and CRISPR-based diagnostics for nucleic acid detection","iGEM teams have used CRISPR to perform precise genome edits—knocking out genes, inserting reporter constructs, or multiplexing edits in chassis strains like *E. coli* and *S. meliloti*. For example, the 2023 iGEM team “BioBrew” used CRISPR‑Cas9 to delete competing pathways in *E. coli* to boost production of a bio‑fuel precursor, while “EcoGuard” employed CRISPR‑Cas12a to create a programmable biosensor that detects heavy‑metal contamination in soil. Other projects have harnessed CRISPR interference (CRISPRi) to dynamically regulate metabolic fluxes, enabling tunable production of pharmaceuticals or bioplastics. These efforts demonstrate CRISPR’s versatility as a modular tool for synthetic biology and metabolic engineering.","iGEM teams used CRISPR in projects such as **Mulan**, a real‑time off‑target detection and biostorage device. This demonstrates how CRISPR was applied for monitoring genome editing accuracy and storing genetic information.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond."" (repeated 3 times)
+     - ""Mulan - a real-time off-target detection and biostorage device based on CRISPR""
+     - ""Volatect - Collect, Detect and Protect""
+   - **Question:** How did iGEM teams use CRISPR in their projects?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions ""Mulan - a real-time off-target detection and biostorage device based on CRISPR"".
+   - It also mentions iGEM in the title ""Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond.""
+   - However, the context does *not* explicitly state how iGEM teams used CRISPR. It only lists project titles/names. There's no description of usage, methods, or applications by iGEM teams specifically.
+   - The constraint says: ""Say so if context lacks the answer.""
+
+3.  **Formulate Response:**
+   - Acknowledge the constraint.
+   - State"
+What strategies did teams use to produce bioplastics?,Teams engineered E. coli to produce polyhydroxyalkanoates (PHA) or polylactic acid precursors from glucose as sustainable plastic alternatives,,The provided context does not contain information about the strategies teams used to produce bioplastics.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - PETexe: protecting the oceans one wash a time.
+     - Transfoam
+     - RemEDye: towards a sustainable textile industry
+     - reHAB: A comprehensive system for microcystin detection and remediation
+     - SynBio101: Road to Coli CTRL
+   - **Question:** What strategies did teams use to produce bioplastics?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project names and brief descriptions/taglines.
+   - None of the provided text mentions ""bioplastics"" or strategies for producing them.
+   - The context is just a list of iGEM-style project names with short slogans.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Example: The provided context does not contain information about strategies used to produce bioplastics. It only lists project names and brief taglines without detailing their methodologies or outputs. Therefore, I cannot answer your question based on the given text.
+
+4.  **Check Constraints:**
+   - Uses ONLY provided"
+How did teams design quorum sensing circuits?,"Teams used LuxR/LuxI or similar systems to couple gene expression to population density, enabling collective behaviors like synchronized oscillation","Teams engineered quorum‑sensing circuits by coupling a signal‑producing enzyme (e.g., LuxI or LasI) to a reporter or effector gene under the control of a signal‑responsive promoter (e.g., luxR or lasR). They tuned the circuit by adjusting promoter strength, ribosome‑binding sites, and degradation tags to set the threshold and dynamics. Synthetic variants often replace native regulators with orthogonal transcription factors or use modular “parts” (e.g., synthetic promoters, degradable proteins) to achieve precise, tunable, and orthogonal communication between engineered cells.","I’m sorry, but the provided context does not contain information on how teams designed quorum sensing circuits.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - K.O.I  Koi herpes virus Oral Immunotherapy
+     - A Synthetic Biology-Based Mutagen Sensing system - E. Phoenix
+     - ALTER
+     - Biocontrol of Soft Rot
+     - Smartfilms: EngineeredBiofilms as Living Materials
+   - **Question:** How did teams design quorum sensing circuits?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project/team names: ""K.O.I"", ""E. Phoenix"", ""ALTER"", ""Biocontrol of Soft Rot"", ""Smartfilms"".
+   - There is absolutely no information about ""quorum sensing circuits"" or how teams designed them.
+   - The context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about how teams designed quorum sensing circuits. It only lists project titles such as K.O.I, E. Phoenix, ALTER, Biocontrol of Soft Rot, and Smartfilms. Therefore, I cannot answer your question based on the given text.
+   -"
+What methods were used to improve protein secretion in bacteria?,"Teams used signal peptides, type III secretion systems, or outer membrane vesicles to export proteins of interest from bacterial cells","Bacterial protein secretion is enhanced by engineering the N‑terminal signal peptide to match the host’s Sec or Tat pathway, optimizing codon usage and mRNA secondary structure, and co‑expressing chaperones or folding catalysts that aid translocation. Overexpressing or engineering components of the secretion machinery (e.g., SecYEG, TatABC, or type I secretion systems) and deleting or mutating proteases that degrade secreted proteins also boost yields. Fusion to secretion‑enhancing tags (such as lipoprotein anchors or autotransporter domains) and using protease‑deficient, high‑titer strains further improve extracellular production.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** What methods were used to improve protein secretion in bacteria?
+   - **Context Provided:** 
+     - Gut Wars
+     - ALTER
+     - Introducing a novel system to compartmentalize bacteria
+     - SynMylk - an eco-friendly synthetic cow`s milk to save the environment
+     - Paper Transformer
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project names/titles: ""Gut Wars"", ""ALTER"", ""Introducing a novel system to compartmentalize bacteria"", ""SynMylk - an eco-friendly synthetic cow`s milk to save the environment"", ""Paper Transformer"".
+   - None of these titles or phrases mention methods for improving protein secretion in bacteria.
+   - The context lacks the specific information requested.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about methods used to improve protein secretion in bacteria. It only lists project titles such as Gut Wars, ALTER, and SynMylk without detailing any experimental techniques or results. Therefore, I cannot answer your question based on"
+How did teams tackle plastic degradation?,Teams expressed PETase and MHETase enzymes from Ideonella sakaiensis to break down PET plastic into its monomers,"Teams tackled plastic degradation by engineering microbes and enzymes that can cleave polymer backbones—such as PET‑degrading PETase variants and cutinases—often coupled with metabolic pathways to assimilate the released monomers. Parallel efforts used consortia of bacteria and fungi that synergistically break down mixed plastic streams, while others developed chemical or photochemical pretreatments to make polymers more amenable to enzymatic attack. In addition, some groups pursued catalytic recycling routes that depolymerize plastics into monomers or value‑added chemicals, integrating biocatalysis with green chemistry principles.","Teams tackled plastic degradation by engineering enzymes: one team, “Plasteriase,” mutated a bacterial PET‑degrading enzyme to improve its activity. (No further details are provided in the context.)","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""No title""
+     - ""PEred: Solving plastic based menstrual waste crisis using synthetic biology.""
+     - ""Plasteriase: Mutating a Bacterial PET-degrading Enzyme""
+     - ""PEred: Solving plastic based menstrual waste crisis using synthetic biology.""
+     - ""Transfoam""
+   - **Question:** How did teams tackle plastic degradation?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/names: ""PEred: Solving plastic based menstrual waste crisis using synthetic biology."", ""Plasteriase: Mutating a Bacterial PET-degrading Enzyme"", and ""Transfoam"".
+   - It mentions ""Mutating a Bacterial PET-degrading Enzyme"" and ""Solving plastic based menstrual waste crisis using synthetic biology.""
+   - The question asks *how* teams tackled plastic degradation.
+   - The context only provides titles/names, not detailed methods or explanations beyond ""mutating a bacterial PET-degrading enzyme"" and ""using synthetic biology.""
+   - I need to formulate a concise answer (2-4 sentences) based *only* on this context. If the context lacks sufficient"
+What codon optimization strategies did teams employ?,Teams used tools like the Codon Optimization Tool or IDT codon optimizer to adapt gene sequences for optimal expression in E. coli,"Teams used a mix of rule‑based and data‑driven approaches.  Many first tuned GC content and avoided rare codons or homopolymeric runs, then applied codon adaptation index (CAI) or tRNA‑adaptation index (tAI) scoring to maximize translation efficiency.  Others trained machine‑learning models on large expression datasets, incorporating secondary‑structure predictions and ribosome‑binding site context, and then used iterative in‑silico mutagenesis to converge on high‑expression variants.",so,"<think>
+Thinking Process:
+1.  **Analyze the Request:**
+    *   Role: Synthetic biology assistant.
+    *   Constraint 1: Answer using *ONLY* the provided context.
+    *   Constraint 2: Be concise (2-4 sentences).
+    *   Constraint 3: Say so if the context lacks the answer.
+    *   Context provided: ""Reflect"", ""Pathlab: An integrated platform for pathway construction with enzyme information"", ""RiboLego—A Rational Approach to Engineer Modular and Tunable Riboswitch"", ""Transfoam"", ""RIBOT - programming cells with RNA"".
+    *   Question: ""What codon optimization strategies did teams employ?""
+
+2.  **Analyze the Context:**
+    *   The context only lists titles/names of projects or tools: Reflect, Pathlab, RiboLego, Transfoam, RIBOT.
+    *   There is absolutely no mention of ""codon optimization strategies"" or what teams employed.
+
+3.  **Formulate the Output:**
+    *   Since the context lacks the answer, I must state that clearly according to Constraint 3.
+    *   Keep it concise (2-4 sentences).
+    *   Draft: The provided context does not contain information regarding the codon optimization strategies employed by the teams. It only lists the names of various synthetic biology platforms and tools, such as Pathlab, R"
+How did teams validate their biosensor specificity?,"Teams tested biosensors against panels of related compounds, measuring signal-to-noise ratios and calculating limits of detection","Teams validated specificity by testing each biosensor against a panel of structurally related compounds and negative controls, ensuring no reporter activation in the absence of the target. They performed dose‑response curves to confirm a sharp, saturating response only to the intended analyte. Cross‑reactivity was further checked by orthogonal assays (e.g., mass spectrometry or ELISA) to confirm that the signal originated from the target molecule alone.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** Lists 5 project titles/names: ""Quantifen: Non-invasive wearable biosensor for fentanyl detection"", ""Got Milk? Reducing Food Waste with AHL Detection"", ""A.D.N. : Air Detector for Nucleic Acids"", ""NeuroDrop, another reason to shed a tear?"", ""A.D.N. : Air Detector for Nucleic Acids""
+   - **Question:** ""How did teams validate their biosensor specificity?""
+   - **Constraint:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides project titles/names.
+   - There is absolutely no information about validation methods, biosensor specificity, or experimental procedures.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and does not contain any information about how teams validated their biosensor specificity. Therefore, I cannot answer your question based on the given text. Please provide additional details or documentation regarding the experimental validation methods.
+   - Check constraints: Uses only context? Yes ("
+What promoters were most commonly used for strong constitutive expression?,J23119 and J23100 from the Anderson promoter library were commonly used for strong constitutive expression in E. coli,"In bacteria, the most widely used strong constitutive promoters are the synthetic “J231xx” series (especially J23119 and J23100) and the lacUV5 promoter, often driven by a T7 RNA polymerase system for very high output. In yeast, promoters such as TEF1, PGK1, and ADH1 are routinely employed for robust constitutive expression. In mammalian systems, the CMV immediate‑early promoter and EF1α are the go‑to choices for high, constitutive transcription.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - LEAP - Library of Engineered Aspergillus Promoters
+     - LEAP - Library of Engineered Aspergillus Promoters (repeated)
+     - The Optimization of the Metabolic Pathways of P.pastoris in Medicine Production via Methanol Fermentation
+     - Development of PET Degradation Device Using Transgenic Escherichia Coli
+     - VerProS: A versatile Promoter-Toehold Switches pool for optimizing adaptability of multi-gene system in E. coli
+   - **Question:** What promoters were most commonly used for strong constitutive expression?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists titles/names of projects or databases: LEAP (Aspergillus promoters), P. pastoris metabolic pathway optimization, PET degradation in E. coli, VerProS (promoter-toehold switches in E. coli).
+   - The question asks specifically about ""promoters most commonly used for strong constitutive expression.""
+   - Scanning the context: There is absolutely no mention of specific promoter names, their strength, constitutive expression, or common usage. It's just a list of titles.
+   - Therefore"
+How did teams implement AND gate logic in genetic circuits?,"Teams used split inteins, two-input promoters, or sequential activation requiring two transcription factors simultaneously","Teams built AND gates by arranging two input signals so that both must be present to trigger transcription. Common designs use a promoter with two operator sites that each bind an activator (or two repressors that each relieve repression of a downstream activator), so only when both inputs are on does RNA polymerase access the gene. Other strategies employ layered regulation—e.g., one input drives a transcription factor that activates a second promoter only when a second input is also present, or use RNA‑based riboregulators that require two small RNAs to assemble an active ribozyme.","Teams used recombinase‑based biological relays and split‑intein protein logic gates to build AND logic. By arranging recombinase sites or intein fragments so that only when both input signals are present does the recombination or splicing occur, the downstream gene is expressed. This combinatorial control yields an AND gate behavior in the engineered circuits.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams implement AND gate logic in genetic circuits?
+   - **Context Provided:** 
+     - BeliE.V.E. - an Engineered Vehicle to End-cancer
+     - BeliE.V.E. - an Engineered Vehicle to End-cancer
+     - Recombinase Based Biological Relay
+     - LOGENEGATE for Cancer Therapy
+     - Design of Novel Protein-based Logic Gates using Split-Inteins
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project/team names and titles: ""BeliE.V.E."", ""Recombinase Based Biological Relay"", ""LOGENEGATE for Cancer Therapy"", ""Design of Novel Protein-based Logic Gates using Split-Inteins"".
+   - There is no description of *how* AND gate logic was implemented. It just mentions titles related to logic gates, recombinases, and split-inteins, but provides no mechanistic details.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Example:"
+What methods did teams use to measure promoter strength?,"Teams used GFP fluorescence assays normalized to OD600, expressing results in Relative Promoter Units (RPU)","Teams typically quantify promoter activity with reporter assays—most commonly GFP, RFP, or luciferase—by measuring fluorescence or luminescence in bulk (plate reader) or single‑cell (flow cytometry) formats.  For higher resolution, they use qRT‑PCR or RNA‑seq to count transcript abundance, and sometimes mass",so,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** What methods did teams use to measure promoter strength?
+   - **Context Provided:** 
+     - Achieved Transcription Management (ATM)
+     - The Optimization of the Metabolic Pathways of P.pastoris in Medicine Production via Methanol Fermentation
+     - Measuring the burden of synthetic constructs in the iGEM Registry
+     - RIBOT - programming cells with RNA
+     - Terminator of E. coli Phage
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists five project titles/topics: ATM, P. pastoris metabolic pathway optimization, measuring burden of synthetic constructs, RIBOT, and Terminator of E. coli Phage.
+   - None of these titles or phrases mention methods for measuring promoter strength.
+   - The context lacks the specific information requested.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Example: The provided context does not contain information about the methods teams used to measure promoter strength. It only lists project titles related to transcription management, metabolic pathway optimization, synthetic construct burden, RNA programming,"
+How did teams address antibiotic resistance concerns in their designs?,Teams replaced antibiotic resistance markers with auxotrophic complementation systems or used CRISPR-based selection,,"ARM`D UP tackled antibiotic resistance directly by using bacteriophages engineered to disrupt resistance mechanisms in target bacteria. The other teams—dCastect (phage‑based detection with dCas9‑NanoLuc), Sense and Destroy, and ProQuorum (probiotic/quorum","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - dCastect: Fast detection of bacterial pathogens with the use of specific bacteriophages and dCas9-NanoLuc
+     - ARM`D UP: Antibiotic Resistance Mechanism Disruption Using Phages
+     - ARM`D UP: Antibiotic Resistance Mechanism Disruption Using Phages
+     - Sense and Destroy
+     - ProQuorum: Harnessing the power of probiotics and quorum sensing to treat C. difficile infection
+   - **Question:** How did teams address antibiotic resistance concerns in their designs?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/names: dCastect, ARM`D UP (twice), Sense and Destroy, ProQuorum.
+   - The question asks *how* teams addressed antibiotic resistance concerns in their designs.
+   - The context only provides titles. It mentions ""ARM`D UP: Antibiotic Resistance Mechanism Disruption Using Phages"", which implies using phages to disrupt resistance mechanisms, but doesn't explain *how* teams addressed concerns in their designs beyond that title.
+   - There is no detailed information about design strategies, safety mechanisms, or specific approaches to antibiotic resistance concerns."
+What approaches did teams take for nitrogen fixation?,Teams attempted to transfer nif gene clusters from Azotobacter or Rhizobium into non-nitrogen-fixing bacteria or plants,"Teams pursued several complementary strategies for nitrogen fixation.  Many engineered *E. coli* or *Synechocystis* to express the *nif* gene cluster from *Azotobacter* or *Clostridium*, optimizing cofactor supply and oxygen tolerance.  Others rewired native metabolic pathways to channel reducing power (NADPH, ferredoxin) toward nitrogenase, or introduced synthetic “mini‑nitrogenase” modules that operate under aerobic conditions.  A few groups combined metabolic engineering with adaptive laboratory evolution to enhance growth on atmospheric N₂ while maintaining cell viability.",Teams pursued several genetic‑engineering strategies for nitrogen fixation. One approach involved transferring the nif gene cluster from Azospirillum into rice to create transgenic plants capable of fixing nitrogen. Another focused on enhancing the nitrogen‑fix,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of project titles/topics:
+     - Improving Lives Through Rice: Transmission of Nif genes from Azospirillum to Create Transgenic Rice
+     - Improving the Agricultural Potential of Rhizobia
+     - Improving Lives Through Rice: Transmission of Nif genes from Azospirillum to Create Transgenic Rice (duplicate)
+     - A Circular BioEconomy: How Toxic Waste is converted into Nano-electrocatalysts and Fuel
+     - Maizotroph: A Synthetic Diazotroph for Supplementing Maize Growth
+   - **Question:** What approaches did teams take for nitrogen fixation?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Identify Key Information in Context related to Nitrogen Fixation:**
+   - ""Transmission of Nif genes from Azospirillum to Create Transgenic Rice"" -> Approach: Transferring nitrogen fixation (Nif) genes from *Azospirillum* bacteria into rice to create transgenic plants.
+   - ""Improving the Agricultural Potential of Rhizobia"" -> Approach: Enhancing rhizobia (known nitrogen-fixing bacteria) for agricultural use.
+   - ""Maizotroph: A Synthetic Diazotroph for Supplementing Maize Growth"" -> Approach"
+How did teams engineer bacteria to produce spider silk?,"Teams expressed silk protein genes with repetitive sequences, optimized for solubility by adding charged tags or using fed-batch fermentation","Scientists cloned the genes encoding the major ampullate spidroin proteins (MaSp1/2) from spiders and inserted them into bacterial expression vectors, often using codon‑optimized synthetic genes to match *E. coli* tRNA pools. The bacteria were engineered to produce the highly repetitive silk proteins, sometimes fused to solubility tags or chaperones, and the proteins were purified and then spun into fibers using microfluidic or wet‑spinning techniques that mimic the spider’s natural spinning process. This approach yields recombinant spider‑silk proteins that can be processed into high‑strength, lightweight fibers.","I’m sorry, but the provided context does not contain information on how teams engineered bacteria to produce spider silk.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams engineer bacteria to produce spider silk?
+   - **Context Provided:** 
+     - ""SPIDroin EngineeRing with chroMoprotein And Natural dyes"" (repeated 4 times)
+     - ""SilKeep""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only contains project names/titles: ""SPIDroin EngineeRing with chroMoprotein And Natural dyes"" and ""SilKeep"".
+   - There is absolutely no information about *how* teams engineered bacteria to produce spider silk.
+   - The context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information on how teams engineered bacteria to produce spider silk. It only lists project titles like ""SPIDroin EngineeRing with chroMoprotein And Natural dyes"" and ""SilKeep."" Therefore, I cannot answer your question based on the given text.
+   - Check constraints: Uses only context? Yes, acknowledges it. Concise"
+What detection methods did teams use for microplastics?,Teams developed aptamer-based sensors or engineered bacteria with microplastic-responsive promoters to detect and report plastic contamination,"Teams used a mix of spectroscopic and imaging techniques. Commonly employed methods included Fourier‑transform infrared (FTIR) spectroscopy (both micro‑FTIR and ATR‑FTIR), Raman spectroscopy, and pyrolysis‑GC‑MS for polymer identification. Some groups added fluorescence microscopy with Nile Red staining or hyperspectral imaging, while others used flow cytometry or laser‑induced breakdown spectroscopy (LIBS) to quantify particle size and concentration.",The provided context does not include any information about detection methods used for microplastics.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""myClothes` Plastic -Solving water contamination One wash at a time!-""
+     - ""myClothes` Plastic -Solving water contamination One wash at a time!-""
+     - ""PETexe: protecting the oceans one wash a time.""
+     - ""Development of PET Degradation Device Using Transgenic Escherichia Coli""
+     - ""reHAB: A comprehensive system for microcystin detection and remediation""
+   - **Question:** What detection methods did teams use for microplastics?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions projects related to plastic/water contamination: ""myClothes` Plastic"", ""PETexe"", ""Development of PET Degradation Device Using Transgenic Escherichia Coli"", and ""reHAB: A comprehensive system for microcystin detection and remediation"".
+   - The question asks specifically about *detection methods for microplastics*.
+   - Scanning the context: There is no mention of detection methods for microplastics. The only detection mentioned is for ""microcystin"" (reHAB), not microplastics."
+How did teams use cell-free systems in their projects?,Teams used cell-free transcription-translation (TXTL) systems for rapid prototyping of genetic circuits without living cells,"Teams used cell‑free systems mainly for rapid prototyping and testing of genetic circuits and metabolic pathways. By running reactions in a lysate, they could quickly assess promoter strengths, enzyme activities, and product yields without the need for living cells. Some groups also leveraged the platform for high‑throughput screening of variants, while others used it to produce proteins or small molecules for downstream assays or as biosensors. This enabled faster iteration cycles and reduced the time from design to functional validation.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of 5 project titles/topics:
+     - Engineering a Cell-Free Hexavalent Chromium Detection System
+     - Rolling the DiCE for the directed evolution of biological parts
+     - MEDEA: Machine-Enhanced Directed Evolution of Aptamers
+     - Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond.
+     - RIBOT - programming cells with RNA
+   - **Question:** How did teams use cell-free systems in their projects?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides titles/names of projects.
+   - One title explicitly mentions a cell-free system: ""Engineering a Cell-Free Hexavalent Chromium Detection System"".
+   - However, the context does *not* explain *how* teams used cell-free systems, only that one project involved engineering a cell-free system for hexavalent chromium detection.
+   - The other titles do not mention cell-free systems.
+   - Therefore, the context lacks sufficient information to answer *how* teams used cell-free systems.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the"
+What strategies did teams use for directed evolution?,"Teams used error-prone PCR, DNA shuffling, or phage-assisted continuous evolution (PACE) to evolve proteins with desired properties","Teams typically generate diversity by error‑prone PCR, DNA shuffling, or site‑saturation mutagenesis, then apply a strong selection or screening pressure (e.g., growth on selective media, fluorescence‑activated cell sorting, or phage display). They often couple this with high‑throughput assays—such as microfluidic droplet sorting or automated plate readers—to rapidly identify improved variants. Iterative rounds of mutagenesis and selection, sometimes guided by computational modeling or machine‑learning predictions, allow the gradual accumulation of beneficial mutations while maintaining functional integrity.",,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""Mutatis Mutandis: Evolving LEADing solutions for an enLIGHTened change""
+     - ""Fantastic yeasts and how to evolve them""
+     - ""Rolling the DiCE for the directed evolution of biological parts""
+     - ""Rolling the DiCE for the directed evolution of biological parts"" (duplicate)
+     - ""Evolutionary Fusion""
+   - **Question:** What strategies did teams use for directed evolution?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists titles/phrases that seem to be project names or presentation titles from a competition (likely iGEM, given the style).
+   - It mentions: ""Mutatis Mutandis"", ""Fantastic yeasts and how to evolve them"", ""Rolling the DiCE for the directed evolution of biological parts"", ""Evolutionary Fusion"".
+   - The question asks for *strategies* used for directed evolution.
+   - The context only provides titles/names, not actual strategies, methods, or techniques. It mentions ""DiCE"" (which might be a method acronym, but the context doesn't explain it) and general phrases like ""evolving LEADing"
+How did teams engineer bacteriophages for therapeutic purposes?,Teams modified phage tail fibers to alter host specificity and added therapeutic payloads like bacteriocins or CRISPR systems,"Researchers engineer therapeutic phages by editing their genomes with tools like CRISPR‑Cas or recombineering to delete lysogenic or toxin genes and to insert or swap tail‑fiber or depolymerase genes that broaden host range. Synthetic biology platforms allow the construction of “phage cocktails” with defined genomes, optimized for stability and reduced immunogenicity. In some cases, phages are engineered to carry antimicrobial peptides or CRISPR‑based antimicrobials that target resistance genes, turning the virus into a programmable antibacterial weapon.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""Esther: the new tool for improved phage therapy""
+     - ""Introducing a novel system to compartmentalize bacteria""
+     - ""Esther: the new tool for improved phage therapy"" (repeated)
+     - ""Terminator of E. coli Phage""
+     - ""Luci-phage detection system of fecal water pollution""
+   - **Question:** How did teams engineer bacteriophages for therapeutic purposes?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions ""Esther: the new tool for improved phage therapy"", ""Introducing a novel system to compartmentalize bacteria"", ""Terminator of E. coli Phage"", and ""Luci-phage detection system of fecal water pollution"".
+   - The question asks *how* teams engineered bacteriophages for therapeutic purposes.
+   - The context only provides titles/names of projects or tools (Esther, compartmentalization system, Terminator, Luci-phage) but does not explain the engineering methods or mechanisms used for therapeutic purposes.
+   - Therefore, the context lacks the specific information needed to answer the question.
+
+3.  **Formulate Response"
+What methods did teams use to quantify their parts?,"Teams used flow cytometry, plate reader fluorescence assays, and Western blots to characterize part activity quantitatively","Teams typically quantified their synthetic parts with a combination of biochemical and biophysical assays. Commonly used methods included fluorescence measurements (plate readers or flow cytometry) for reporter genes, qPCR or RT‑qPCR for nucleic‑acid abundance, and Western blotting or ELISA for protein levels. In addition, mass spectrometry and metabolic flux analysis were employed for small‑molecule or metabolite quantification, while computational modeling helped interpret and predict the measured data.",so,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Acetylcholinesterase (AChE) in pesticide detection"", ""A Dream of Red Lacquer"", ""Producing Catechins in Non-Pathogenic E.Coli"", ""Indoor Air Freshener 2.0"", ""Producing Catechins in Non-Pathogenic E.Coli""
+   - **Question:** ""What methods did teams use to quantify their parts?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project titles/names: ""Acetylcholinesterase (AChE) in pesticide detection"", ""A Dream of Red Lacquer"", ""Producing Catechins in Non-Pathogenic E.Coli"", ""Indoor Air Freshener 2.0"", ""Producing Catechins in Non-Pathogenic E.Coli"".
+   - There is absolutely no information about methods used to quantify parts.
+   - The context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and"
+How did teams approach mercury biosensor design?,"Teams used the merR promoter system, where MerR protein activates transcription in the presence of mercury ions above nanomolar concentrations","Teams built mercury biosensors by repurposing the MerR transcriptional regulator or engineered riboswitches that bind Hg²⁺, coupling the metal‑binding event to a reporter such as GFP, luciferase, or a colorimetric enzyme. Some groups used directed evolution or computational design to tune the affinity and dynamic range of the sensor, while others assembled modular genetic circuits that amplified the signal through transcriptional cascades or CRISPR‑based readouts. In all cases, the designs were validated in cell‑free extracts or living cells, and the output was calibrated against known mercury concentrations to achieve quantitative detection.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Iara - biofilm formation and metal capture\nAModularized & Smart & Safe Machine for Heavy Metal Bioremediation\nColor is the new sensor\nColor is the new sensor\nAptaTest : Hunting Allergens !""
+   - **Question:** ""How did teams approach mercury biosensor design?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions: ""Iara - biofilm formation and metal capture"", ""AModularized & Smart & Safe Machine for Heavy Metal Bioremediation"", ""Color is the new sensor"" (twice), and ""AptaTest : Hunting Allergens !"".
+   - The question asks specifically about ""mercury biosensor design"".
+   - The context does not mention mercury, biosensors, or specific design approaches for mercury detection. It only vaguely mentions ""metal capture"", ""Heavy Metal Bioremediation"", and ""Color is the new sensor"".
+   - Therefore, the context lacks the specific information needed to answer the question.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences"
+What chassis did teams use for mammalian synthetic biology projects?,"HEK293T and CHO cells were the most common mammalian chassis, with some teams using primary cell lines","Teams typically use well‑characterized mammalian cell lines as chassis, such as HEK293 (human embryonic kidney), CHO (Chinese hamster ovary), HeLa, and Jurkat cells. For more physiologically relevant contexts, they also employ induced pluripotent stem cells (iPSCs), primary fibroblasts, or organoid cultures derived from human tissues. These chassis provide robust transfection, scalable growth, and the ability to recapitulate mammalian post‑translational modifications.",The context does not specify which mammalian chassis were used.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond.""
+     - ""Dr. Control: A dCas9-based DNA replication control system""
+     - ""SynBio101: Road to Coli CTRL""
+     - ""Lighting the way: developing foundations for open-accessmammalian synthetic biology for iGEM and beyond."" (repeated)
+     - ""CosmiColi: Using exogenous tardigrade proteins to improve radio tolerance of E. coli cell line IR9-50-1""
+   - **Question:** What chassis did teams use for mammalian synthetic biology projects?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Scan Context for Keywords:**
+   - Keywords: ""chassis"", ""mammalian"", ""synthetic biology"", ""teams"", ""use""
+   - Context mentions: ""open-accessmammalian synthetic biology"", ""E. coli cell line IR9-50-1"", ""dCas9-based DNA replication control system"", ""Coli CTRL""
+   - Does the context explicitly state what chassis was used for mammalian synthetic biology projects? No. It mentions ""open-access mammalian"
+How did teams implement feedback control in genetic circuits?,Teams used negative feedback loops with transcriptional repressors to buffer gene expression against noise and perturbations,"Teams typically embed negative or positive feedback loops by coupling a gene’s product to its own promoter or to a repressor that it activates. For example, a transcription factor can be engineered to bind its own promoter (negative feedback) or to a downstream activator (positive feedback), often with tunable degradation tags or riboswitches to adjust response speed. CRISPR‑i or dCas9‑based repressors are also used to create programmable feedback, while synthetic riboregulators or small‑RNA circuits provide post‑transcriptional control. These designs allow the circuit to self‑stabilize, buffer noise, or generate oscillations depending on the desired dynamics.","I’m sorry, but the provided context does not contain information on how teams implemented feedback control in genetic circuits.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams implement feedback control in genetic circuits?
+   - **Context Provided:** 
+     - Recombinase Based Biological Relay
+     - Recombinase Based Biological Relay
+     - SynBio101: Road to Coli CTRL
+     - Colight: Novel Optogenetic Tools For Modular Bacterial Control
+     - Sci-Phi 29: Enabling orthogonal replication and predictable expression to expand the repertoire of engineerable bacteria
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project titles/names. It contains no descriptive text, methods, or explanations about how feedback control was implemented in genetic circuits.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and does not contain any information about how teams implemented feedback control in genetic circuits. Therefore, I cannot answer your question based on the given text. Please provide additional details or context regarding the specific methods used. 
+   - Check constraints: Uses only context? Yes ("
+What degradation tags did teams use to tune protein stability?,"Teams used ssrA degradation tags with different sequences (LAA, AAV, ASV) to tune protein half-life and create dynamic circuits",,The provided context does not contain information about the specific degradation tags used to tune protein stability.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of 5 titles/topics:
+     - Stabilising Antibody Domains using Intramolecular Isopeptide Bonding
+     - R-Evolution: an in vivo sequence-specific toolbox for continuous mutagenesis
+     - KARMA, a new tool for specific protein degradation
+     - Measuring the burden of synthetic constructs in the iGEM Registry
+     - Light Medicine: Optogenetics as an Epic Therapeutic Strategy for Parkinson`s Disease
+   - **Question:** What degradation tags did teams use to tune protein stability?
+   - **Constraint:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides titles/headings.
+   - None of the titles mention specific degradation tags used to tune protein stability.
+   - The question asks for specific information (""What degradation tags..."") that is not present in the provided text.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about specific degradation tags used to tune protein stability. It only lists project titles, including one on protein degradation (KARMA), but"
+How did teams engineer bacteria to degrade oil spills?,Teams expressed alkane hydroxylase enzymes and optimized chemotaxis toward hydrocarbons to improve hydrocarbon-degrading bacteria,"Teams engineered oil‑degrading bacteria by first isolating strains that naturally metabolize hydrocarbons (e.g., *Alcanivorax* or *Pseudomonas*). They then used metabolic engineering—overexpressing key enzymes such as alkane monooxygenases, tailoring regulatory circuits, and adding plasmids that encode additional catabolic genes—to boost the flux through alkane‑to‑acetyl‑CoA pathways. Synthetic consortia were sometimes assembled so that one species initiates oxidation while another completes downstream degradation, and CRISPR/Cas tools were employed to knock out competing pathways or enhance stress tolerance, allowing the engineered microbes to thrive in the harsh, nutrient‑poor conditions of oil‑spilled marine environments.","I’m sorry, but the provided context does not contain information on how teams engineered bacteria to degrade oil spills.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams engineer bacteria to degrade oil spills?
+   - **Context Provided:** 
+     - HORIZON 2.0: Clean Energy from Crude Oil Degradation
+     - HORIZON 2.0: Clean Energy from Crude Oil Degradation
+     - Iara - biofilm formation and metal capture
+     - Biodestroyer of biofilm(Bob)
+     - Re_Gone with the Wind
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project/team names and brief descriptors (e.g., ""HORIZON 2.0: Clean Energy from Crude Oil Degradation"", ""Iara - biofilm formation and metal capture"", ""Biodestroyer of biofilm(Bob)"", ""Re_Gone with the Wind"").
+   - There is absolutely no information about *how* teams engineered bacteria to degrade oil spills. No methods, genetic modifications, pathways, or mechanisms are described.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain"
+What approaches did teams take for cancer detection?,"Teams designed biosensors detecting cancer biomarkers like miRNAs or metabolites, often using toehold switches or aptamers","Teams used a mix of synthetic‑biology‑enabled biosensors and computational readouts.  Many built CRISPR‑Cas13 or Cas12 “collateral cleavage” reporters that fire fluorescent or colorimetric signals when tumor‑specific RNA or DNA is present, often coupled to microfluidic chips for point‑of‑care use.  Others engineered engineered bacteria or engineered T‑cells to secrete detectable reporters (e.g., luciferase, cytokines) in response to tumor antigens, enabling non‑invasive imaging or liquid‑biopsy readouts.  Finally, some groups combined multiplexed aptamer or nanobody arrays with machine‑learning classifiers to discriminate cancer‑derived exosomes or circulating tumor DNA from healthy controls.","Teams focused on practical diagnostic tools: CEAgar was developed as a reliable, affordable lung‑cancer screening device; PaDetector is a household device for preliminary HPV screening; and a novel approach was proposed for pancreatic‑cancer detection. These efforts emphasize accessible, point‑of‑care testing","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - Wukong: an Engineered Theranostics based on Synthetic Immune Cells
+     - Detection, new treatment, and prevention for influenza
+     - CEAgar: A Reliable, Practical, and Affordable Lung Cancer Diagnostic Tool
+     - PaDetector, a household device for HPV preliminary screening
+     - No-Returning Route of Pancreatic Cancer
+   - **Question:** What approaches did teams take for cancer detection?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Scan Context for Keywords:**
+   - Keywords: cancer, detection, diagnostic, screening
+   - Matches in context:
+     - ""CEAgar: A Reliable, Practical, and Affordable Lung Cancer Diagnostic Tool"" -> Lung cancer detection/diagnostic tool
+     - ""PaDetector, a household device for HPV preliminary screening"" -> HPV screening (HPV is linked to cancer, but context just says HPV screening)
+     - ""No-Returning Route of Pancreatic Cancer"" -> Mentions pancreatic cancer, but doesn't specify detection approach
+     - ""Wukong: an Engineered Theranostics based on Synthetic Immune Cells"" -> Theranostics (therapy + diagnostics), but doesn't specify cancer
+     - ""Detection,"
+How did teams use riboswitches in their designs?,"Teams engineered riboswitches as RNA-based sensors that change conformation upon ligand binding, controlling downstream translation","Teams incorporated riboswitches as programmable, ligand‑responsive regulators that could toggle gene expression on or off in response to specific metabolites or drugs. By embedding aptamer domains upstream of ribosomal binding sites or transcription terminators, they built biosensors that sensed intracellular signals (e.g., thiamine, tetracycline) and translated them into precise transcriptional or translational outputs. In metabolic engineering projects, riboswitches were used to fine‑tune pathway fluxes, creating dynamic feedback loops that prevented toxic intermediate accumulation. Some groups even wired multiple riboswitches together to form logic gates, enabling complex decision‑making circuits within engineered cells.","I’m sorry, but the provided context does not contain information on how teams used riboswitches in their designs.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** Repeated title: ""RiboLegoA Rational Approach to Engineer Modular and Tunable Riboswitch"" (5 times)
+   - **Question:** How did teams use riboswitches in their designs?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides a repeated title: ""RiboLego—A Rational Approach to Engineer Modular and Tunable Riboswitch"".
+   - It contains no information about how teams used riboswitches in their designs.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only contains a repeated title and does not describe how teams used riboswitches in their designs. Therefore, I cannot answer your question based on the given information. Please provide additional context or details about the specific designs. 
+   - Check constraints: Uses only context? Yes, acknowledges it's missing. Concise? 3 sentences. Says so if context lacks answer? Yes. Matches perfectly.
+
+4.  **Final"
+What strategies did teams use for antibiotic production?,Teams expressed biosynthetic gene clusters from antibiotic-producing organisms in heterologous hosts like E. coli or Streptomyces,"Teams typically combined metabolic engineering with synthetic biology to boost antibiotic yields. They rewired precursor pathways, over‑expressed key enzymes, and knocked out competing routes in a high‑growth chassis (e.g., *E. coli* or *Streptomyces*). Many used combinatorial biosynthesis—mixing and matching gene clusters or tailoring enzymes—to generate novel analogues, while CRISPR/Cas or recombineering fine‑tuned expression levels. Parallelly, they optimized fermentation conditions (pH, feed strategy, oxygen) and employed high‑throughput screening to rapidly identify the best producers.",The provided context does not include any information about strategies used for antibiotic production.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ARM`D UP: Antibiotic Resistance Mechanism Disruption Using Phages
+     - ARM`D UP: Antibiotic Resistance Mechanism Disruption Using Phages (duplicate)
+     - dCastect: Fast detection of bacterial pathogens with the use of specific bacteriophages and dCas9-NanoLuc
+     - Antibiotics detection and degradation system
+     - RIBOT - programming cells with RNA
+   - **Question:** What strategies did teams use for antibiotic production?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/descriptions related to:
+     - Disrupting antibiotic resistance using phages
+     - Detecting bacterial pathogens using phages and dCas9-NanoLuc
+     - Detecting and degrading antibiotics
+     - Programming cells with RNA
+   - The question asks about strategies for *antibiotic production*.
+   - The context does *not* mention antibiotic production at all. It focuses on resistance disruption, detection, degradation, and RNA programming.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2"
+How did teams approach modeling of metabolic flux?,Teams used flux balance analysis (FBA) with tools like COBRApy to predict optimal gene knockouts for improved metabolite production,"Teams typically built genome‑scale stoichiometric models and applied constraint‑based methods such as Flux Balance Analysis (FBA) to predict steady‑state flux distributions, often refining the objective function to match the organism’s physiology. They then integrated omics data (transcriptomics, proteomics, metabolomics) and isotopic labeling experiments to constrain and validate the models, sometimes moving to dynamic or kinetic formulations for time‑dependent behavior. Advanced approaches combined FBA with machine‑learning or Bayesian parameter estimation to capture regulatory effects and improve predictive accuracy.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""GLP.exe - E.coli Nissle 1917 biosafety chassis with CRISPR/Cas3 kill-switch and Exendin-4 in Diabetes treatment""
+     - ""Foresyn: Making Reliable Customized Flux Analysis With Ease"" (repeated twice)
+     - ""Self-assembling protein scaffold for next generation Taxol production"" (repeated twice)
+   - **Question:** ""How did teams approach modeling of metabolic flux?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions ""Foresyn: Making Reliable Customized Flux Analysis With Ease"" twice.
+   - It does not provide any details on *how* teams approached modeling metabolic flux, other than mentioning a tool/platform called ""Foresyn"" for customized flux analysis.
+   - There is no description of methodologies, steps, or approaches used by teams.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must use ONLY provided context.
+   - Must be 2-4 sentences.
+   - Must state if context lacks the answer.
+   - Draft: The provided context does not contain information on how teams approached modeling"
+What methods did teams use to characterize protein-protein interactions?,"Teams used bacterial two-hybrid systems, co-immunoprecipitation, FRET, or split fluorescent proteins to detect interactions","Teams typically used a combination of biochemical, biophysical, and imaging techniques. Commonly employed methods include co‑immunoprecipitation and pull‑down assays for physical isolation, yeast two‑hybrid or mammalian two‑hybrid screens for detecting binary interactions, and fluorescence‑based approaches such as FRET or BiFC for real‑time visualization in living cells. For quantitative affinity measurements, surface plasmon resonance, isothermal titration calorimetry, or microscale thermophoresis were often used, while cross‑linking coupled to mass spectrometry helped map interaction interfaces at the proteome level.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** A list of 5 project titles/topics:
+     - New therapeutic strategy for tuberculosis based on Immune-like cells
+     - Stabilising Antibody Domains using Intramolecular Isopeptide Bonding
+     - Introducing a novel system to compartmentalize bacteria
+     - Light Medicine: Optogenetics as an Epic Therapeutic Strategy for Parkinson`s Disease
+     - DePCB: Engineered yeast for degradation of PCB
+   - **Question:** What methods did teams use to characterize protein-protein interactions?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides titles of projects.
+   - None of the titles mention methods for characterizing protein-protein interactions.
+   - The context lacks the specific information needed to answer the question.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context only lists project titles and does not contain any information about the methods used to characterize protein-protein interactions. Therefore, I cannot answer your question based on the given text. Please provide additional details or context regarding the experimental methods used"
+How did iGEM teams work with Saccharomyces cerevisiae?,"Teams used yeast for natural product biosynthesis, leveraging its eukaryotic secretory pathway and ability to perform complex post-translational modifications","iGEM teams used *Saccharomyces cerevisiae* as a versatile chassis for synthetic biology projects, often engineering metabolic pathways, biosensors, or protein production systems. They typically cloned synthetic gene circuits into yeast plasmids or integrated them into the genome, then performed selection, screening, and characterization using fluorescence, growth assays, or metabolite analysis. Many teams also leveraged yeast’s eukaryotic post‑translational modifications to produce complex proteins or to study regulatory elements in a eukaryotic context. The projects ranged from biofuel precursors to therapeutic proteins, showcasing yeast’s adaptability for diverse synthetic biology challenges.",so,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did iGEM teams work with Saccharomyces cerevisiae?
+   - **Context Provided:** 
+     - Rapid, Flexible, and Affordable Yeast Genome Engineering with BioBrickTM Standardization
+     - Self-assembling protein scaffold for next generation Taxol production
+     - VibXPRESSO - A Vibrio natriegens strain for efficient production and secretion of recombinant proteins
+     - Rapid, Flexible, and Affordable Yeast Genome Engineering with BioBrickTM Standardization (duplicate)
+     - SynBio101: Road to Coli CTRL
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The question asks specifically about how iGEM teams worked with *Saccharomyces cerevisiae* (yeast).
+   - The context mentions ""Rapid, Flexible, and Affordable Yeast Genome Engineering with BioBrickTM Standardization"" twice. This implies yeast genome engineering using BioBrick standardization.
+   - However, the context does *not* explicitly mention ""iGEM teams"" or describe *how* they worked with *Saccharomyces cerevisiae*. It just lists titles/topics.
+   - I need to check if the"
+What approaches did teams take to improve photosynthesis efficiency?,"Teams expressed additional carbon fixation enzymes, modified antenna proteins, or introduced cyanobacterial carboxysomes into plant chloroplasts","Teams have used a mix of genetic and metabolic engineering to boost photosynthetic efficiency. Common strategies include knocking out or down‑regulating genes that divert energy to non‑productive pathways (e.g., photorespiration), overexpressing key Calvin‑cycle enzymes, and inserting synthetic carbon‑fixation modules from more efficient organisms. Others have engineered chloroplast genomes to increase ribulose‑bisphosphate carboxylase (Rubisco) activity, introduced light‑harvesting complexes with altered spectral properties, or optimized regulatory networks via CRISPR‑based transcriptional activators to fine‑tune expression under varying light conditions. These approaches aim to reduce energy loss and increase carbon assimilation rates in crops and algae.",,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** Lists four project titles/names:
+     - Improving Lives Through Rice: Transmission of Nif genes from Azospirillum to Create Transgenic Rice
+     - RubisCO
+     - PhyCoVi – Phycotrophic Codonoptimized Vibrio
+     - Indoor Air Freshener 2.0
+     - PlastiCO₂ - Producing bioplastics from CO₂ and vegetable waste
+   - **Question:** What approaches did teams take to improve photosynthesis efficiency?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides project titles/names.
+   - None of the titles explicitly mention approaches to improve photosynthesis efficiency.
+   - ""RubisCO"" is related to photosynthesis, but the context doesn't describe any approach.
+   - ""Transmission of Nif genes..."" is about nitrogen fixation, not photosynthesis.
+   - ""PhyCoVi"" mentions phycotrophic codon-optimized Vibrio, but doesn't specify photosynthesis improvement.
+   - ""Indoor Air Freshener 2.0"" and ""PlastiCO₂"" are unrelated to photosynthesis efficiency.
+   - The context lacks any description of approaches taken to"
+How did teams design toehold switches for diagnostics?,Teams designed toehold switches as programmable RNA sensors that unfold and activate translation upon binding a specific trigger RNA sequence,"Teams design toehold switches by first selecting a target RNA sequence (e.g., a viral genome fragment) and then computationally generating a riboregulator that is OFF in the absence of the trigger. Using tools like NUPACK or custom scripts, they design a hairpin that sequesters the ribosome‑binding site and start codon, and a complementary “toehold” region that can bind the trigger RNA and unfold the hairpin. The switch is then optimized for thermodynamic stability, minimal off‑target interactions, and fast response kinetics, often iterating with in‑silico folding predictions and in‑vitro testing before embedding the switch in a reporter plasmid for point‑of‑care diagnostics.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ODYSSEE: A modular platform for field diagnosis of Tuberculosis
+     - House of Toeholds: Biosensor for biomarker panel of differentially expressed circulating miRNAs in cervical cancer
+     - House of Toeholds: Biosensor for biomarker panel of differentially expressed circulating miRNAs in cervical cancer (duplicate)
+     - Antibody `Off` Switch
+     - A.D.N. : Air Detector for Nucleic Acids
+   - **Question:** How did teams design toehold switches for diagnostics?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/names: ODYSSEE, House of Toeholds (twice), Antibody `Off` Switch, A.D.N.
+   - The question asks *how* teams designed toehold switches for diagnostics.
+   - The context only provides titles, not design methodologies, mechanisms, or specific details about how the toehold switches were engineered or applied.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2"
+What strategies did teams use for biofilm prevention?,"Teams expressed quorum quenching enzymes that degrade AHL signaling molecules, disrupting biofilm formation in pathogenic bacteria","Teams employed a mix of surface‑engineering and biological tactics.  Many coated device surfaces with anti‑adhesive polymers (PEG, zwitterions) or embedded antimicrobial agents (silver, quaternary ammonium, antibiotics) to block initial attachment.  Others used quorum‑sensing inhibitors or engineered probiotic strains to secrete enzymes that degrade extracellular polymeric substances, while some combined these with micro‑fluidic designs that disrupted shear‑induced biofilm maturation.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - Biodestroyer of biofilm(Bob)
+     - Smartfilms: EngineeredBiofilms as Living Materials
+     - Self-assembling catalytic Escherichia coli biofilms for removal of emerging contaminants from wastewater
+     - Biodestroyer of biofilm(Bob)
+     - Re_Gone with the Wind
+   - **Question:** What strategies did teams use for biofilm prevention?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project/team names: ""Biodestroyer of biofilm(Bob)"", ""Smartfilms: EngineeredBiofilms as Living Materials"", ""Self-assembling catalytic Escherichia coli biofilms for removal of emerging contaminants from wastewater"", ""Re_Gone with the Wind"".
+   - The question asks about *strategies* used for *biofilm prevention*.
+   - The context only provides titles/names of projects. It does not describe any strategies, methods, or mechanisms for biofilm prevention.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2"
+How did teams implement optogenetic control?,Teams used light-sensitive proteins like PhyB/PIF or EL222 to control gene expression with red or blue light pulses,"Teams typically fused light‑responsive domains (e.g., LOV, phytochrome, or channelrhodopsin) to transcription factors or signaling proteins, creating optogenetic switches that turn genes on or off with specific wavelengths. They wired these switches into synthetic circuits—often under inducible promoters or as part of two‑component systems like CcaSR or EL222—and delivered light via LED arrays or microfluidic illumination. By tuning light intensity, duration, and spectral quality, they achieved precise temporal control over metabolic pathways or cellular behaviors.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Colight: Novel Optogenetic Tools For Modular Bacterial Control"", ""SynBio101: Road to Coli CTRL"", ""C-hoop"" (repeated titles, likely from a competition like iGEM)
+   - **Question:** ""How did teams implement optogenetic control?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context vs. Question:**
+   - The context only provides project/team names: ""Colight: Novel Optogenetic Tools For Modular Bacterial Control"", ""SynBio101: Road to Coli CTRL"", ""C-hoop"".
+   - There is absolutely no information about *how* optogenetic control was implemented (e.g., specific proteins, light wavelengths, genetic circuits, methods).
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Example: The provided context only lists project titles and does not contain any details on how optogenetic control was implemented. Therefore, I cannot answer how the teams achieved this control based on the given information. 
+
+4."
+What approaches did teams take for bioremediation of dyes?,"Teams expressed laccase or azoreductase enzymes to degrade textile dyes, often testing on methylene blue or malachite green","Teams have used a mix of microbial and enzymatic strategies to tackle dye pollution.  Many studies employ white‑rot fungi or engineered bacteria that produce laccases, peroxidases, or azoreductases to cleave chromophoric bonds, often in consortia or immobilized on supports to boost stability and reusability.  Others design bioreactors or biofilm systems that couple these organisms with co‑substrates or electron donors, enabling complete mineralization of complex azo and anthraquinone dyes while minimizing toxic intermediates.","Teams focused on biological degradation of dyes. They developed a microROAD platform that uses engineered microbes to break down azo chemicals, and also explored a RemEDye system that harnesses natural dye‑degrading pathways for textile","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - ""RemEDye: towards a sustainable textile industry""
+     - ""Producing Safflower Dye""
+     - ""Using genetically engineered E.coli to synthesise alternative hair care products.""
+     - ""microROAD""
+     - ""Biological degradation system of Azo chemicals""
+   - **Question:** What approaches did teams take for bioremediation of dyes?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Scan Context for Keywords/Concepts:**
+   - Keywords: bioremediation, dyes, approaches, teams
+   - Context mentions:
+     - ""RemEDye: towards a sustainable textile industry"" (implies dye/textile focus)
+     - ""Producing Safflower Dye"" (production, not remediation)
+     - ""Using genetically engineered E.coli to synthesise alternative hair care products."" (hair care, not dye remediation)
+     - ""microROAD""
+     - ""Biological degradation system of Azo chemicals"" (Azo chemicals are a class of synthetic dyes; biological degradation implies bioremediation)
+
+3.  **Evaluate Context against Question:**
+   - The question asks about approaches for *biore"
+How did teams engineer bacteria for CO2 capture?,Teams overexpressed carbonic anhydrase or introduced RuBisCO pathways to enhance carbon fixation in fast-growing bacterial hosts,"Teams engineered bacteria by rewiring their carbon‑fixation pathways: they overexpressed Rubisco and carboxysomes, introduced synthetic CO₂‑fixing enzymes (e.g., formate dehydrogenase), and deleted competing pathways to funnel electrons into CO₂ reduction. Using CRISPR‑Cas and metabolic‑flux modeling, they optimized gene clusters for higher CO₂ uptake and directed the fixed carbon toward valuable products such as polyhydroxyalkanoates or bio‑ethanol. The result is a chassis that captures atmospheric CO₂ more efficiently and converts it into useful biochemicals.",,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams engineer bacteria for CO2 capture?
+   - **Context Provided:** 
+     - Carbon Dioxide Capturer 2.0
+     - Indoor Air Freshener 2.0
+     - RubisCO
+     - Carbon Dioxide Capturer 2.0
+     - Enhancing hydrogen production in Rhodobacter sphaeroides for use as an economically viable biofuel
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only lists project titles/names: ""Carbon Dioxide Capturer 2.0"", ""Indoor Air Freshener 2.0"", ""RubisCO"", and ""Enhancing hydrogen production in Rhodobacter sphaeroides for use as an economically viable biofuel"".
+   - There is no information explaining *how* teams engineered bacteria for CO2 capture. It just mentions ""RubisCO"" and project names, but no methodology or engineering details.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Draft: The"
+What methods did teams use to verify gene circuit function?,"Teams used a combination of GFP reporters, RT-qPCR, and flow cytometry to verify transcription, translation, and circuit topology","Teams typically verify gene‑circuit function with a combination of reporter assays (e.g., GFP, luciferase, or fluorescent proteins) and quantitative readouts such as qPCR or Western blot to confirm transcription and translation. Flow cytometry or single‑cell microscopy allows assessment of population heterogeneity and dynamic behavior. In many cases, metabolic profiling or mass spectrometry is used to confirm downstream biochemical outputs, while computational modeling and in‑vivo or in‑vitro functional assays (e.g., growth rescue, biosensor response) provide additional validation.",So.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - Recombinase Based Biological Relay
+     - RICE - Resistance Induced by Chitin Excretion
+     - SCRIBE system coupled with CRISPR/cas9 detects mutations in E. coli
+     - DipGene  Designing a Gene-Sensitive Paper Strip
+     - ODYSSEE: A modular platform for field diagnosis of Tuberculosis
+   - **Question:** What methods did teams use to verify gene circuit function?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists five project names/titles: Recombinase Based Biological Relay, RICE, SCRIBE system coupled with CRISPR/cas9, DipGene, ODYSSEE.
+   - The question asks about methods used to verify gene circuit function.
+   - The provided context does not mention any verification methods, experimental procedures, or results. It only lists project names/titles.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Keep it concise (2-4 sentences).
+   - Draft: The provided context does not contain information about the methods teams used to verify gene circuit function. It"
+How did teams approach lead biosensor design?,"Teams used the pbr operon from Cupriavidus metallidurans, where PbrR activates transcription specifically in the presence of lead ions","Teams built lead biosensors by repurposing or engineering metal‑responsive transcription factors (e.g., CadR, PbrR) fused to fluorescent reporters, or by designing riboswitches that alter translation in the presence of Pb²⁺. Some used whole‑cell circuits that couple lead binding to a measurable output (luminescence, color change) while others engineered cell‑free transcription‑translation systems for rapid, portable detection. In all cases, the design focused on maximizing sensitivity, minimizing background, and ensuring the sensor could operate in complex environmental samples.",Teams engineered genetically modified probiotics to sense lead,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - Investigation in toxic metal remediation using genetically modified probiotics
+     - RemEDye: towards a sustainable textile industry
+     - Pb-Collector: Heavy metal lead removal from contaminated waters
+     - Lead Scentsor
+     - Pb-Collector: Heavy metal lead removal from contaminated waters
+   - **Question:** How did teams approach lead biosensor design?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/names: ""Investigation in toxic metal remediation using genetically modified probiotics"", ""RemEDye: towards a sustainable textile industry"", ""Pb-Collector: Heavy metal lead removal from contaminated waters"", ""Lead Scentsor"", and repeats ""Pb-Collector..."".
+   - The question asks specifically about *how* teams approached *lead biosensor design*.
+   - The context only provides titles/names. It mentions ""Lead Scentsor"" (which implies a biosensor for lead) and ""Pb-Collector"" (for lead removal), but gives zero details on the design approach, methodology, or mechanisms.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints"
+What chassis did teams use for gut microbiome engineering?,"Teams primarily used E. coli Nissle 1917 as a probiotic chassis for gut delivery, sometimes combined with Lactobacillus species","Teams typically engineered commensal chassis that are naturally adapted to the gut, such as *Escherichia coli* Nissle 1917, *Bacteroides thetaiotaomicron*, and *Lactobacillus rhamnosus* GG. More recently, anaerobic hosts like *Clostridioides difficile* and *Faecalibacterium prausnitzii* have been used for metabolic and therapeutic payloads. These chassis are chosen for their safety profiles, ease of genetic manipulation, and ability to colonize the intestinal niche.",So if context lacks the answer.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** ""Gut Wars ALTER Dr. Control: A dCas9-based DNA replication control system unLeish: Designing a nitric oxide sensing bacteria to detect and eliminate Leishmania parasite inside macrophages Gut Wars""
+   - **Question:** ""What chassis did teams use for gut microbiome engineering?""
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context mentions ""Gut Wars"", ""ALTER"", ""Dr. Control: A dCas9-based DNA replication control system"", and ""unLeish: Designing a nitric oxide sensing bacteria to detect and eliminate Leishmania parasite inside macrophages"".
+   - The question asks about the ""chassis"" used for ""gut microbiome engineering"".
+   - Scanning the context, there is absolutely no mention of a specific chassis (e.g., E. coli, Bacteroides, Lactobacillus, etc.) used for gut microbiome engineering.
+   - The context only lists project names/descriptions under ""Gut Wars"".
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4"
+How did teams design AND gates using proteases?,Teams used orthogonal proteases that cleave specific linker sequences to activate split transcription factors only when both proteases are present,"Teams engineered AND gates by splitting a protease into two inactive fragments that only reassemble into an active enzyme when two distinct inputs (e.g., two transcription factors or small molecules) bring the fragments together. The reconstituted protease then cleaves a downstream repressor or activator, allowing gene expression only when both inputs are present. In some designs, the protease is fused to a DNA‑binding domain that is only released after dual‑cleavage, ensuring that the output is produced only under the AND condition. This modular approach lets researchers swap protease fragments or cleavage sites to build robust, tunable logic circuits.","I’m sorry, but the provided context does not contain information on how teams designed AND gates using proteases.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams design AND gates using proteases?
+   - **Context Provided:** 
+     - Design of Novel Protein-based Logic Gates using Split-Inteins
+     - Re_Gone with the Wind
+     - RIBOT - programming cells with RNA
+     - NoTox: Making Botulism prevention cheaper and more effective.
+     - A Synthetic Biology Approach for the Sustainable Production of Stable Inks
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The question asks about designing AND gates using *proteases*.
+   - The context lists project titles, one of which is ""Design of Novel Protein-based Logic Gates using Split-Inteins"".
+   - There is no mention of *proteases* or specific design methods for AND gates in the provided context. The context only lists titles, not detailed methodologies.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information on how teams designed AND gates using proteases. It only lists"
+What strategies did teams use for drought resistance in plants?,Teams overexpressed transcription factors like DREB or introduced genes for compatible solute synthesis to improve plant water stress tolerance,"Teams have used a mix of genetic and synthetic‑biology tools to boost drought tolerance. Common strategies include CRISPR‑mediated edits or overexpression of key drought‑responsive genes (e.g., DREB, NAC, aquaporins), engineering stomatal regulators to reduce water loss, and inserting synthetic biosensors that trigger protective pathways only under low‑water stress. Parallel approaches combine marker‑assisted breeding with engineered root‑architecture genes and osmoprotectant synthesis (e.g., proline, trehalose) to improve water‑use efficiency and stress resilience.",The provided context does not mention any strategies for drought resistance in plants.,"<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** What strategies did teams use for drought resistance in plants?
+   - **Context Provided:** 
+     - Thermoplant: Automated design of RNA thermometers for controlling output of plant growth-promoting enzymes in rhizobacteria
+     - Improving the Agricultural Potential of Rhizobia
+     - Rooting for symbiosis: Engineering herbicide tolerance in rhizobia
+     - yOIL: an all-encompassing solution to the green seed problem
+     - Improving Lives Through Rice: Transmission of Nif genes from Azospirillum to Create Transgenic Rice
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The question asks about strategies for *drought resistance* in plants.
+   - Scanning the context: 
+     - Thermoplant: RNA thermometers for plant growth-promoting enzymes in rhizobacteria
+     - Improving Agricultural Potential of Rhizobia
+     - Engineering herbicide tolerance in rhizobia
+     - yOIL: green seed problem
+     - Transmission of Nif genes for transgenic rice
+   - None of these mention drought resistance or strategies for it.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must"
+How did teams address the problem of plasmid burden?,"Teams used chromosomal integration, minimized gene copy number, and used weak promoters to reduce metabolic burden on host cells","Teams mitigated plasmid burden by shifting to low‑copy or single‑copy vectors and, when possible, integrating the genetic circuit into the host genome to eliminate plasmid replication costs. They also employed orthogonal replication origins and partitioning systems to reduce copy‑number variability, coupled with tunable, low‑strength promoters or ribosome‑binding sites to lower expression levels. Additionally, many groups used plasmid‑stabilization modules (e.g., toxin‑antitoxin or toxin‑based addiction systems) and metabolic‑balancing strategies such as dynamic regulation or CRISPRi to keep the engineered pathway’s resource demand within the host’s capacity.","Teams tackled plasmid burden by measuring it—specifically, they quantified the burden of synthetic constructs in the iGEM Registry.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Question:** How did teams address the problem of plasmid burden?
+   - **Context Provided:** 
+     - RIBOT - programming cells with RNA
+     - Detection, new treatment, and prevention for influenza
+     - Measuring the burden of synthetic constructs in the iGEM Registry
+     - Measuring the burden of synthetic constructs in the iGEM Registry (duplicate)
+     - Cyanobarrier: Solve the harm caused by cyanobacteria
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The question asks specifically about how teams addressed ""plasmid burden"".
+   - The context mentions ""Measuring the burden of synthetic constructs in the iGEM Registry"" twice, but provides no details on *how* teams addressed it, nor does it mention ""plasmid burden"" specifically.
+   - The other context items are unrelated titles/topics.
+   - Therefore, the context lacks the answer.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information on how teams addressed the problem of plasm"
+What approaches did teams take for biosynthesis of artemisinin?,Teams reconstructed the mevalonate pathway and expressed amorphadiene synthase and P450 enzymes in yeast to produce artemisinic acid,,"I’m sorry, but the provided context does not contain information about approaches teams took for the biosynthesis of artemisinin.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** 
+     - Optogenetic Flavonoid Biosynthesis in E. coli
+     - Optogenetic Flavonoid Biosynthesis in E. coli
+     - A Dream of Red Lacquer
+     - A Synthetic Biology Approach for the Sustainable Production of Stable Inks
+     - Biogalaxy2: a project to produce plant biofactories for an extra-terrestrial environment.
+   - **Question:** What approaches did teams take for biosynthesis of artemisinin?
+   - **Constraints:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context lists project titles/topics: Optogenetic Flavonoid Biosynthesis in E. coli, A Dream of Red Lacquer (synthetic biology for stable inks), Biogalaxy2 (plant biofactories for extra-terrestrial environment).
+   - The question asks about approaches for biosynthesis of *artemisinin*.
+   - Scanning the context: There is absolutely no mention of ""artemisinin"" or any related approaches in the provided text.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences)."
+How did teams use machine learning in their iGEM projects?,"Teams used ML models to predict promoter strength, protein structure, guide RNA efficiency, or to analyze microscopy images","iGEM teams have used machine learning to accelerate design‑build‑test cycles: for example, a team used a neural‑network model trained on promoter‑strength data to predict and optimize synthetic promoters, while another applied random‑forest classifiers to image‑based phenotyping of engineered yeast colonies. Some projects employed deep‑learning generative models to design novel riboswitches or to predict enzyme activity from sequence, and others used reinforcement‑learning frameworks to tune metabolic pathways for higher product yields. In all cases, ML helped reduce wet‑lab iterations by providing quantitative predictions that guided construct selection.","I’m sorry, but the provided context does not contain information about how teams used machine learning in their iGEM projects.","<think>
+Here's a thinking process:
+
+1.  **Analyze User Input:**
+   - **Context:** Lists four iGEM project titles/descriptions:
+     - DePCB: Engineered yeast for degradation of PCB
+     - BioMaster 2.0
+     - Engineering synthetic riboswitch for detection of polychlorinated biphenyls
+     - Self-assembling protein scaffold for next generation Taxol production
+     - VibXPRESSO - A Vibrio natriegens strain for efficient production and secretion of recombinant proteins
+   - **Question:** How did teams use machine learning in their iGEM projects?
+   - **Constraint:** Answer using ONLY the provided context. Be concise (2-4 sentences). Say so if context lacks the answer.
+
+2.  **Evaluate Context against Question:**
+   - The context only provides project titles/descriptions.
+   - None of the titles/descriptions mention machine learning.
+   - Therefore, the context lacks the answer to the question.
+
+3.  **Formulate Response (adhering to constraints):**
+   - Must state that the context lacks the answer.
+   - Must be concise (2-4 sentences).
+   - Draft: The provided context does not contain information about how teams used machine learning in their iGEM projects. It only lists project titles and brief descriptions focused on yeast engineering, riboswitches, protein scaffolds,"

@@ -1,0 +1,51 @@
+question,a_faith,a_rel,a_recall,b_faith,b_rel,b_recall,c_faith,c_rel,c_recall
+What chassis organism did iGEM teams most commonly use for biosensor projects?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+How did teams implement a genetic toggle switch?,0.0,1.0,0.0,1.0,1.0,0.5,1.0,0.0,0.0
+What methods did teams use to detect heavy metals in water?,0.0,1.0,0.0,0.0,0.0,0.5,1.0,0.0,0.5
+How did iGEM teams approach biosafety in their projects?,0.0,0.5,0.0,0.0,0.0,0.0,1.0,0.5,0.0
+What was the most common reporter gene used in iGEM biosensor projects?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+How did teams model genetic circuits before building them?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+What approach did teams use for cellulose degradation?,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+How did iGEM teams use CRISPR in their projects?,0.0,1.0,0.0,1.0,0.5,0.5,1.0,0.0,0.5
+What strategies did teams use to produce bioplastics?,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+How did teams design quorum sensing circuits?,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+What methods were used to improve protein secretion in bacteria?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+How did teams tackle plastic degradation?,0.0,1.0,0.0,1.0,0.5,0.5,0.0,0.0,0.5
+What codon optimization strategies did teams employ?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+How did teams validate their biosensor specificity?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+What promoters were most commonly used for strong constitutive expression?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+How did teams implement AND gate logic in genetic circuits?,0.0,1.0,0.0,1.0,1.0,0.5,1.0,0.0,0.5
+What methods did teams use to measure promoter strength?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+How did teams address antibiotic resistance concerns in their designs?,0.0,0.0,0.0,0.5,0.5,0.0,0.0,0.0,0.0
+What approaches did teams take for nitrogen fixation?,0.0,1.0,0.0,0.5,0.5,0.5,0.5,0.0,0.5
+How did teams engineer bacteria to produce spider silk?,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+What detection methods did teams use for microplastics?,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.5
+How did teams use cell-free systems in their projects?,0.0,1.0,0.0,0.0,0.0,0.5,1.0,0.0,0.5
+What strategies did teams use for directed evolution?,0.0,1.0,0.0,0.5,0.0,0.5,1.0,0.0,0.5
+How did teams engineer bacteriophages for therapeutic purposes?,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+What methods did teams use to quantify their parts?,0.5,0.5,0.0,0.5,0.0,0.5,0.5,0.5,0.0
+How did teams approach mercury biosensor design?,0.0,1.0,0.0,0.5,0.0,0.5,1.0,1.0,0.0
+What chassis did teams use for mammalian synthetic biology projects?,0.0,0.5,0.5,0.5,0.0,0.5,0.5,0.0,0.5
+How did teams implement feedback control in genetic circuits?,0.0,1.0,0.0,0.0,0.5,0.5,1.0,1.0,0.0
+What degradation tags did teams use to tune protein stability?,0.0,0.5,0.5,0.0,0.5,0.5,1.0,0.5,0.0
+How did teams engineer bacteria to degrade oil spills?,0.5,0.5,0.0,0.5,0.0,0.5,0.5,0.0,0.5
+What approaches did teams take for cancer detection?,0.5,1.0,0.5,0.5,0.8,0.5,0.5,0.0,0.5
+How did teams use riboswitches in their designs?,0.5,1.0,0.5,0.5,0.0,0.5,0.5,0.5,0.0
+What strategies did teams use for antibiotic production?,0.5,1.0,0.0,0.5,0.0,0.5,0.5,0.5,0.0
+How did teams approach modeling of metabolic flux?,0.0,0.5,0.5,0.5,0.0,0.5,0.5,1.0,0.5
+What methods did teams use to characterize protein-protein interactions?,0.0,0.5,0.5,0.5,0.0,0.5,1.0,0.5,0.0
+How did iGEM teams work with Saccharomyces cerevisiae?,0.0,0.5,0.0,0.5,0.5,0.5,0.5,0.0,0.5
+What approaches did teams take to improve photosynthesis efficiency?,0.5,0.5,0.0,0.0,0.0,0.5,1.0,0.5,0.5
+How did teams design toehold switches for diagnostics?,0.0,0.5,0.5,0.5,0.0,0.5,0.5,0.5,0.5
+What strategies did teams use for biofilm prevention?,0.0,0.5,0.5,0.0,0.5,0.5,0.5,0.5,0.0
+How did teams implement optogenetic control?,0.0,0.5,0.5,0.5,0.0,0.5,0.5,1.0,0.5
+What approaches did teams take for bioremediation of dyes?,0.5,0.5,0.0,0.5,1.0,0.5,0.5,0.5,0.5
+How did teams engineer bacteria for CO2 capture?,0.5,0.5,0.5,0.5,0.0,0.5,0.5,0.0,0.5
+What methods did teams use to verify gene circuit function?,0.0,0.5,0.0,0.0,0.5,0.5,0.5,0.5,0.5
+How did teams approach lead biosensor design?,0.5,1.0,0.5,0.5,0.5,0.0,0.5,0.5,0.0
+What chassis did teams use for gut microbiome engineering?,0.5,0.5,0.0,0.0,0.0,0.5,1.0,0.0,0.5
+How did teams design AND gates using proteases?,0.0,1.0,0.0,0.5,0.0,0.0,1.0,0.0,0.0
+What strategies did teams use for drought resistance in plants?,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0
+How did teams address the problem of plasmid burden?,0.0,1.0,0.0,1.0,0.5,0.5,1.0,0.0,0.5
+What approaches did teams take for biosynthesis of artemisinin?,0.0,0.0,0.0,1.0,0.0,0.0,1.0,1.0,0.0
+How did teams use machine learning in their iGEM projects?,0.5,0.5,0.5,0.5,0.0,0.5,0.5,0.5,0.0
