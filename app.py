@@ -185,7 +185,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 DEMO_BENCH = [
     {"name":"Bare Groq (no retrieval)","desc":"No retrieval — model answers from training data only. Fluent but frequently hallucinated.",
      "f":0.11,"r":0.75,"c":0.12,"color":"#6e1e18"},
-    {"name":"Groq fast + SynSearch RAG","desc":"Fast model grounded in 343 iGEM 2019 wikis via Pinecone vector retrieval.",
+    {"name":"Groq fast + SynSearch RAG","desc":"Fast model grounded in 1,000+ iGEM wikis (2019-2025) via Pinecone vector retrieval.",
      "f":0.42,"r":0.19,"c":0.30,"color":"#d6884a"},
     {"name":"Groq large + SynSearch RAG","desc":"Large model + SynSearch RAG — 7x improvement in faithfulness over bare LLM.",
      "f":0.79,"r":0.27,"c":0.21,"color":"#8fb3ac"},
@@ -233,7 +233,7 @@ if st.session_state.page == "search":
 
     st.markdown("""
     <div class='hero'>
-      <div class='hero-eyebrow'>iGEM knowledge retrieval &middot; 343 wikis &middot; 2019 corpus</div>
+      <div class='hero-eyebrow'>iGEM knowledge retrieval &middot; 1,000+ wikis &middot; 2019–2025 corpus</div>
       <div class='hero-title'>Ask the iGEM<br><em>archive</em></div>
       <div class='hero-sub'>
         Search past iGEM team wikis in plain English.
