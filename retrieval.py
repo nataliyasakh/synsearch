@@ -84,16 +84,16 @@ def search(query: str, year="All years", track="All tracks",
 
     for i, match in enumerate(results.matches, 1):
         m = match.metadata
-        chunks.append(f"[{i}] {m['team']} ({m['year']}) — {m['title']}\n{match.metadata.get('text', '')[:600]}")
+        chunks.append(f"[{i}] {m['team']} ({m.get('year','')}) — {m.get('title', m.get('page',''))}\n{match.metadata.get('text', '')[:600]}")
         if m["team"] not in seen_teams:
             seen_teams.add(m["team"])
             sources.append({
                 "num":   i,
-                "team":  m["team"],
-                "year":  m["year"],
-                "track": m["track"],
-                "medal": m["prize"],
-                "url":   m["url"],
+                "team":  m.get("team",""),
+                "year":  m.get("year",""),
+                "track": m.get("track",""),
+                "medal": m.get("prize", m.get("medal","Unknown")),
+                "url":   m.get("url",""),
             })
 
     context = "\n\n---\n\n".join(chunks)
