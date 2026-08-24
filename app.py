@@ -193,10 +193,14 @@ DEMO_BENCH = [
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 def badge(medal):
+    if not medal or medal in ("-", "Unknown", ""):
+        return ""
     m = medal.lower()
     if "grand" in m: return f"<span class='badge badge-grand'>{medal}</span>"
     if "gold"  in m: return f"<span class='badge badge-gold'>{medal}</span>"
-    return f"<span class='badge badge-silver'>{medal}</span>"
+    if "silver" in m: return f"<span class='badge badge-silver'>{medal}</span>"
+    if "bronze" in m: return f"<span class='badge badge-silver' style='color:#b87333'>{medal}</span>"
+    return ""
 
 def sbar(pct):
     return f"<div class='score-bar'><div class='score-fill' style='width:{pct}%'></div></div>"
