@@ -215,9 +215,9 @@ if "page" not in st.session_state:
 
 # ── NAV ───────────────────────────────────────────────────────────────────────
 PAGES = [("Search","search"),("Similar Projects","similar"),
-         ("Benchmark","benchmark"),("About","about")]
+         ("Tools","tools"),("Benchmark","benchmark"),("About","about")]
 
-nav = st.columns([2, 1, 1.5, 1, 1])
+nav = st.columns([2, 1, 1.3, 1, 1, 1])
 with nav[0]:
     st.markdown(
         "<p style='font-size:14px;font-weight:800;letter-spacing:.2em;"
@@ -379,6 +379,13 @@ elif st.session_state.page == "similar":
             )
         sim2 += "</div>"
         st.markdown(sim2, unsafe_allow_html=True)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TOOLS
+# ══════════════════════════════════════════════════════════════════════════════
+elif st.session_state.page == "tools":
+    from tools_page import render_tools_page
+    render_tools_page()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # BENCHMARK
