@@ -175,6 +175,10 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 
 .empty-state { text-align: center; padding: 72px 0; color: var(--ash); font-size: 16px; font-weight: 300; }
 .empty-state em { color: var(--orange); font-style: normal; }
+
+/* Disable browser copy popup / text selection highlight */
+::selection { background: transparent; }
+::-moz-selection { background: transparent; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -446,16 +450,24 @@ elif st.session_state.page == "about":
       </div>
     </div>
     <div class='about-card'>
-      <div class='about-h'>What we built beyond Munich 2024</div>
+      <div class='about-h'>Building on Munich 2024</div>
       <div class='about-p'>
-        Munich 2024 proved RAG reduces hallucination on iGEM data. We reuse their
-        scraped 2019 corpus under CC BY 4.0 and independently built:
+        The Munich 2024 iGEM team built the first proof-of-concept RAG system over iGEM wiki data,
+        demonstrating that grounding an LLM in retrieved documents reduces hallucination on
+        synthetic biology questions. Their system ingested 343 teams from the 2019 competition
+        and showed measurable improvement in answer quality — but left several capabilities
+        explicitly unfinished: source citations, metadata filtering, and accuracy benchmarking
+        were all listed as future work. The tool also required Docker and a personal API key
+        to run, limiting adoption by non-technical users.
+        <br><br>
+        SynSearch builds directly on their foundation. We reuse their 2019 corpus under CC BY 4.0
+        and independently contributed:
         <ul class='about-ul'>
           <li>Corpus expansion from 343 teams (2019 only) to 1,000+ teams across 2019–2025</li>
           <li>Inline source citations linking to the specific wiki page — Munich's own listed future work</li>
           <li>Metadata filtering by year, village, and medal before retrieval</li>
           <li>A "Similar Projects" semantic explorer — not available in any existing registry</li>
-          <li>Published three-way benchmark: bare LLM vs RAG systems on 50 verified questions</li>
+          <li>Published three-way benchmark: bare LLM vs RAG on 50 manually verified questions</li>
           <li>Zero-install hosted interface — no Docker, no terminal, no API key required</li>
         </ul>
       </div>
