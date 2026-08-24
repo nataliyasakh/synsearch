@@ -106,13 +106,12 @@ def render_tools_page():
         key="tool_query"
     )
 
-    fc1, fc2, fc3 = st.columns([3, 1, 1])
+    fc1, fc2 = st.columns([3, 1])
     with fc1:
         category = st.selectbox("Category", CATEGORIES, key="tool_cat")
     with fc2:
         free_only = st.checkbox("Free only", key="tool_free", value=False)
-    with fc3:
-        search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
+    search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
@@ -157,10 +156,19 @@ def render_tools_page():
             except Exception as e:
                 ai_rec = f"Could not generate recommendation: {e}"
 
+        # Convert markdown bold/italic to HTML
+        import re
+        ai_html = re.sub(r'\*\*(.+?)\*\*', r'<strong></strong>', ai_rec)
+        ai_html = re.sub(r'\*(.+?)\*', r'<em></em>', ai_html)
+        ai_html = ai_html.replace('
+
+', '</p><p>').replace('
+', '<br>')
+        ai_html = f'<p>{ai_html}</p>'
         st.markdown(f"""
         <div class='answer-card'>
           <div class='card-eyebrow'>AI recommendation &middot; from {len(filtered)} tools</div>
-          <div class='answer-body'>{ai_rec}</div>
+          <div class='answer-body'>{ai_html}</div>
         </div>
         """, unsafe_allow_html=True)
 
