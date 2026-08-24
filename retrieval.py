@@ -128,12 +128,14 @@ def search(query: str, year="All years", track="All tracks",
         chunks.append(f"[{i}] {m['team']} ({m.get('year','')}) — {m.get('title', m.get('page',''))}\n{match.metadata.get('text', '')[:600]}")
         if m["team"] not in seen_teams:
             seen_teams.add(m["team"])
+            raw_track = m.get("track", "")
+            raw_medal = m.get("prize", m.get("medal", ""))
             sources.append({
                 "num":   i,
                 "team":  m.get("team",""),
                 "year":  m.get("year",""),
-                "track": m.get("track",""),
-                "medal": m.get("prize", m.get("medal","Unknown")),
+                "track": VILLAGE_MAP.get(raw_track, raw_track) if raw_track else "",
+                "medal": raw_medal if raw_medal and raw_medal not in ("Unknown", "-", "") else "",
                 "url":   m.get("url",""),
             })
 
@@ -194,13 +196,15 @@ def find_similar(query: str, k: int = 4):
         if m["team"] in seen:
             continue
         seen.add(m["team"])
+        raw_track2 = m.get("track", "")
+        raw_medal2 = m.get("prize", m.get("medal", ""))
         similar.append({
             "score": int(match.score * 100),
             "team":  m.get("team", ""),
             "year":  m.get("year", ""),
             "title": m.get("title", m.get("page", "")),
-            "track": VILLAGE_MAP.get(m.get("track", ""), m.get("track", "Unknown")),
-            "medal": m.get("prize", m.get("medal", "Unknown")),
+            "track": VILLAGE_MAP.get(raw_track2, raw_track2) if raw_track2 else "",
+            "medal": raw_medal2 if raw_medal2 and raw_medal2 not in ("Unknown", "-", "") else "",
             "url":   m.get("url", ""),
         })
         if len(similar) == k:
