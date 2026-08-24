@@ -262,7 +262,7 @@ if st.session_state.page == "search":
                 "Space", "Therapeutics"
             ], key="ft")
         with fc3:
-            medal = st.selectbox("Medal", ["Any medal","Grand Prize","Gold","Silver"], key="fm")
+            medal = st.selectbox("Medal", ["Any medal","Gold","Silver","Bronze"], key="fm")
         go = st.button("Search corpus", key="go", use_container_width=True)
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
