@@ -249,12 +249,17 @@ if st.session_state.page == "search":
             label_visibility="collapsed", key="q")
         fc1, fc2, fc3 = st.columns(3)
         with fc1:
-            st.selectbox("Year", ["All years (2019 corpus)"], key="fy")
+            st.selectbox("Year", ["All years", "2019", "2022", "2023", "2024", "2025"], key="fy")
         with fc2:
-            track = st.selectbox("Track", [
-                "All tracks","Diagnostics","Foundational Advance",
-                "Health & Medicine","Manufacturing","Food & Nutrition",
-                "Energy","Environment","New Application","Entrepreneurship","High School"
+            track = st.selectbox("Village", [
+                "All villages",
+                "Agriculture", "Art & Design", "Biomanufacturing", "Bioremediation",
+                "Climate Crisis", "Conservation", "Diagnostics", "Energy",
+                "Environment", "Fashion & Cosmetics", "Food & Nutrition",
+                "Foundational Advance", "Hardware", "Health & Medicine",
+                "High School", "Infectious Diseases", "Manufacturing",
+                "New Application", "Oncology", "Software & AI",
+                "Space", "Therapeutics"
             ], key="ft")
         with fc3:
             medal = st.selectbox("Medal", ["Any medal","Grand Prize","Gold","Silver"], key="fm")
