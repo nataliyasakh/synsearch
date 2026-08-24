@@ -76,9 +76,15 @@ def _load_groq():
 def _build_filter(year: str, track: str, medal: str) -> dict | None:
     """Convert dropdown selections into a Pinecone metadata filter."""
     f = {}
-    if year  != "All years":   f["year"]  = {"$eq": int(year)}
-    if track != "All tracks":  f["track"] = {"$eq": track}
-    if medal != "Any medal":   f["prize"] = {"$eq": medal}
+    if year not in ("All years", "All years (2019 corpus)", ""):
+        try:
+            f["year"] = {"$eq": int(year)}
+        except ValueError:
+            pass
+    if track not in ("All tracks", "All villages", ""):
+        f["track"] = {"$eq": track}
+    if medal not in ("Any medal", ""):
+        f["prize"] = {"$eq": medal}
     return f if f else None
 
 
