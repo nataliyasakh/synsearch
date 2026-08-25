@@ -1,5 +1,6 @@
 """
-tools_page.py — render the Tools page in app.py.
+tools_page.py — Tools page for SynSearch.
+Uses native Streamlit layout to avoid HTML card overlap issues.
 """
 
 import re
@@ -12,79 +13,43 @@ def load_tools():
 
 CATEGORIES = [
     "All categories",
-    "Sequence Design",
-    "Expression Design",
-    "Cloning Design",
-    "CRISPR Design",
-    "Protein Structure",
-    "Protein Modeling",
-    "Protein Visualization",
-    "Modeling",
-    "Sequence Analysis",
-    "Parts & Registry",
-    "Fluorescent Proteins",
-    "Lab Management",
+    "Sequence Design", "Expression Design", "Cloning Design",
+    "CRISPR Design", "Protein Structure", "Protein Modeling",
+    "Protein Visualization", "Modeling", "Sequence Analysis",
+    "Parts & Registry", "Fluorescent Proteins", "Lab Management",
 ]
 
 def md_to_html(text):
-    """Convert markdown bold/italic to HTML and preserve line breaks."""
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
-    text = re.sub(r'^(\d+)\.\s+', r'<br><strong>\1.</strong> ', text, flags=re.MULTILINE)
-    text = text.replace('\n\n', '<br><br>').replace('\n', '<br>')
-    return text
+    paragraphs = text.strip().split('\n\n')
+    return ''.join(f'<p style="margin:0 0 10px">{p.replace(chr(10), "<br>")}</p>' for p in paragraphs)
+
+def free_badge(free_str):
+    s = str(free_str).lower()
+    if "freemium" in s:
+        return "<span class='badge badge-silver'>Freemium</span>"
+    if "igem" in s:
+        return "<span class='badge badge-grand'>Free for iGEM</span>"
+    if "yes" in s or "free" in s:
+        return "<span class='badge badge-grand'>Free</span>"
+    return "<span class='badge badge-silver'>Paid</span>"
 
 def render_tools_page():
     st.markdown("""
-    <style>
-    .tool-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: 3px; padding: 20px 22px; margin-bottom: 12px;
-      text-decoration: none; display: block; transition: border-color .12s;
-    }
-    .tool-card:hover { border-color: var(--orange); }
-    .tool-card-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; margin-bottom: 8px; gap: 12px;
-    }
-    .tool-name { font-size: 16px; font-weight: 700; color: var(--maroon); }
-    .tool-cat {
-      font-size: 11px; font-weight: 600; padding: 3px 9px;
-      border-radius: 3px; background: var(--sand); color: var(--muted);
-      border: 1px solid var(--border); white-space: nowrap;
-      display: inline-block; margin-top: 8px;
-    }
-    .tool-desc {
-      font-size: 14px; font-weight: 300; color: #3a2a22;
-      line-height: 1.75; margin: 10px 0 10px;
-    }
-    .tool-io { font-size: 12px; color: var(--teal); font-weight: 500; }
-    .tool-free-yes {
-      font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px;
-      color: var(--teal); background: #eaf2f0; border: 1px solid #c5ddd9;
-      white-space: nowrap;
-    }
-    .tool-free-no {
-      font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px;
-      color: var(--ash); background: var(--sand); border: 1px solid var(--border);
-      white-space: nowrap;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='padding:56px 0 28px'>
+    <div style='padding:48px 0 24px'>
       <div class='hero-eyebrow'>40 verified tools &middot; used by iGEM teams worldwide</div>
       <div class='hero-title' style='font-size:48px;text-align:left'>
         Find the right<br><em>tool for the job</em>
       </div>
-      <div class='hero-sub' style='text-align:left;margin:12px 0 0'>
+      <div class='hero-sub' style='text-align:left;margin:10px 0 0'>
         Describe what you need to do. SynSearch recommends the best tools
         and shows how real iGEM teams used them.
       </div>
     </div>
     """, unsafe_allow_html=True)
 
+    # ── Search controls ────────────────────────────────────────────────────────
     tool_query = st.text_input(
         "tool_q",
         placeholder="e.g.  I need to design primers for Gibson Assembly cloning",
@@ -92,18 +57,19 @@ def render_tools_page():
         key="tool_query"
     )
 
-    fc1, fc2 = st.columns([3, 1])
-    with fc1:
-        category = st.selectbox("Category", CATEGORIES, key="tool_cat")
-    with fc2:
-        free_only = st.checkbox("Free only", key="tool_free", value=False)
+    c1, c2, c3 = st.columns([2, 1, 1])
+    with c1:
+        category = st.selectbox("Category", CATEGORIES, key="tool_cat",
+                                label_visibility="visible")
+    with c2:
+        free_only = st.toggle("Free only", key="tool_free", value=False)
+    with c3:
+        search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
 
-    search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
+    st.divider()
 
-    st.markdown("<hr class='sep'>", unsafe_allow_html=True)
-
+    # ── Load & filter ──────────────────────────────────────────────────────────
     df = load_tools()
-
     filtered = df.copy()
     if category != "All categories":
         filtered = filtered[filtered["category"] == category]
@@ -112,115 +78,122 @@ def render_tools_page():
             filtered["free"].str.lower().str.contains("yes|free", na=False)
         ]
 
+    # ── AI recommendation + wiki context ───────────────────────────────────────
     if tool_query or search_btn:
         with st.spinner("Finding best tools..."):
-            tools_context = filtered[["name","category","use_case","description","free"]].to_string(index=False)
+            tools_ctx = filtered[["name","category","use_case","description","free"]].to_string(index=False)
             try:
                 from groq import Groq
                 import tomllib
                 from pathlib import Path
                 with open(Path(".streamlit/secrets.toml"), "rb") as f:
-                    secrets = tomllib.load(f)
-                groq_client = Groq(api_key=secrets["GROQ_API_KEY"])
-                response = groq_client.chat.completions.create(
+                    s = tomllib.load(f)
+                client = Groq(api_key=s["GROQ_API_KEY"])
+                resp = client.chat.completions.create(
                     model="groq/compound-mini",
                     messages=[
                         {"role": "system", "content": (
                             "You are a synthetic biology expert helping iGEM teams choose software tools. "
-                            "Recommend the TOP 3 most relevant tools for the user's task from the database. "
-                            "For each tool: state the name, explain in 1-2 sentences why it fits, mention one specific feature. "
-                            "Do NOT use markdown asterisks. Write in plain text with numbered list format."
+                            "Recommend TOP 3 tools for the user's task from the provided database. "
+                            "Write in plain numbered list. No markdown asterisks. "
+                            "For each: name, one sentence why it fits, one key feature."
                         )},
-                        {"role": "user", "content": "Task: " + tool_query + "\n\nAvailable tools:\n" + tools_context}
+                        {"role": "user", "content": "Task: " + tool_query + "\n\nTools:\n" + tools_ctx}
                     ],
-                    temperature=0.1,
-                    max_tokens=500,
+                    temperature=0.1, max_tokens=500,
                 )
-                ai_rec = response.choices[0].message.content.strip()
-                ai_html = md_to_html(ai_rec)
+                ai_text = resp.choices[0].message.content.strip()
+                ai_html = md_to_html(ai_text)
             except Exception as e:
-                ai_html = f"Could not generate recommendation ({e}). Browse tools below."
+                ai_html = "Could not generate recommendation. Browse tools below."
 
         st.markdown(
             "<div class='answer-card'>"
-            "<div class='card-eyebrow'>AI recommendation &middot; from " + str(len(filtered)) + " tools</div>"
+            "<div class='card-eyebrow'>AI recommendation</div>"
             "<div class='answer-body'>" + ai_html + "</div>"
             "</div>",
             unsafe_allow_html=True
         )
 
-        st.markdown("""
-        <div class='section-head'>
-          <span class='section-title'>How iGEM teams used these tools</span>
-          <span class='section-pill'>from 1,000+ wikis</span>
-        </div>
-        """, unsafe_allow_html=True)
-
+        # Wiki context
+        st.markdown(
+            "<div class='section-head'>"
+            "<span class='section-title'>How iGEM teams used these tools</span>"
+            "<span class='section-pill'>from 1,000+ wikis</span>"
+            "</div>",
+            unsafe_allow_html=True
+        )
         with st.spinner("Searching iGEM wikis..."):
             try:
                 from retrieval import search as real_search
-                wiki_answer, wiki_sources, _ = real_search(
-                    "how did iGEM teams use " + tool_query
-                )
-                src_rows = ""
+                wiki_answer, wiki_sources, _ = real_search("how did iGEM teams use " + tool_query)
+                src_html = ""
                 for s in wiki_sources:
                     short = s["url"].replace("https://", "")
-                    src_rows += (
+                    src_html += (
                         "<a href='" + s["url"] + "' target='_blank' class='source-row'>"
                         "<div class='src-num'>[" + str(s["num"]) + "]</div>"
-                        "<div class='src-info'>"
-                        "<div class='src-team'>" + s["team"] + "</div>"
+                        "<div class='src-info'><div class='src-team'>" + s["team"] + "</div>"
                         "<div class='src-meta'>" + s.get("track","") + " &middot; " + short + "</div>"
                         "</div></a>"
                     )
                 st.markdown(
-                    "<div class='answer-card'>"
-                    "<div class='answer-body'>" + wiki_answer + "</div>"
-                    "<div class='sources-head'>Source wikis</div>"
-                    + src_rows + "</div>",
+                    "<div class='answer-card'><div class='answer-body'>" + wiki_answer + "</div>"
+                    "<div class='sources-head'>Source wikis</div>" + src_html + "</div>",
                     unsafe_allow_html=True
                 )
-            except Exception as e:
+            except:
                 st.markdown(
                     "<div class='answer-card'><div class='answer-body'>Wiki search temporarily unavailable.</div></div>",
                     unsafe_allow_html=True
                 )
 
-        st.markdown("""
-        <div class='section-head' style='margin-top:28px'>
-          <span class='section-title'>All matching tools</span>
-        </div>
-        """, unsafe_allow_html=True)
-
+        st.markdown(
+            "<div class='section-head' style='margin-top:24px'>"
+            "<span class='section-title'>All " + str(len(filtered)) + " matching tools</span></div>",
+            unsafe_allow_html=True
+        )
     else:
         st.markdown(
-            "<div class='section-head'><span class='section-title'>"
-            + str(len(filtered)) + " tools</span></div>",
+            "<div class='section-head'>"
+            "<span class='section-title'>" + str(len(filtered)) + " tools</span></div>",
             unsafe_allow_html=True
         )
 
-    cols = st.columns(2)
-    for i, (_, row) in enumerate(filtered.iterrows()):
-        free_str = str(row["free"]).lower()
-        if "yes" in free_str or ("free" in free_str and "igem" not in free_str and "freemium" not in free_str):
-            free_badge = "<span class='tool-free-yes'>Free</span>"
-        elif "igem" in free_str:
-            free_badge = "<span class='tool-free-yes'>Free for iGEM</span>"
-        elif "freemium" in free_str:
-            free_badge = "<span class='tool-free-no'>Freemium</span>"
-        else:
-            free_badge = "<span class='tool-free-no'>Paid</span>"
-
-        with cols[i % 2]:
-            st.markdown(
-                "<a href='" + str(row["url"]) + "' target='_blank' class='tool-card'>"
-                "<div class='tool-card-header'>"
-                "<div class='tool-name'>" + str(row["name"]) + "</div>"
-                + free_badge +
-                "</div>"
-                "<span class='tool-cat'>" + str(row["category"]) + "</span>"
-                "<div class='tool-desc'>" + str(row["description"]) + "</div>"
-                "<div class='tool-io'>Input: " + str(row["input"]) + " &rarr; Output: " + str(row["output"]) + "</div>"
-                "</a>",
-                unsafe_allow_html=True
-            )
+    # ── Tool cards using native Streamlit ─────────────────────────────────────
+    rows = [filtered.iloc[i:i+2] for i in range(0, len(filtered), 2)]
+    for row_df in rows:
+        cols = st.columns(2)
+        for j, (_, tool) in enumerate(row_df.iterrows()):
+            with cols[j]:
+                with st.container(border=True):
+                    # Header row
+                    h1, h2 = st.columns([3, 1])
+                    with h1:
+                        st.markdown(
+                            f"<div class='src-team' style='font-size:15px'>{tool['name']}</div>",
+                            unsafe_allow_html=True
+                        )
+                    with h2:
+                        st.markdown(
+                            free_badge(tool["free"]),
+                            unsafe_allow_html=True
+                        )
+                    # Category tag
+                    st.markdown(
+                        f"<span class='tag'>{tool['category']}</span>",
+                        unsafe_allow_html=True
+                    )
+                    # Description — full, no truncation
+                    st.markdown(
+                        f"<div class='about-p' style='margin-top:8px;font-size:13px'>{tool['description']}</div>",
+                        unsafe_allow_html=True
+                    )
+                    # Input/Output
+                    st.markdown(
+                        f"<div class='tool-io' style='font-size:12px;color:var(--teal);margin-top:6px'>"
+                        f"Input: {tool['input']} &rarr; Output: {tool['output']}</div>",
+                        unsafe_allow_html=True
+                    )
+                    # Link button
+                    st.link_button("Open tool →", tool["url"], use_container_width=True)
