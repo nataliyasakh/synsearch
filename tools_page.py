@@ -76,7 +76,8 @@ def render_tools_page():
     with col_a:
         category = st.selectbox("Category", CATEGORIES, key="tool_cat")
     with col_b:
-        free_only = st.toggle("Free only", key="tool_free", value=False)
+        free_filter = st.selectbox("Price", ["All tools", "Free only"], key="tool_free", label_visibility="visible")
+        free_only = (free_filter == "Free only")
 
     search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
