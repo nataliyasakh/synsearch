@@ -118,10 +118,21 @@ div[data-testid="stHorizontalBlock"]:first-of-type button:hover {
   transition: opacity .12s !important;
 }
 .stButton > button:hover { opacity: .85 !important; }
-/* Explicit override for search/action buttons outside nav */
-div[data-testid="stVerticalBlock"] .stButton > button {
-  background: var(--maroon) !important;
-  color: var(--paper) !important;
+/* Nav buttons override — must come AFTER the general .stButton rule */
+div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button {
+  background: transparent !important;
+  color: var(--ash) !important;
+  height: 40px !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+}
+div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
+  color: var(--orange) !important;
+  background: transparent !important;
   opacity: 1 !important;
 }
 
