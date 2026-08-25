@@ -66,9 +66,9 @@ def render_tools_page():
 
     c1, c2 = st.columns([3, 1])
     with c1:
-        category = st.selectbox("Category", CATEGORIES, key="tool_cat")
+        category = st.selectbox("Category", CATEGORIES, key="tool_cat", label_visibility="visible")
     with c2:
-        price_filter = st.selectbox("Price", ["All tools", "Free only"], key="tool_free")
+        price_filter = st.selectbox("Price", ["All tools", "Free only"], key="tool_free", label_visibility="visible")
 
     free_only = (price_filter == "Free only")
     search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
