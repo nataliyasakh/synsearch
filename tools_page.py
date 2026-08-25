@@ -72,17 +72,13 @@ def render_tools_page():
         placeholder="e.g.  I need to design primers for Gibson Assembly cloning"
     )
 
-    col_a, col_b, col_c = st.columns([3, 1, 1])
+    col_a, col_b = st.columns([4, 1])
     with col_a:
         category = st.selectbox("Category", CATEGORIES, key="tool_cat")
     with col_b:
-        st.markdown("<div style='padding-top:28px'>", unsafe_allow_html=True)
-        free_only = st.checkbox("Free only", key="tool_free", value=False)
-        st.markdown("</div>", unsafe_allow_html=True)
-    with col_c:
-        st.markdown("<div style='padding-top:22px'>", unsafe_allow_html=True)
-        search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+        free_only = st.toggle("Free only", key="tool_free", value=False)
+
+    search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
     # Load & filter
