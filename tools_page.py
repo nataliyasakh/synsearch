@@ -115,6 +115,8 @@ def render_tools_page():
         for _, row in filtered.iterrows():
             if str(row['name']).lower() in resp.choices[0].message.content.lower():
                 recommended_names.append(str(row['name']))
+        st.session_state['tool_recommended'] = recommended_names
+        st.session_state['tool_query_used'] = tool_query
 
         st.markdown(
             "<div class='answer-card'>"
@@ -131,6 +133,8 @@ def render_tools_page():
             "</div>",
             unsafe_allow_html=True
         )
+        import time
+        time.sleep(3)
         try:
             from retrieval import search as real_search
             wiki_answer, wiki_sources, _ = real_search("how did iGEM teams use " + tool_query)
@@ -183,9 +187,13 @@ def render_tools_page():
 
     # Tool cards — strict 2 per row
     # Use display_df if set (search mode), else show all filtered
-    try:
-        grid_data = display_df
-    except NameError:
+    recommended = st.session_state.get('tool_recommended', [])
+    last_query = st.session_state.get('tool_query_used', '')
+    if recommended and last_query:
+        grid_data = filtered[filtered['name'].isin(recommended)]
+        if len(grid_data) == 0:
+            grid_data = filtered
+    else:
         grid_data = filtered
     tool_list = list(grid_data.iterrows())
     for i in range(0, len(tool_list), 2):
