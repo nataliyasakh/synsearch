@@ -176,9 +176,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 .empty-state { text-align: center; padding: 72px 0; color: var(--ash); font-size: 16px; font-weight: 300; }
 .empty-state em { color: var(--orange); font-style: normal; }
 
-/* Disable browser copy popup / text selection highlight */
-::selection { background: transparent; }
-::-moz-selection { background: transparent; }
+
 </style>
 """, unsafe_allow_html=True)
 
