@@ -252,7 +252,7 @@ if st.session_state.page == "search":
             label_visibility="collapsed", key="q")
         fc1, fc2, fc3 = st.columns(3)
         with fc1:
-            year = st.selectbox("Year", ["All years","2019","2022","2023","2024","2025"], key="fy")
+            year = st.selectbox("Year", ["All years","2016","2017","2018","2019","2022","2023","2024","2025"], key="fy")
         with fc2:
             track = st.selectbox("Village", [
                 "All villages","Agriculture","Art & Design","Biomanufacturing","Bioremediation",
