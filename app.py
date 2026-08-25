@@ -176,6 +176,34 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 .empty-state { text-align: center; padding: 72px 0; color: var(--ash); font-size: 16px; font-weight: 300; }
 .empty-state em { color: var(--orange); font-style: normal; }
 
+/* Toggle styling */
+div[data-testid="stToggle"] label {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--muted) !important;
+  font-family: 'Lexend', sans-serif !important;
+}
+div[data-testid="stToggle"] div[data-testid="stMarkdownContainer"] p {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+/* Link button — match maroon theme */
+a[data-testid="stLinkButton"] {
+  background: var(--maroon) !important;
+  border: none !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+}
+a[data-testid="stLinkButton"] p {
+  color: var(--paper) !important;
+  font-family: 'Lexend', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
 
 </style>
 """, unsafe_allow_html=True)
