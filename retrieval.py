@@ -13,6 +13,7 @@ or from environment variables when running locally.
 """
 
 import os
+import re
 import streamlit as st
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone
@@ -166,7 +167,10 @@ def search(query: str, year="All years", track="All tracks",
         max_tokens=800,
     )
 
-    answer_html = response.choices[0].message.content.strip()
+    raw = response.choices[0].message.content.strip()
+    raw = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', raw)
+    raw = re.sub(r'\*(.+?)\*', r'<em>\1</em>', raw)
+    answer_html = raw
 
     # 5. Find similar projects (separate query for the similar panel)
     similar = find_similar(query, k=4)
