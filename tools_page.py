@@ -72,7 +72,7 @@ def render_tools_page():
         placeholder="e.g.  I need to design primers for Gibson Assembly cloning"
     )
 
-    col_a, col_b = st.columns([4, 1])
+    col_a, col_b, col_c = st.columns([3, 1, 1])
     with col_a:
         category = st.selectbox("Category", CATEGORIES, key="tool_cat")
     with col_b:
