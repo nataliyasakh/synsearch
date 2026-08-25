@@ -1,8 +1,6 @@
 """
 tools_page.py — Tools page for SynSearch.
-Clean design matching the rest of the app.
 """
-
 import re
 import pandas as pd
 import streamlit as st
@@ -30,25 +28,20 @@ def md_to_html(text):
     )
 
 def render_tools_page():
-    # Override link_button color to match app theme
     st.markdown("""
     <style>
-    a[data-testid="stLinkButton"] > div > p {
-      font-size: 13px !important;
-      font-weight: 700 !important;
-      letter-spacing: .08em !important;
-      text-transform: uppercase !important;
-    }
     a[data-testid="stLinkButton"] {
       background: var(--maroon) !important;
       border: none !important;
       border-radius: 3px !important;
     }
-    div[data-testid="stVerticalBlockBorderWrapper"] {
-      border-color: var(--border) !important;
-      border-radius: 3px !important;
-      background: #fff !important;
-      padding: 20px !important;
+    a[data-testid="stLinkButton"] p {
+      color: var(--paper) !important;
+      font-family: 'Lexend', sans-serif !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: .08em !important;
+      text-transform: uppercase !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -66,23 +59,21 @@ def render_tools_page():
     </div>
     """, unsafe_allow_html=True)
 
-    # Search
     tool_query = st.text_input(
         "tool_q", label_visibility="collapsed", key="tool_query",
         placeholder="e.g.  I need to design primers for Gibson Assembly cloning"
     )
 
-    col_a, col_b, col_c = st.columns([3, 1, 1])
-    with col_a:
+    c1, c2 = st.columns([3, 1])
+    with c1:
         category = st.selectbox("Category", CATEGORIES, key="tool_cat")
-    with col_b:
-        free_filter = st.selectbox("Price", ["All tools", "Free only"], key="tool_free", label_visibility="visible")
-        free_only = (free_filter == "Free only")
+    with c2:
+        price_filter = st.selectbox("Price", ["All tools", "Free only"], key="tool_free")
 
+    free_only = (price_filter == "Free only")
     search_btn = st.button("Find tools", key="tool_go", use_container_width=True)
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
-    # Load & filter
     df = load_tools()
     filtered = df.copy()
     if category != "All categories":
@@ -90,8 +81,8 @@ def render_tools_page():
     if free_only:
         filtered = filtered[filtered["free"].str.lower().str.contains("yes|free", na=False)]
 
-    # AI + wiki
-    if tool_query or search_btn:
+    # Only show AI + wiki if user actually typed something
+    if search_btn and tool_query.strip():
         with st.spinner("Finding best tools..."):
             tools_ctx = filtered[["name","category","use_case","description","free"]].to_string(index=False)
             try:
@@ -106,9 +97,9 @@ def render_tools_page():
                     messages=[
                         {"role": "system", "content": (
                             "You are a synthetic biology expert helping iGEM teams choose tools. "
-                            "Recommend TOP 3 tools from the database for the user's task. "
-                            "Write plain numbered list. No asterisks or markdown. "
-                            "For each: tool name, why it fits (1 sentence), key feature (1 sentence)."
+                            "Recommend TOP 3 tools from the database for the task. "
+                            "Write a plain numbered list. No asterisks. "
+                            "For each: tool name, why it fits (1 sentence), one key feature."
                         )},
                         {"role": "user", "content": "Task: " + tool_query + "\n\nTools:\n" + tools_ctx}
                     ],
@@ -116,7 +107,7 @@ def render_tools_page():
                 )
                 ai_html = md_to_html(resp.choices[0].message.content.strip())
             except Exception as e:
-                ai_html = "<p>Could not generate recommendation. Browse tools below.</p>"
+                ai_html = "<p>Recommendation temporarily unavailable. Browse tools below.</p>"
 
         st.markdown(
             "<div class='answer-card'>"
@@ -133,7 +124,6 @@ def render_tools_page():
             "</div>",
             unsafe_allow_html=True
         )
-
         with st.spinner("Searching iGEM wikis..."):
             try:
                 from retrieval import search as real_search
@@ -152,21 +142,29 @@ def render_tools_page():
                     unsafe_allow_html=True
                 )
             except:
-                st.markdown("<div class='answer-card'><div class='answer-body'>Wiki search temporarily unavailable.</div></div>", unsafe_allow_html=True)
+                pass
 
         st.markdown(
             "<div class='section-head' style='margin-top:28px'>"
             "<span class='section-title'>All " + str(len(filtered)) + " matching tools</span></div>",
             unsafe_allow_html=True
         )
-    else:
+
+    elif not tool_query.strip() and search_btn:
+        st.warning("Please type what you need to do before searching.")
         st.markdown(
             "<div class='section-head'><span class='section-title'>"
             + str(len(filtered)) + " tools</span></div>",
             unsafe_allow_html=True
         )
+    else:
+        st.markdown(
+            "<div class='section-head'><span class='section-title'>"
+            + str(len(filtered)) + " tools — type a task above for AI recommendations</span></div>",
+            unsafe_allow_html=True
+        )
 
-    # Tool cards — 2 per row using native containers
+    # Tool cards — strict 2 per row
     tool_list = list(filtered.iterrows())
     for i in range(0, len(tool_list), 2):
         cols = st.columns(2, gap="medium")
@@ -186,7 +184,7 @@ def render_tools_page():
 
             with cols[j]:
                 st.markdown(
-                    "<div class='answer-card' style='min-height:220px'>"
+                    "<div class='answer-card'>"
                     "<div style='display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px'>"
                     "<div class='src-team' style='font-size:17px'>" + str(tool["name"]) + "</div>"
                     + fb +
