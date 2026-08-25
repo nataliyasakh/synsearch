@@ -40,6 +40,7 @@ html, body, [data-testid="stAppViewContainer"] {
 [data-testid="collapsedControl"] { display: none !important; }
 
 /* ── NAV ── */
+/* Nav row styling — applied via container class */
 div[data-testid="stHorizontalBlock"]:first-of-type {
   background: var(--paper);
   border-bottom: 1px solid var(--border);
@@ -49,14 +50,15 @@ div[data-testid="stHorizontalBlock"]:first-of-type {
   gap: 0 !important;
 }
 div[data-testid="stHorizontalBlock"]:first-of-type div[data-testid="column"] { padding: 0 !important; }
-div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button {
+div[data-testid="stHorizontalBlock"]:first-of-type button {
   background: transparent !important; border: none !important; box-shadow: none !important;
   color: var(--ash) !important; font-family: 'Lexend', sans-serif !important;
   font-size: 12px !important; font-weight: 700 !important;
   letter-spacing: .14em !important; text-transform: uppercase !important;
   height: 40px !important; width: 100% !important; transition: color .12s !important;
+  text-transform: uppercase !important;
 }
-div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
+div[data-testid="stHorizontalBlock"]:first-of-type button:hover {
   color: var(--orange) !important; background: transparent !important;
 }
 
@@ -116,6 +118,12 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
   transition: opacity .12s !important;
 }
 .stButton > button:hover { opacity: .85 !important; }
+/* Explicit override for search/action buttons outside nav */
+div[data-testid="stVerticalBlock"] .stButton > button {
+  background: var(--maroon) !important;
+  color: var(--paper) !important;
+  opacity: 1 !important;
+}
 
 .sep { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
 
