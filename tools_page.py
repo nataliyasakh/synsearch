@@ -5,7 +5,7 @@ import re
 import pandas as pd
 import streamlit as st
 
-@st.cache_data
+@st.cache_data(ttl=0)
 def load_tools():
     return pd.read_csv("tools.csv")
 
