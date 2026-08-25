@@ -48,7 +48,7 @@ def render_tools_page():
 
     st.markdown("""
     <div style='padding:48px 0 24px'>
-      <div class='hero-eyebrow'>40 verified tools &middot; used by iGEM teams worldwide</div>
+      <div class='hero-eyebrow'>59 verified tools &middot; used by iGEM teams worldwide</div>
       <div class='hero-title' style='font-size:52px;text-align:left'>
         Find the right<br><em>tool for the job</em>
       </div>
@@ -220,11 +220,15 @@ def render_tools_page():
                     + fb +
                     "</div>"
                     "<span class='tag' style='font-size:12px'>" + str(tool["category"]) + "</span>"
-                    "<div style='font-size:15px;font-weight:300;color:#3a2a22;line-height:1.75;margin:12px 0 10px'>"
+                    "<div style='font-size:15px;font-weight:300;color:#3a2a22;line-height:1.75;margin:12px 0 8px'>"
                     + str(tool["description"]) +
                     "</div>"
-                    "<div style='font-size:13px;color:var(--teal);font-weight:500'>"
+                    "<div style='font-size:13px;color:var(--teal);font-weight:500;margin-bottom:10px'>"
                     "Input: " + str(tool["input"]) + " &rarr; Output: " + str(tool["output"]) +
+                    "</div>"
+                    "<div style='font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a7e75;margin-bottom:6px'>How to use in iGEM</div>"
+                    "<div style='font-size:13px;font-weight:300;color:#4a3a32;line-height:1.7'>"
+                    + str(tool.get("how_to_use", "")) +
                     "</div>"
                     "</div>",
                     unsafe_allow_html=True
