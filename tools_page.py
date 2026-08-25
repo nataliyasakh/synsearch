@@ -109,6 +109,13 @@ def render_tools_page():
             except Exception as e:
                 ai_html = "<p>Recommendation temporarily unavailable. Browse tools below.</p>"
 
+        # Extract tool names mentioned in the recommendation
+        import re as _re
+        recommended_names = []
+        for _, row in filtered.iterrows():
+            if str(row['name']).lower() in resp.choices[0].message.content.lower():
+                recommended_names.append(str(row['name']))
+
         st.markdown(
             "<div class='answer-card'>"
             "<div class='card-eyebrow'>AI recommendation</div>"
@@ -124,29 +131,39 @@ def render_tools_page():
             "</div>",
             unsafe_allow_html=True
         )
-        with st.spinner("Searching iGEM wikis..."):
-            try:
-                from retrieval import search as real_search
-                wiki_answer, wiki_sources, _ = real_search("how did iGEM teams use " + tool_query)
-                src_html = "".join(
-                    "<a href='" + s["url"] + "' target='_blank' class='source-row'>"
-                    "<div class='src-num'>[" + str(s["num"]) + "]</div>"
-                    "<div class='src-info'><div class='src-team'>" + s["team"] + "</div>"
-                    "<div class='src-meta'>" + s.get("track","") + " &middot; " + s["url"].replace("https://","") + "</div>"
-                    "</div></a>"
-                    for s in wiki_sources
-                )
-                st.markdown(
-                    "<div class='answer-card'><div class='answer-body'>" + wiki_answer + "</div>"
-                    "<div class='sources-head'>Source wikis</div>" + src_html + "</div>",
-                    unsafe_allow_html=True
-                )
-            except:
-                pass
+        try:
+            from retrieval import search as real_search
+            wiki_answer, wiki_sources, _ = real_search("how did iGEM teams use " + tool_query)
+            src_html = "".join(
+                "<a href='" + s["url"] + "' target='_blank' class='source-row'>"
+                "<div class='src-num'>[" + str(s["num"]) + "]</div>"
+                "<div class='src-info'><div class='src-team'>" + s["team"] + "</div>"
+                "<div class='src-meta'>" + s.get("track","") + " &middot; " + s["url"].replace("https://","") + "</div>"
+                "</div></a>"
+                for s in wiki_sources
+            )
+            st.markdown(
+                "<div class='answer-card'><div class='answer-body'>" + wiki_answer + "</div>"
+                "<div class='sources-head'>Source wikis</div>" + src_html + "</div>",
+                unsafe_allow_html=True
+            )
+        except Exception as e:
+            st.markdown(
+                "<div class='answer-card'><div class='answer-body' style='color:var(--ash)'>Wiki context temporarily unavailable.</div></div>",
+                unsafe_allow_html=True
+            )
+
+        # Filter grid to recommended tools only
+        if recommended_names:
+            display_df = filtered[filtered['name'].isin(recommended_names)]
+            grid_label = str(len(display_df)) + " recommended tools"
+        else:
+            display_df = filtered.head(6)
+            grid_label = "Top tools in this category"
 
         st.markdown(
             "<div class='section-head' style='margin-top:28px'>"
-            "<span class='section-title'>All " + str(len(filtered)) + " matching tools</span></div>",
+            "<span class='section-title'>" + grid_label + "</span></div>",
             unsafe_allow_html=True
         )
 
@@ -165,7 +182,12 @@ def render_tools_page():
         )
 
     # Tool cards — strict 2 per row
-    tool_list = list(filtered.iterrows())
+    # Use display_df if set (search mode), else show all filtered
+    try:
+        grid_data = display_df
+    except NameError:
+        grid_data = filtered
+    tool_list = list(grid_data.iterrows())
     for i in range(0, len(tool_list), 2):
         cols = st.columns(2, gap="medium")
         for j in range(2):
