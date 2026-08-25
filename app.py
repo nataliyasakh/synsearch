@@ -184,7 +184,7 @@ div[data-testid="stHorizontalBlock"]:first-of-type .stButton > button:hover {
 DEMO_BENCH = [
     {"name":"Bare Groq (no retrieval)","desc":"No retrieval — model answers from training data only. Fluent but frequently hallucinated.",
      "f":0.11,"r":0.75,"c":0.12,"color":"#6e1e18"},
-    {"name":"Groq fast + SynSearch RAG","desc":"Fast model grounded in 1,000+ iGEM wikis (2019–2025) via Pinecone vector retrieval.",
+    {"name":"Groq fast + SynSearch RAG","desc":"Fast model grounded in 1,000+ iGEM wikis (2016–2025) via Pinecone vector retrieval.",
      "f":0.42,"r":0.19,"c":0.30,"color":"#d6884a"},
     {"name":"Groq large + SynSearch RAG","desc":"Large model + SynSearch RAG — 7× improvement in faithfulness over bare LLM.",
      "f":0.79,"r":0.27,"c":0.21,"color":"#8fb3ac"},
@@ -236,7 +236,7 @@ if st.session_state.page == "search":
 
     st.markdown("""
     <div class='hero'>
-      <div class='hero-eyebrow'>iGEM knowledge retrieval &middot; 1,000+ wikis &middot; 2019–2025 corpus</div>
+      <div class='hero-eyebrow'>iGEM knowledge retrieval &middot; 1,000+ wikis &middot; 2016–2025 corpus</div>
       <div class='hero-title'>Ask the iGEM<br><em>archive</em></div>
       <div class='hero-sub'>
         Search past iGEM team wikis in plain English.
@@ -468,7 +468,7 @@ elif st.session_state.page == "about":
         SynSearch builds directly on their foundation. We reuse their 2019 corpus under CC BY 4.0
         and independently contributed:
         <ul class='about-ul'>
-          <li>Corpus expansion from 343 teams (2019 only) to 1,000+ teams across 2019–2025</li>
+          <li>Corpus expansion from 343 teams (2019 only) to 1,000+ teams across 2016–2025</li>
           <li>Inline source citations linking to the specific wiki page — Munich's own listed future work</li>
           <li>Metadata filtering by year, village, and medal before retrieval</li>
           <li>A "Similar Projects" semantic explorer — not available in any existing registry</li>
@@ -480,7 +480,7 @@ elif st.session_state.page == "about":
     <div class='about-card'>
       <div class='about-h'>Stack</div>
       <div class='about-p'>
-        sentence-transformers (all-MiniLM-L6-v2) &middot; Pinecone (53,539 vectors) &middot;
+        sentence-transformers (all-MiniLM-L6-v2) &middot; Pinecone (58,569 vectors) &middot;
         Groq API &middot; Streamlit Cloud &middot; Munich 2024 corpus (CC BY 4.0)
       </div>
     </div>
