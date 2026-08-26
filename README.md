@@ -1,6 +1,6 @@
 # SynSearch
 
-**iGEM 2025 Software & AI Village — NYUAD**
+**iGEM 2026 Software & AI Village — NYUAD**
 
 Open-source RAG (retrieval-augmented generation) system for searching the iGEM competition knowledge archive. A wet-lab biologist types a plain-English question and gets sourced answers with direct links to the original team wikis.
 
