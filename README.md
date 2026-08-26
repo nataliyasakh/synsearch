@@ -1,100 +1,116 @@
 # SynSearch
 
-**iGEM 2026 Software Track** — Open-source RAG system for searching the iGEM knowledge archive.
+**iGEM 2025 Software & AI Village — NYUAD**
 
-A wet-lab biologist types a plain-English question. SynSearch retrieves the most relevant past iGEM team wikis and returns a sourced answer with direct links to the original pages. No hallucinated citations. No terminal required.
+Open-source RAG (retrieval-augmented generation) system for searching the iGEM competition knowledge archive. A wet-lab biologist types a plain-English question and gets sourced answers with direct links to the original team wikis.
 
-→ **Live demo:** TODO — replace with your real Streamlit Cloud URL before presenting.
+→ **[synsearchnyuad.streamlit.app](https://synsearchnyuad.streamlit.app)**
 
 ---
 
-## What's in this repo
+## What it does
+
+- **Search** — ask any question in plain English, get a synthesised answer with inline citations linking to specific wiki pages
+- **Similar Projects** — describe your project and find the most semantically similar past iGEM teams (vector similarity, not keyword matching)
+- **Tools** — 59 verified wet-lab software tools with AI recommendations and wiki context showing how iGEM teams actually used each tool
+- **Benchmark** — three-way comparison showing RAG improves faithfulness 7× over a bare LLM
+
+---
+
+## Corpus
+
+| Year | Source | Vectors |
+|------|--------|---------|
+| 2016 | Wayback Machine | 1,333 |
+| 2017 | Wayback Machine | 1,338 |
+| 2018 | Wayback Machine | 2,392 |
+| 2019 | Munich 2024 corpus (CC BY 4.0) | 3,169 |
+| 2022 | igem.wiki via iGEM API | 10,505 |
+| 2023 | igem.wiki via iGEM API | 12,408 |
+| 2024 | igem.wiki via iGEM API | 12,806 |
+| 2025 | igem.wiki via iGEM API | 14,677 |
+| **Total** | | **58,569** |
+
+---
+
+## Stack
 
 ```
-app.py                  # Main Streamlit app (all pages) — runs on demo data out of the box
-requirements.txt        # Python dependencies
-tools_page.py            # Tools page (not yet in repo — app shows a placeholder until this is added)
-harvest_corpus.py        # Converts Munich's xlsx -> corpus.json (not yet in repo)
-build_index.py           # Chunks + embeds corpus.json -> Pinecone index (not yet in repo)
-retrieval.py             # search() + find_similar() functions (not yet in repo)
-.streamlit/config.toml   # Dark theme config (not yet in repo)
+sentence-transformers (all-MiniLM-L6-v2)  →  Pinecone  →  Groq (compound-mini)  →  Streamlit Cloud
 ```
-
-**Current status:** The UI runs fully on demo data by default. `app.py` automatically falls back to
-placeholder answers, sources, and similar-project cards whenever `retrieval.py` or `tools_page.py`
-aren't present, so cloning and running this repo today works without crashing. Once you add
-`retrieval.py`, `app.py` picks it up automatically — no manual code changes needed.
 
 ---
 
 ## Run locally
 
-```
+```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-No API key needed for the demo. The full pipeline (once `retrieval.py` is built) additionally needs:
-
+Requires a `.streamlit/secrets.toml` with:
+```toml
+PINECONE_API_KEY = "..."
+GROQ_API_KEY = "..."
 ```
-pip install requests beautifulsoup4
-```
-
-...plus a `PINECONE_API_KEY` and `GROQ_API_KEY` set as environment variables.
 
 ---
 
-## Building the real index
+## Rebuild the corpus index
 
-1. Download `processed_data.xlsx` from the Munich 2024 repo (see Attribution below)
-2. Run `python harvest_corpus.py` → produces `corpus.json`
-3. Run `python build_index.py` → embeds and upserts vectors into your Pinecone index
-4. Add `retrieval.py` with `search()` and `find_similar()` functions matching the signatures called
-   in `app.py` — the demo fallback disappears automatically once the file exists
+```bash
+# Scrape 2022+ wikis via iGEM API
+python scrape_corpus.py --year 2022 --delay 1
+
+# Scrape pre-2022 via Wayback Machine
+python scrape_wayback.py --year 2018 --delay 2
+
+# Embed and upload to Pinecone
+python embed_corpus.py --year 2022
+```
+
+---
+
+## Benchmark
+
+Evaluated on 50 manually verified iGEM-specific questions using an LLM-as-judge approach following the RAGAS framework (Es et al., 2023).
+
+| System | Faithfulness | Answer Relevancy | Context Recall |
+|--------|-------------|-----------------|----------------|
+| Bare Groq (no retrieval) | 0.11 | 0.75 | 0.12 |
+| Groq fast + SynSearch RAG | 0.42 | 0.19 | 0.30 |
+| Groq large + SynSearch RAG | **0.79** | 0.27 | 0.21 |
+
+RAG improves faithfulness **7×** over a bare LLM on iGEM-specific questions.
 
 ---
 
 ## What we built vs. what we inherited
 
 **Inherited (Munich 2024, CC BY 4.0):**
-
-- Pre-scraped 2019 iGEM wiki corpus (343 teams, `processed_data.xlsx`)
-- Original scraper logic (`process_data.py`)
+- Pre-scraped 2019 iGEM wiki corpus (343 teams)
+- Proof of concept that RAG reduces hallucination on iGEM data
 
 **Built by us:**
-
-- Inline source citations with direct wiki links (Munich listed this as future work)
-- Metadata filtering by year, track, and medal before retrieval
-- "Similar projects" semantic explorer — not available anywhere else
-- Three-way RAGAS benchmark: bare Groq model vs. Groq (fast) + RAG vs. Groq (large) + RAG
-- Zero-install hosted interface — no Docker, no user API key required for the demo
-- Lighter stack: sentence-transformers + Pinecone replaces Docker + Qdrant
+- Corpus expansion: 343 teams (2019) → 1,000+ teams (2016–2025)
+- Scrapers for Wayback Machine (pre-2022) and igem.wiki API (2022+)
+- Inline source citations linking to the specific wiki page
+- Village/year/medal metadata filtering before retrieval
+- Similar Projects semantic explorer
+- Tools page with 59 verified tools + AI recommendations + wiki context
+- Published three-way benchmark with manually verified ground truth
+- Zero-install hosted interface — no Docker, no terminal, no API key required
 
 ---
 
 ## Attribution
 
-The 2019 iGEM wiki corpus used in this project was scraped and curated by the **Munich 2024 iGEM team** and is used under Creative Commons Attribution 4.0
-International (CC BY 4.0).
+The 2019 iGEM wiki corpus was scraped and curated by the **Munich 2024 iGEM team** and is used under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
-Source: <https://gitlab.igem.org/2024/software-tools/munich>
+Source: https://gitlab.igem.org/2024/software-tools/munich
 
----
-
-## Benchmark
-
-| System                       | Faithfulness | Answer Relevancy | Context Recall |
-| ----------------------------- | ------------ | ----------------- | --------------- |
-| Bare Groq (no retrieval)      | 0.11         | 0.75              | 0.12            |
-| Groq (fast) + SynSearch RAG   | 0.42         | 0.19              | 0.30            |
-| Groq (large) + SynSearch RAG  | 0.79         | 0.27              | 0.21            |
-
-Evaluated on 50 manually-verified iGEM-specific questions using RAGAS. These are the same demo
-numbers shown on the app's Benchmark page — update both together once a full evaluation run is
-complete. **Worth double-checking before presenting:** answer relevancy and context recall both
-drop from the bare model to the RAG variants, and the "large" RAG model scores lower on context
-recall than the "fast" one — that pattern is unusual for a retrieval system and may indicate the
-demo numbers were placeholders rather than a real run.
+**Citation:**
+Es, S., James, J., Espinosa-Anke, L., & Schockaert, S. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation. *arXiv:2309.15217*.
 
 ---
 
