@@ -1,0 +1,13 @@
+fix_*.py
+fixapp.py
+patch_*.py
+*.log
+__pycache__/
+.DS_Store
+corpus_raw/
+corpus.json
+processed_data.xlsx
+database.csv
+village_map.json
+run_benchmark.py
+fix_ragas.py
