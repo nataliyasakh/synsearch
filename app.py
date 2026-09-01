@@ -288,7 +288,7 @@ elif st.session_state.page == "similar":
                 for oy in other_years[:4]:
                     oy_url  = oy["url"]
                     oy_year = oy["year"]
-                    link_parts.append(f"<a href='{oy_url}' target='_blank' style='color:var(--teal);text-decoration:none;font-weight:600'>{oy_year}</a>")
+                    link_parts.append(f"<a href='{oy_url}' target='_blank' onclick='event.stopPropagation()' style='color:var(--teal);text-decoration:none;font-weight:600'>{oy_year}</a>")
                 links = " &middot; ".join(link_parts)
                 other_html = f"<div style='margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--ash)'><span style='font-weight:600'>Also competed:</span> {links}</div>"
             card_url = s['url']
