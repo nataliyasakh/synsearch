@@ -275,14 +275,28 @@ elif st.session_state.page == "similar":
                 real_sim = DEMO_SIMILAR
 
         st.markdown("<div class='section-head' style='margin-top:24px'><span class='section-title'>Top matches across 1,000+ teams</span></div>", unsafe_allow_html=True)
+        from retrieval import get_institution_years
         sim2 = "<div class='sim-grid'>"
         for s in real_sim:
             village = s.get("track", "")
             med = s.get("medal", "")
-            sim2 += (f"<a href='{s['url']}' target='_blank' class='sim-card'><div class='sim-pct'>{s['score']}% match</div><div class='sim-team'>{s['team']} &middot; {s['year']}</div><div class='sim-title-text'>{s.get('title', '') or s.get('institution', '')}</div><div class='tags'>"
+            institution = s.get("institution", s.get("team", ""))
+            other_years = get_institution_years(institution, int(s["year"]))
+            other_html = ""
+            if other_years:
+                links = " &middot; ".join(
+                    f"<a href='{oy["url"]}' target='_blank' style='color:var(--teal);text-decoration:none'>{oy["year"]}</a>"
+                    for oy in other_years[:4]
+                )
+                other_html = f"<div style='margin-top:8px;font-size:11px;color:var(--ash)'>{institution} also competed: {links}</div>"
+            sim2 += (f"<a href='{s['url']}' target='_blank' class='sim-card'>"
+                     f"<div class='sim-pct'>{s['score']}% match</div>"
+                     f"<div class='sim-team'>{s['team']} &middot; {s['year']}</div>"
+                     f"<div class='sim-title-text'>{s.get('title','') or institution}</div>"
+                     f"<div class='tags'>"
                      + (f"<span class='tag'>{village}</span>" if village else "")
-                     + (f"<span class='tag'>{med}</span>" if med and med not in ("-", "Unknown", "") else "")
-                     + f"</div>{sbar(s['score'])}</a>")
+                     + (f"<span class='tag'>{med}</span>" if med and med not in ("-","Unknown","") else "")
+                     + f"</div>{sbar(s['score'])}{other_html}</a>")
         st.markdown(sim2 + "</div>", unsafe_allow_html=True)
 
 # TOOLS
