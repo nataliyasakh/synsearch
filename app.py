@@ -252,7 +252,7 @@ if st.session_state.page == "search":
         for s in real_similar:
             village = s.get("track", "")
             med = s.get("medal", "")
-            sim += (f"<a href='{s['url']}' target='_blank' class='sim-card'><div class='sim-pct'>{s['score']}% match</div><div class='sim-team'>{s['team']}</div><div class='sim-title-text'>{s.get('title','')}</div><div class='tags'>"
+            sim += (f"<a href='{s['url']}' target='_blank' class='sim-card'><div class='sim-pct'>{s['score']}% match</div><div class='sim-team'>{s['team']} &middot; {s['year']}</div><div class='sim-title-text'>{s.get('institution', s['team'])}</div><div class='tags'>"
                     + (f"<span class='tag'>{village}</span>" if village else "")
                     + (f"<span class='tag'>{med}</span>" if med and med not in ("-", "Unknown", "") else "")
                     + f"<span class='tag'>{s['year']}</span></div>{sbar(s['score'])}</a>")
@@ -279,7 +279,7 @@ elif st.session_state.page == "similar":
         for s in real_sim:
             village = s.get("track", "")
             med = s.get("medal", "")
-            sim2 += (f"<a href='{s['url']}' target='_blank' class='sim-card'><div class='sim-pct'>{s['score']}% match</div><div class='sim-team'>{s['team']} &middot; {s['year']}</div><div class='sim-title-text'>{s.get('title','')}</div><div class='tags'>"
+            sim2 += (f"<a href='{s['url']}' target='_blank' class='sim-card'><div class='sim-pct'>{s['score']}% match</div><div class='sim-team'>{s['team']} &middot; {s['year']}</div><div class='sim-title-text'>{s.get('title', '') or s.get('institution', '')}</div><div class='tags'>"
                      + (f"<span class='tag'>{village}</span>" if village else "")
                      + (f"<span class='tag'>{med}</span>" if med and med not in ("-", "Unknown", "") else "")
                      + f"</div>{sbar(s['score'])}</a>")
