@@ -278,3 +278,42 @@ def find_similar(query: str, k: int = 4):
             break
 
     return similar
+
+
+# ── Institution history ───────────────────────────────────────────────────────
+
+def get_institution_years(institution: str, current_year: int, k: int = 5) -> list:
+    """
+    Return other years this institution competed, sorted by year.
+    Queries the project-summaries namespace filtering by institution name.
+    """
+    if not institution:
+        return []
+    try:
+        embedder = _load_embedder()
+        index    = _load_pinecone()
+        # Embed the institution name as query
+        q_vec = embedder.encode([institution], normalize_embeddings=True)[0].tolist()
+        results = index.query(
+            vector=q_vec,
+            top_k=20,
+            include_metadata=True,
+            namespace="project-summaries",
+        )
+        seen  = set()
+        years = []
+        for match in results.matches:
+            m = match.metadata
+            inst = m.get("institution", "")
+            year = m.get("year", 0)
+            # Match institution name loosely
+            if (institution.lower() in inst.lower() or inst.lower() in institution.lower())                and year != current_year and year not in seen:
+                seen.add(year)
+                years.append({
+                    "year": year,
+                    "url":  m.get("url", ""),
+                    "team": m.get("team", ""),
+                })
+        return sorted(years, key=lambda x: x["year"])
+    except Exception:
+        return []
