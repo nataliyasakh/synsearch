@@ -183,33 +183,43 @@ def search(query: str, year="All years", track="All tracks",
 def find_similar(query: str, k: int = 4):
     """
     Return the k most semantically similar iGEM projects to the query.
-    Deduplicates by team so you don't get 4 chunks from the same project.
+    Queries the project-summaries namespace (one embedding per team)
+    instead of the default chunk namespace, fixing the paragraph-vs-project
+    problem identified in code review.
     """
     embedder = _load_embedder()
     index    = _load_pinecone()
 
     q_vec = embedder.encode([query], normalize_embeddings=True)[0].tolist()
 
-    # Fetch more than k to allow dedup
-    results = index.query(vector=q_vec, top_k=k * 3, include_metadata=True)
+    # Query project-level summaries namespace
+    results = index.query(
+        vector=q_vec,
+        top_k=k * 2,
+        include_metadata=True,
+        namespace="project-summaries"
+    )
 
-    seen   = set()
+    seen    = set()
     similar = []
     for match in results.matches:
         m = match.metadata
-        if m["team"] in seen:
+        team_key = (m.get("team",""), m.get("year",""))
+        if team_key in seen:
             continue
-        seen.add(m["team"])
-        raw_track2 = m.get("track", "")
-        raw_medal2 = m.get("prize", m.get("medal", ""))
+        seen.add(team_key)
+        raw_track = m.get("track", "")
+        raw_medal = m.get("medal", "")
         similar.append({
-            "score": int(match.score * 100),
-            "team":  m.get("team", ""),
-            "year":  m.get("year", ""),
-            "title": m.get("title", m.get("page", "")),
-            "track": VILLAGE_MAP.get(raw_track2, raw_track2) if raw_track2 else "",
-            "medal": raw_medal2 if raw_medal2 and raw_medal2 not in ("Unknown", "-", "") else "",
-            "url":   m.get("url", ""),
+            "score":       int(match.score * 100),
+            "team":        m.get("team", ""),
+            "year":        m.get("year", ""),
+            "institution": m.get("institution", ""),
+            "title":       m.get("title", ""),
+            "track":       VILLAGE_MAP.get(raw_track, raw_track) if raw_track else "",
+            "medal":       raw_medal if raw_medal and raw_medal not in ("Unknown", "-", "") else "",
+            "url":         m.get("url", ""),
+            "pages":       m.get("pages", ""),
         })
         if len(similar) == k:
             break
