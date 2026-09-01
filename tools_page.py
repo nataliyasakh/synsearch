@@ -98,8 +98,9 @@ def render_tools_page():
                         {"role": "system", "content": (
                             "You are a synthetic biology expert helping iGEM teams choose tools. "
                             "Recommend TOP 3 tools from the database for the task. "
-                            "Write a plain numbered list. No asterisks. "
-                            "For each: tool name, why it fits (1 sentence), one key feature."
+                            "Write a plain numbered list. No asterisks. No markdown. "
+                            "For each tool write exactly 2 sentences: why it fits this task, and one specific feature. "
+                            "Be direct and concise. Total response under 150 words."
                         )},
                         {"role": "user", "content": "Task: " + tool_query + "\n\nTools:\n" + tools_ctx}
                     ],
@@ -134,7 +135,7 @@ def render_tools_page():
             unsafe_allow_html=True
         )
         import time
-        time.sleep(3)
+        time.sleep(8)
         try:
             from retrieval import search as real_search
             wiki_answer, wiki_sources, _ = real_search("how did iGEM teams use " + tool_query)
