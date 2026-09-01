@@ -232,10 +232,6 @@ if st.session_state.page == "search":
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
-    if st.session_state.pop("_village_search", False):
-        go = True
-        if not query.strip(): query = "iGEM projects"
-
     if go or (query and query.strip()):
         with st.spinner("Searching corpus..."):
             try:
@@ -274,27 +270,7 @@ if st.session_state.page == "search":
             "</div>",
             unsafe_allow_html=True
         )
-        st.markdown(
-            "<div style='text-align:center;margin-top:16px'>"
-            "<span style='font-size:12px;font-weight:700;letter-spacing:.12em;"
-            "text-transform:uppercase;color:var(--ash)'>Or explore by village</span>"
-            "</div>",
-            unsafe_allow_html=True
-        )
-        village_options = [
-            "Diagnostics", "Health & Medicine", "Environment",
-            "Foundational Advance", "Manufacturing", "Food & Nutrition",
-            "Therapeutics", "Software & AI", "Bioremediation", "Climate Crisis",
-            "Hardware", "Energy",
-        ]
-        vcols = st.columns(6)
-        for vi, vname in enumerate(village_options):
-            with vcols[vi % 6]:
-                if st.button(vname, key=f"vpill_{vi}", use_container_width=True):
-                if st.button(vname, key=f"vpill_{vi}", use_container_width=True):
-                    st.session_state["_village_filter"] = vname
-                    st.session_state["_village_search"] = True
-                    st.rerun()
+
 # SIMILAR PROJECTS
 elif st.session_state.page == "similar":
     st.markdown("<div style='padding:64px 0 32px'><div class='hero-eyebrow'>Semantic similarity explorer</div><div class='hero-title' style='font-size:48px;text-align:left'>Find projects<br><em>like yours</em></div><div class='hero-sub' style='text-align:left;margin:12px 0 0'>Describe your project. SynSearch ranks the closest past iGEM teams by vector similarity. Google cannot do this.</div></div>", unsafe_allow_html=True)
