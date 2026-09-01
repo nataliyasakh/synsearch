@@ -72,6 +72,57 @@ def _load_groq():
     return Groq(api_key=key)
 
 
+# ── Query expansion ──────────────────────────────────────────────────────────
+
+# Maps known technical terms to expanded synonyms so the embedder
+# gets richer semantic context for specific gene names, tools, and parts.
+TERM_EXPANSIONS = {
+    # Tools
+    "rbs calculator":   "RBS calculator ribosome binding site translation initiation rate Salis Lab",
+    "benchling":        "Benchling sequence design DNA cloning primer ELN lab notebook",
+    "snapgene":         "SnapGene plasmid map cloning Gibson Golden Gate restriction",
+    "copasi":           "COPASI ODE model genetic circuit kinetics simulation",
+    "alphafold":        "AlphaFold protein structure prediction folding",
+    "crispor":          "CRISPOR guide RNA gRNA off-target CRISPR Cas9",
+    "nebuilder":        "NEBuilder Gibson Assembly primer overlap NEB",
+    # Common part prefixes
+    "j23":   "J23 Anderson promoter constitutive expression E. coli",
+    "b0034": "B0034 RBS ribosome binding site",
+    "k1":    "BioBrick part iGEM registry",
+    # Techniques
+    "gibson assembly":   "Gibson Assembly isothermal cloning overlap extension",
+    "golden gate":       "Golden Gate assembly type IIS restriction enzyme modular cloning",
+    "flow cytometry":    "flow cytometry FACS fluorescence single cell GFP RFP reporter",
+    "colony pcr":        "colony PCR verification screening clone gel electrophoresis",
+    "western blot":      "western blot protein expression SDS-PAGE antibody detection",
+    "sanger sequencing": "Sanger sequencing verification confirmation mutation",
+    "transformation":    "transformation competent cells heat shock electroporation plasmid",
+    # Organisms
+    "e. coli":        "E. coli Escherichia coli bacteria chassis BL21 DH5alpha",
+    "b. subtilis":    "B. subtilis Bacillus subtilis gram positive chassis sporulation",
+    "s. cerevisiae":  "S. cerevisiae yeast Saccharomyces cerevisiae eukaryote chassis",
+    # iGEM concepts
+    "biosensor":  "biosensor detection signal sensing reporter GFP fluorescence",
+    "toggle switch": "toggle switch bistable genetic circuit mutual repression",
+    "kill switch":   "kill switch biocontainment safety suicide gene",
+    "quorum sensing": "quorum sensing LuxR LuxI AHL cell density communication",
+}
+
+def expand_query(query: str) -> str:
+    """
+    Expand technical terms in the query to improve semantic matching.
+    Appends synonym context without changing the original query intent.
+    """
+    q_lower = query.lower()
+    expansions = []
+    for term, expansion in TERM_EXPANSIONS.items():
+        if term in q_lower:
+            expansions.append(expansion)
+    if expansions:
+        return query + " " + " ".join(expansions)
+    return query
+
+
 # ── Metadata filter builder ───────────────────────────────────────────────────
 
 def _build_filter(year: str, track: str, medal: str) -> dict | None:
@@ -101,8 +152,9 @@ def search(query: str, year="All years", track="All tracks",
     index    = _load_pinecone()
     groq     = _load_groq()
 
-    # 1. Embed query
-    q_vec = embedder.encode([query], normalize_embeddings=True)[0].tolist()
+    # 1. Expand query with technical synonyms then embed
+    expanded = expand_query(query)
+    q_vec = embedder.encode([expanded], normalize_embeddings=True)[0].tolist()
 
     # 2. Retrieve from Pinecone (with optional metadata filter)
     results = index.query(
@@ -190,7 +242,8 @@ def find_similar(query: str, k: int = 4):
     embedder = _load_embedder()
     index    = _load_pinecone()
 
-    q_vec = embedder.encode([query], normalize_embeddings=True)[0].tolist()
+    expanded = expand_query(query)
+    q_vec = embedder.encode([expanded], normalize_embeddings=True)[0].tolist()
 
     # Query project-level summaries namespace
     results = index.query(
