@@ -209,20 +209,25 @@ def search(query: str, year="All years", track="All tracks",
         "Answer with inline citations:"
     )
 
-    response = groq.chat.completions.create(
-        model="groq/compound-mini",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user",   "content": user_prompt},
-        ],
-        temperature=0.1,   # low temp = stick to sources
-        max_tokens=800,
-    )
-
-    raw = response.choices[0].message.content.strip()
-    raw = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', raw)
-    raw = re.sub(r'\*(.+?)\*', r'<em>\1</em>', raw)
-    answer_html = raw
+    try:
+        response = groq.chat.completions.create(
+            model="groq/compound-mini",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user",   "content": user_prompt},
+            ],
+            temperature=0.1,
+            max_tokens=800,
+        )
+        raw = response.choices[0].message.content.strip()
+        raw = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', raw)
+        raw = re.sub(r'\*(.+?)\*', r'<em>\1</em>', raw)
+        answer_html = raw
+    except Exception as e:
+        if "rate" in str(e).lower() or "429" in str(e):
+            answer_html = "<span style='color:var(--ash)'>Rate limit reached — please wait a few seconds and try again.</span>"
+        else:
+            answer_html = f"<span style='color:var(--ash)'>Could not generate answer: {type(e).__name__}</span>"
 
     # 5. Find similar projects (separate query for the similar panel)
     similar = find_similar(query, k=4)
