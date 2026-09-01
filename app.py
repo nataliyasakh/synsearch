@@ -292,14 +292,15 @@ elif st.session_state.page == "similar":
                 links = " &middot; ".join(link_parts)
                 other_html = f"<div style='margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--ash)'><span style='font-weight:600'>Also competed:</span> {links}</div>"
             card_url = s['url']
-            card = (f"<a href='{card_url}' target='_blank' class='sim-card'>"
+            card = ("<div style='display:flex;flex-direction:column'>"
+                    f"<a href='{card_url}' target='_blank' class='sim-card' style='flex:1'>"
                     f"<div class='sim-pct'>{s['score']}% match</div>"
                     f"<div class='sim-team'>{s['team']} &middot; {s['year']}</div>"
                     f"<div class='sim-title-text'>{s.get('title','') or institution}</div>"
                     f"<div class='tags'>"
                     + (f"<span class='tag'>{village}</span>" if village else "")
                     + (f"<span class='tag'>{med}</span>" if med and med not in ("-","Unknown","") else "")
-                    + f"</div>{sbar(s['score'])}</a>{other_html}")
+                    + f"</div>{sbar(s['score'])}</a>{other_html}</div>")
             sim2 += card
         st.markdown(sim2 + "</div>", unsafe_allow_html=True)
 
