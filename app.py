@@ -290,7 +290,7 @@ if st.session_state.page == "search":
                 unsafe_allow_html=True
             )
             hist = st.session_state.search_history[:3]
-            hcols = st.columns(len(hist))
+            hcols = st.columns(3)
             for hi, hq in enumerate(hist):
                 with hcols[hi]:
                     if st.button(hq[:40] + ("..." if len(hq) > 40 else ""),
