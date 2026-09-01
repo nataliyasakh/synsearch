@@ -197,6 +197,8 @@ def mbar(val, color):
 
 if "page" not in st.session_state:
     st.session_state.page = "search"
+if "search_history" not in st.session_state:
+    st.session_state.search_history = []
 
 PAGES = [("Search", "search"), ("Similar Projects", "similar"), ("Tools", "tools"), ("Benchmark", "benchmark"), ("About", "about")]
 
@@ -232,7 +234,16 @@ if st.session_state.page == "search":
 
     st.markdown("<hr class='sep'>", unsafe_allow_html=True)
 
+    _hq = st.session_state.pop("_hist_query", None)
+    if _hq:
+        query = _hq
+        go = True
+
     if go or (query and query.strip()):
+        # Save to history
+        if query and query.strip() and query not in st.session_state.search_history:
+            st.session_state.search_history = [query] + st.session_state.search_history[:4]
+
         with st.spinner("Searching corpus..."):
             try:
                 from retrieval import search as real_search
@@ -270,6 +281,22 @@ if st.session_state.page == "search":
             "</div>",
             unsafe_allow_html=True
         )
+        if st.session_state.get("search_history"):
+            st.markdown(
+                "<div style='text-align:center;margin-top:8px'>"
+                "<span style='font-size:12px;font-weight:700;letter-spacing:.12em;"
+                "text-transform:uppercase;color:var(--ash)'>Recent searches</span>"
+                "</div>",
+                unsafe_allow_html=True
+            )
+            hist = st.session_state.search_history[:3]
+            hcols = st.columns(len(hist))
+            for hi, hq in enumerate(hist):
+                with hcols[hi]:
+                    if st.button(hq[:40] + ("..." if len(hq) > 40 else ""),
+                                 key=f"hist_{hi}", use_container_width=True):
+                        st.session_state["_hist_query"] = hq
+                        st.rerun()
 
 # SIMILAR PROJECTS
 elif st.session_state.page == "similar":
