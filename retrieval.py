@@ -285,34 +285,40 @@ def find_similar(query: str, k: int = 4):
 def get_institution_years(institution: str, current_year: int, k: int = 5) -> list:
     """
     Return other years this institution competed, sorted by year.
-    Queries the project-summaries namespace filtering by institution name.
+    Uses Pinecone metadata filter on institution field.
     """
     if not institution:
         return []
     try:
+        index = _load_pinecone()
         embedder = _load_embedder()
-        index    = _load_pinecone()
-        # Embed the institution name as query
+        # Use institution name as query vector for best recall
         q_vec = embedder.encode([institution], normalize_embeddings=True)[0].tolist()
+        # Filter by exact institution match
         results = index.query(
             vector=q_vec,
-            top_k=20,
+            top_k=50,
             include_metadata=True,
             namespace="project-summaries",
+            filter={"institution": {"$eq": institution}}
         )
         seen  = set()
         years = []
         for match in results.matches:
-            m = match.metadata
-            inst = m.get("institution", "")
+            m    = match.metadata
             year = m.get("year", 0)
-            # Match institution name loosely
-            if (institution.lower() in inst.lower() or inst.lower() in institution.lower())                and year != current_year and year not in seen:
+            if year != current_year and year not in seen:
                 seen.add(year)
+                # Build correct wiki URL
+                team = m.get("team", "")
+                url  = m.get("url", "")
+                if not url and team and year:
+                    slug = team.lower().replace(" ", "-")
+                    url  = f"https://{year}.igem.wiki/{slug}/description"
                 years.append({
                     "year": year,
-                    "url":  m.get("url", ""),
-                    "team": m.get("team", ""),
+                    "url":  url,
+                    "team": team,
                 })
         return sorted(years, key=lambda x: x["year"])
     except Exception:
