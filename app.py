@@ -261,29 +261,6 @@ if st.session_state.page == "search":
                     + f"<span class='tag'>{s['year']}</span></div>{sbar(s['score'])}</a>")
         st.markdown(sim + "</div>", unsafe_allow_html=True)
     else:
-        # Village explore pills
-        villages = [
-            ("Diagnostics","Diagnostics"), ("Health & Medicine","Health & Medicine"),
-            ("Environment","Environment"), ("Foundational Advance","Foundational Advance"),
-            ("Manufacturing","Manufacturing"), ("Food & Nutrition","Food & Nutrition"),
-            ("Therapeutics","Therapeutics"), ("Software & AI","Software & AI"),
-            ("Bioremediation","Bioremediation"), ("Climate Crisis","Climate Crisis"),
-            ("Hardware","Hardware"), ("Energy","Energy"),
-        ]
-        pills_html = "<div style='text-align:center;margin-bottom:24px'>"
-        pills_html += "<div style='font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ash);margin-bottom:14px'>Or explore by village</div>"
-        pills_html += "<div style='display:flex;flex-wrap:wrap;gap:8px;justify-content:center'>"
-        for v_label, v_value in villages:
-            pills_html += (
-                f"<button onclick="document.querySelector('[data-testid=stTextInput] input').value='synthetic biology iGEM projects';" "
-                f"style='background:#fff;border:1px solid var(--border);border-radius:20px;padding:6px 16px;"
-                f"font-family:Lexend,sans-serif;font-size:13px;color:var(--muted);cursor:pointer;"
-                f"transition:all .12s' "
-                f"onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" "
-                f"onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">"
-                f"{v_label}</button>"
-            )
-        pills_html += "</div></div>"
         st.markdown(
             "<div class='empty-state'>"
             "Type a question above and press Search corpus.<br>"
@@ -293,7 +270,26 @@ if st.session_state.page == "search":
             "</div>",
             unsafe_allow_html=True
         )
-        st.markdown(pills_html, unsafe_allow_html=True)
+        st.markdown(
+            "<div style='text-align:center;margin-top:16px'>"
+            "<span style='font-size:12px;font-weight:700;letter-spacing:.12em;"
+            "text-transform:uppercase;color:var(--ash)'>Or explore by village</span>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+        village_options = [
+            "Diagnostics", "Health & Medicine", "Environment",
+            "Foundational Advance", "Manufacturing", "Food & Nutrition",
+            "Therapeutics", "Software & AI", "Bioremediation", "Climate Crisis",
+            "Hardware", "Energy",
+        ]
+        vcols = st.columns(6)
+        for vi, vname in enumerate(village_options):
+            with vcols[vi % 6]:
+                if st.button(vname, key=f"vpill_{vi}", use_container_width=True):
+                    st.session_state["ft"] = vname
+                    st.session_state["_village_search"] = True
+                    st.rerun()
 
 # SIMILAR PROJECTS
 elif st.session_state.page == "similar":
