@@ -143,7 +143,7 @@ def _build_filter(year: str, track: str, medal: str) -> dict | None:
 # ── Core search ───────────────────────────────────────────────────────────────
 
 def search(query: str, year="All years", track="All tracks",
-           medal="Any medal", k: int = 5):
+           medal="Any medal", k: int = 8):
     """
     Embed the query, retrieve top-k chunks from Pinecone,
     call Groq to synthesise an answer, return (answer_html, sources, similar).

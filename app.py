@@ -243,7 +243,10 @@ if st.session_state.page == "search":
         src_rows = ""
         for s in real_sources:
             short = s["url"].replace("https://", "")
-            src_rows += f"<a href='{s['url']}' target='_blank' class='source-row'><div class='src-num'>[{s['num']}]</div><div class='src-info'><div class='src-team'>{s['team']}</div><div class='src-meta'>{s.get('track','')} &middot; {short}</div></div>{badge(s['medal'])}</a>"
+            page_name = s.get('page','').replace('_',' ').replace('-',' ')
+            meta_parts = [p for p in [s.get('track',''), page_name] if p]
+            meta_str = " &middot; ".join(meta_parts) + (" &middot; " if meta_parts else "") + short
+            src_rows += f"<a href='{s['url']}' target='_blank' class='source-row'><div class='src-num'>[{s['num']}]</div><div class='src-info'><div class='src-team'>{s['team']}</div><div class='src-meta'>{meta_str}</div></div>{badge(s['medal'])}</a>"
 
         st.markdown(f"<div class='answer-card'><div class='card-eyebrow'>Synthesised answer &middot; {len(real_sources)} sources</div><div class='answer-body'>{answer_text}</div><div class='sources-head'>Sources — click to open original wiki</div>{src_rows}</div>", unsafe_allow_html=True)
 
