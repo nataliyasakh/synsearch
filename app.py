@@ -284,10 +284,12 @@ elif st.session_state.page == "similar":
             other_years = get_institution_years(institution, int(s["year"]))
             other_html = ""
             if other_years:
-                links = " &middot; ".join(
-                    f"<a href='{oy["url"]}' target='_blank' style='color:var(--teal);text-decoration:none'>{oy["year"]}</a>"
-                    for oy in other_years[:4]
-                )
+                link_parts = []
+                for oy in other_years[:4]:
+                    oy_url  = oy["url"]
+                    oy_year = oy["year"]
+                    link_parts.append(f"<a href='{oy_url}' target='_blank' style='color:var(--teal);text-decoration:none'>{oy_year}</a>")
+                links = " &middot; ".join(link_parts)
                 other_html = f"<div style='margin-top:8px;font-size:11px;color:var(--ash)'>{institution} also competed: {links}</div>"
             sim2 += (f"<a href='{s['url']}' target='_blank' class='sim-card'>"
                      f"<div class='sim-pct'>{s['score']}% match</div>"
