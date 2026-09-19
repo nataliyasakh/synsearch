@@ -81,7 +81,7 @@ for start in range(0, len(all_records), args.batch_size):
     batch = all_records[start:start + args.batch_size]
     vecs  = vectors[start:start + args.batch_size]
     index.upsert(vectors=[
-        {"id": r["id"], "values": v.tolist(), "metadata": {k: (v2 if v2 is not None else "") for k,v2 in r["meta"].items()}}
+        {"id": r["id"], "values": v.tolist(), "metadata": {**{k: (v2 if v2 is not None else "") for k,v2 in r["meta"].items()}, "text": r["text"][:8000]}}
         for r, v in zip(batch, vecs)
     ])
     done = min(start + args.batch_size, len(all_records))
