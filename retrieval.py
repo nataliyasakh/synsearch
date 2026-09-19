@@ -101,6 +101,13 @@ TERM_EXPANSIONS = {
     "e. coli":        "E. coli Escherichia coli bacteria chassis BL21 DH5alpha",
     "b. subtilis":    "B. subtilis Bacillus subtilis gram positive chassis sporulation",
     "s. cerevisiae":  "S. cerevisiae yeast Saccharomyces cerevisiae eukaryote chassis",
+    # Parts and promoters
+    "constitutive promoter":  "constitutive promoter Anderson J23 BBa_J23100 strength RFP fluorescence E. coli expression",
+    "inducible promoter":     "inducible promoter aTc IPTG arabinose pTet pLac T7 regulation expression",
+    "kill switch":            "kill switch biocontainment toxin antitoxin mazEF ccdB safeguard",
+    "light inducible":        "light inducible optogenetic phyB EL222 LOV CRY2 blue light red light",
+    "metal binding":          "metal binding protein metallothionein MerR BmrR lead mercury arsenic zinc chelation",
+    "cyanobacteria":          "cyanobacteria Synechococcus Synechocystis photosynthetic chassis",
     # iGEM concepts
     "biosensor":  "biosensor detection signal sensing reporter GFP fluorescence",
     "toggle switch": "toggle switch bistable genetic circuit mutual repression",
