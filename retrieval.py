@@ -109,10 +109,97 @@ TERM_EXPANSIONS = {
     "metal binding":          "metal binding protein metallothionein MerR BmrR lead mercury arsenic zinc chelation",
     "cyanobacteria":          "cyanobacteria Synechococcus Synechocystis photosynthetic chassis",
     # iGEM concepts
-    "biosensor":  "biosensor detection signal sensing reporter GFP fluorescence",
-    "toggle switch": "toggle switch bistable genetic circuit mutual repression",
-    "kill switch":   "kill switch biocontainment safety suicide gene",
-    "quorum sensing": "quorum sensing LuxR LuxI AHL cell density communication",
+    "biosensor":      "biosensor detection signal sensing reporter GFP fluorescence output",
+    "toggle switch":  "toggle switch bistable genetic circuit mutual repression bistability",
+    "kill switch":    "kill switch biocontainment safety suicide gene toxin antitoxin mazEF ccdB",
+    "quorum sensing": "quorum sensing LuxR LuxI AHL cell density communication N-acyl homoserine lactone",
+
+    # More organisms
+    "p. putida":        "P. putida Pseudomonas putida soil bacterium chassis bioremediation",
+    "v. natriegens":    "V. natriegens Vibrio natriegens fast growing chassis synthetic biology",
+    "c. elegans":       "C. elegans Caenorhabditis elegans model organism multicellular",
+    "lactobacillus":    "Lactobacillus probiotic gut microbiome lactic acid bacteria",
+    "pichia":           "Pichia pastoris yeast protein expression secretion",
+    "aspergillus":      "Aspergillus niger fungus enzyme production industrial",
+    "chlorella":        "Chlorella vulgaris microalgae photosynthesis biofuel lipid",
+
+    # Reporters and fluorescent proteins
+    "gfp":    "GFP green fluorescent protein reporter expression visualization",
+    "rfp":    "RFP red fluorescent protein mCherry reporter",
+    "sfgfp":  "sfGFP superfolder GFP soluble reporter",
+    "mcherry": "mCherry red fluorescent protein reporter",
+    "luciferase": "luciferase bioluminescence reporter lux luxAB",
+    "lacZ":   "lacZ beta-galactosidase reporter colorimetric assay",
+
+    # Regulatory elements
+    "terminator":  "terminator transcription stop BBa_B0010 BBa_B0012 BBa_B1002",
+    "riboswitch":  "riboswitch RNA aptamer ligand-responsive regulation gene expression",
+    "operator":    "operator repressor binding site lac tet ara regulatory",
+    "sigma factor": "sigma factor sigma70 sigma32 alternative sigma transcription",
+    "promoter strength": "promoter strength relative units RFP fluorescence constitutive Anderson",
+
+    # CRISPR and gene editing
+    "crispr":         "CRISPR Cas9 Cas12 guide RNA gRNA genome editing knockout knockin",
+    "dCas9":          "dCas9 dead Cas9 CRISPRi CRISPRa transcription repression activation",
+    "base editing":   "base editor adenine cytosine deaminase precise mutation no DSB",
+    "prime editing":  "prime editing pegRNA reverse transcriptase precise edit",
+    "cas12":          "Cas12a Cpf1 CRISPR diagnostic SHERLOCK DETECTR collateral cleavage",
+
+    # Protein engineering
+    "directed evolution": "directed evolution error-prone PCR random mutagenesis screening selection",
+    "protein engineering": "protein engineering mutagenesis stability activity thermostability",
+    "enzyme":          "enzyme catalyst kinetics Km kcat turnover substrate specificity",
+    "protease":        "protease TEV cleavage protein processing degradation",
+    "nanobody":        "nanobody VHH single domain antibody camelid binding affinity",
+    "aptamer":         "aptamer nucleic acid binding ligand selection SELEX",
+
+    # Metabolic engineering
+    "metabolic engineering": "metabolic engineering pathway flux optimization overproduction",
+    "flux balance analysis": "flux balance analysis FBA COBRA metabolic model growth rate",
+    "mevalonate pathway":    "mevalonate pathway terpenoid isoprenoid isoprene lycopene",
+    "violacein":       "violacein pigment chromobacterium pathway purple color",
+    "lycopene":        "lycopene carotenoid antioxidant red pigment metabolic pathway",
+
+    # Detection and diagnostics
+    "aptasensor":      "aptasensor aptamer biosensor binding detection analyte",
+    "cellfree":        "cell-free cell free in vitro transcription translation TXTL",
+    "paper biosensor": "paper biosensor lateral flow cellulose colorimetric fieldable",
+    "whole cell biosensor": "whole cell biosensor bacteria sensing reporting environmental",
+    "electrochemical": "electrochemical biosensor electrode amperometric voltammetric",
+
+    # Environmental
+    "bioremediation":  "bioremediation pollutant degradation heavy metal plastic soil contamination",
+    "heavy metal":     "heavy metal arsenic mercury lead cadmium zinc copper tolerance accumulation",
+    "plastic degradation": "plastic degradation PET PETase MHETase polyethylene depolymerization",
+    "nitrate":         "nitrate nitrogen cycle denitrification fertilizer runoff eutrophication",
+    "microplastics":   "microplastics plastic pollution nanoplastics environmental contamination",
+
+    # Drug delivery and therapeutics
+    "drug delivery":   "drug delivery nanoparticle liposome targeted therapy controlled release",
+    "antimicrobial":   "antimicrobial antibiotic resistance peptide bacteriocin phage",
+    "phage therapy":   "phage therapy bacteriophage lytic lysogenic antibiotic alternative",
+    "cancer":          "cancer tumor oncology apoptosis therapeutic targeted",
+    "probiotic":       "probiotic gut microbiome Lactobacillus colonization therapeutic delivery",
+
+    # Agricultural
+    "nitrogen fixation": "nitrogen fixation nif genes nitrogenase Rhizobium legume symbiosis",
+    "plant growth":    "plant growth promoting rhizobacteria PGPR auxin cytokinin root",
+    "biofilm":         "biofilm formation attachment matrix EPS quorum sensing regulation",
+    "sporulation":     "sporulation endospore Bacillus subtilis heat resistance stress",
+
+    # Cloning and assembly more
+    "site directed mutagenesis": "site directed mutagenesis QuikChange primer mutation specific",
+    "overlap extension pcr": "overlap extension PCR SOE splicing fusion amplicon",
+    "biobrick":        "BioBrick RFC10 prefix suffix standard assembly iGEM registry",
+    "moclo":           "MoClo modular cloning type IIS Golden Gate hierarchical assembly",
+    "loop assembly":   "Loop assembly modular cloning hierarchical iterative",
+
+    # Characterization
+    "characterization": "characterization promoter strength RBS efficiency part function quantification",
+    "fluorescence measurement": "fluorescence measurement plate reader spectrophotometer excitation emission",
+    "growth curve":    "growth curve OD600 optical density lag exponential stationary phase",
+    "rna seq":         "RNA seq transcriptomics gene expression differential analysis",
+    "proteomics":      "proteomics mass spectrometry protein identification quantification",
 }
 
 def expand_query(query: str) -> str:
