@@ -93,7 +93,7 @@ def render_tools_page():
                     s = tomllib.load(f)
                 client = Groq(api_key=s["GROQ_API_KEY"])
                 resp = client.chat.completions.create(
-                    model="groq/compound-mini",
+                    model="qwen/qwen3.8-27b",
                     messages=[
                         {"role": "system", "content": (
                             "You are a synthetic biology expert helping iGEM teams choose tools. "

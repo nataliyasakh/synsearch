@@ -211,7 +211,7 @@ def search(query: str, year="All years", track="All tracks",
 
     try:
         response = groq.chat.completions.create(
-            model="groq/compound-mini",
+            model="qwen/qwen3.8-27b",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user",   "content": user_prompt},
