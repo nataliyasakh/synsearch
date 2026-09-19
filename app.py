@@ -261,6 +261,20 @@ if st.session_state.page == "search":
 
         st.markdown(f"<div class='answer-card'><div class='card-eyebrow'>Synthesised answer &middot; {len(real_sources)} sources</div><div class='answer-body'>{answer_text}</div><div class='sources-head'>Sources — click to open original wiki</div>{src_rows}</div>", unsafe_allow_html=True)
 
+        # iGEM Registry parts
+        try:
+            from registry_search import search_parts, render_parts_section
+            parts = search_parts(query, max_results=4)
+            if parts:
+                st.markdown(
+                    "<div class='answer-card' style='margin-top:-12px'>"
+                    + render_parts_section(parts) +
+                    "</div>",
+                    unsafe_allow_html=True
+                )
+        except Exception:
+            pass
+
         st.markdown("<div class='section-head'><span class='section-title'>Similar projects</span><span class='section-pill'>unique to SynSearch</span></div>", unsafe_allow_html=True)
         sim = "<div class='sim-grid'>"
         for s in real_similar:
