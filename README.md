@@ -11,8 +11,9 @@ Open-source RAG (retrieval-augmented generation) system for searching the iGEM c
 ## What it does
 
 - **Search** — ask any question in plain English, get a synthesised answer with inline citations linking to specific wiki pages
-- **Similar Projects** — describe your project and find the most semantically similar past iGEM teams (vector similarity, not keyword matching)
+- **Similar Projects** — describe your project and find the most semantically similar past iGEM teams (project-level vector similarity, not keyword matching)
 - **Tools** — 59 verified wet-lab software tools with AI recommendations and wiki context showing how iGEM teams actually used each tool
+- **Parts Registry** — related parts from the iGEM Registry surfaced alongside every search result via the public REST API
 - **Benchmark** — three-way comparison showing RAG improves faithfulness 7× over a bare LLM
 
 ---
@@ -21,22 +22,27 @@ Open-source RAG (retrieval-augmented generation) system for searching the iGEM c
 
 | Year | Source | Vectors |
 |------|--------|---------|
+| 2015 | Wayback Machine | 1,796 |
 | 2016 | Wayback Machine | 1,333 |
 | 2017 | Wayback Machine | 1,338 |
 | 2018 | Wayback Machine | 2,392 |
 | 2019 | Munich 2024 corpus (CC BY 4.0) | 3,169 |
+| 2020 | Wayback Machine | 2,438 |
+| 2021 | Wayback Machine | 4,752 |
 | 2022 | igem.wiki via iGEM API | 10,505 |
 | 2023 | igem.wiki via iGEM API | 12,408 |
 | 2024 | igem.wiki via iGEM API | 12,806 |
 | 2025 | igem.wiki via iGEM API | 14,677 |
-| **Total** | | **58,569** |
+| **Total** | | **70,229** |
+
+Project-level summary embeddings (one per team): **2,860** in a separate Pinecone namespace.
 
 ---
 
 ## Stack
 
 ```
-sentence-transformers (all-MiniLM-L6-v2)  →  Pinecone  →  Groq (compound-mini)  →  Streamlit Cloud
+sentence-transformers (all-MiniLM-L6-v2)  →  Pinecone  →  Groq (qwen/qwen3.8-27b)  →  Streamlit Cloud
 ```
 
 ---
@@ -65,13 +71,18 @@ python scrape_corpus.py --year 2022 --delay 1
 # Scrape pre-2022 via Wayback Machine
 python scrape_wayback.py --year 2018 --delay 2
 
-# Embed and upload to Pinecone
+# Embed and upload to Pinecone (includes chunk text in metadata)
 python embed_corpus.py --year 2022
+
+# Build project-level summary embeddings
+python build_project_summaries.py
 ```
 
 ---
 
 ## Benchmark
+
+*Benchmark re-run in progress with continuous scoring. Numbers below are from the initial evaluation.*
 
 Evaluated on 50 manually verified iGEM-specific questions using an LLM-as-judge approach following the RAGAS framework (Es et al., 2023).
 
@@ -92,13 +103,17 @@ RAG improves faithfulness **7×** over a bare LLM on iGEM-specific questions.
 - Proof of concept that RAG reduces hallucination on iGEM data
 
 **Built by us:**
-- Corpus expansion: 343 teams (2019) → 1,000+ teams (2016–2025)
+- Corpus expansion: 343 teams (2019 only) → 1,000+ teams across 2015–2025
 - Scrapers for Wayback Machine (pre-2022) and igem.wiki API (2022+)
-- Inline source citations linking to the specific wiki page
-- Village/year/medal metadata filtering before retrieval
-- Similar Projects semantic explorer
+- Chunk text stored in Pinecone metadata for grounded retrieval
+- Project-level summary embeddings in a separate namespace (fixes paragraph-vs-project retrieval)
+- Inline source citations linking to the specific wiki page and section
+- Village/year/medal metadata filtering applied before retrieval
+- Query expansion: 80+ synthetic biology terms mapped to synonyms before embedding
+- Similar Projects with institution history across years
 - Tools page with 59 verified tools + AI recommendations + wiki context
-- Published three-way benchmark with manually verified ground truth
+- iGEM Parts Registry integration via new public REST API (api.registry.igem.org)
+- Published three-way benchmark with 50 manually verified ground-truth questions
 - Zero-install hosted interface — no Docker, no terminal, no API key required
 
 ---
